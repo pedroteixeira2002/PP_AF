@@ -115,9 +115,6 @@ public class ProjectImp implements Project {
     @Override
     public void addParticipant(Participant participant) throws IllegalNumberOfParticipantType, ParticipantAlreadyInProject {
 
-        try{
-
-        }
     }
 
     @Override
