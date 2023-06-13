@@ -1,10 +1,10 @@
 package Participants;
 
 abstract class Participant {
-    private String name;
-    private String email;
-    private Contact contact;
-    private Institution institution;
+    private final String name;
+    private final String email;
+    private final Contact contact;
+    private final Institution institution;
 
     public Participant(String name, String email, Contact contact, Institution institution) {
         this.name = name;
