@@ -8,8 +8,8 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
 
     private String areaOfExpertise;
 
-    public FacilitatorImp(String name, String email, ContactImp contactImp, InstitutionImp institutionImp, String areaOfExpertise) {
-        super(name, email, contactImp, institutionImp);
+    public FacilitatorImp(String name, String email, ContactImp contact, InstitutionImp institution, String areaOfExpertise) {
+        super(name, email, contact, institution);
         this.areaOfExpertise = areaOfExpertise;
     }
 
@@ -52,6 +52,7 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
     public Contact getContact() {
         return null;
     }
+
     /**
      * @return
      */
@@ -74,5 +75,12 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
     @Override
     public void setContact(Contact contact) {
 
+    }
+
+    @Override
+    public String toString() {
+        return ("\n " + super.toString() +
+                "\n -------Facilitator-------" +
+                "\n Area Of Expertise: " + areaOfExpertise);
     }
 }

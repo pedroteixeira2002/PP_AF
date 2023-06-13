@@ -77,4 +77,12 @@ public class PartnerImp extends ParticipantImp implements Partner {
     public void setContact(Contact contact) {
 
     }
+
+    @Override
+    public String toString() {
+        return ("\n " + super.toString() +
+                "\n -------Partner-------" +
+                "\n Website: " + website +
+                "\n Vat: " + vat);
+    }
 }

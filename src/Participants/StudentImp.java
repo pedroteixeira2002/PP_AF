@@ -1,9 +1,10 @@
 package Participants;
+
 import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Student;
 
-public class StudentImp extends ParticipantImp implements Student{
+public class StudentImp extends ParticipantImp implements Student {
     private int number;
 
     public StudentImp(String name, String email, ContactImp contactImp, InstitutionImp institutionImp, int number) {
@@ -69,5 +70,12 @@ public class StudentImp extends ParticipantImp implements Student{
     @Override
     public void setContact(Contact contact) {
 
+    }
+
+    @Override
+    public String toString() {
+        return ("\n" + super.toString() +
+                "\n -------Student-------" +
+                "\n Student Number: " + number);
     }
 }

@@ -1,6 +1,6 @@
 package Participants;
 
-public class ContactImp implements ma02_resources.participants.Contact{
+public class ContactImp implements ma02_resources.participants.Contact {
     private final String street;
     private final String city;
     private final String state;
@@ -16,6 +16,7 @@ public class ContactImp implements ma02_resources.participants.Contact{
         this.phone = phone;
         this.country = country;
     }
+
     @Override
     public String getStreet() {
         return null;
@@ -44,5 +45,17 @@ public class ContactImp implements ma02_resources.participants.Contact{
     @Override
     public String getPhone() {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return ("\n -------Contact-------" +
+                "\n Phone: " + phone +
+                "\n Street: " + street +
+                "\n Zip Code: " + zipCode +
+                "\n City: " + city +
+                "\n State: " + state +
+                "\n Country: " + country +
+                "\n -----------------------");
     }
 }

@@ -1,24 +1,40 @@
 package Participants;
 
-
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.InstituitionType;
+import ma02_resources.participants.Contact;
+
+import java.util.HashMap;
 
 public class InstitutionImp implements Instituition {
     private final String name;
-    private final ContactImp contactImp;
+    private ContactImp contact;
     private final String email;
-    private final InstituitionType type;
+    private InstituitionType type;
     private final String description;
-    private final String website;
-    public InstitutionImp(String name, ContactImp contactImp, String email, InstituitionType type, String description, String website) {
+    private String website;
+
+    public InstitutionImp(String name, ContactImp contact, String email, InstituitionType type, String description, String website) {
         this.name = name;
-        this.contactImp = contactImp;
+        this.contact = contact;
         this.email = email;
         this.type = type;
         this.description = description;
         this.website = website;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        InstitutionImp that = (InstitutionImp) obj;
+
+        return email.equals(that.email) && name.equals(that.name) && website.equals(that.website);
+    }
+
     @Override
     public String getName() {
         return null;
@@ -35,7 +51,7 @@ public class InstitutionImp implements Instituition {
     }
 
     @Override
-    public ma02_resources.participants.Contact getContact() {
+    public Contact getContact() {
         return null;
     }
 
@@ -51,7 +67,7 @@ public class InstitutionImp implements Instituition {
 
     @Override
     public void setWebsite(String s) {
-
+        this.website = s;
     }
 
     @Override
@@ -60,12 +76,25 @@ public class InstitutionImp implements Instituition {
     }
 
     @Override
-    public void setContact(ma02_resources.participants.Contact contact) {
+    public void setContact(Contact contact) {
+        this.contact = (ContactImp) contact;
 
     }
 
     @Override
     public void setType(InstituitionType instituitionType) {
+        this.type = instituitionType;
+    }
 
+    @Override
+    public String toString() {
+        return ("\n -------Institution-------" +
+                "\n Name: " + name +
+                "\n Contact: " + contact.toString() +
+                "\n Email: " + email +
+                "\n Type: " + type.toString() +
+                "\n Description: " + description +
+                "\n Website: " + website) +
+                "\n --------------------------";
     }
 }
