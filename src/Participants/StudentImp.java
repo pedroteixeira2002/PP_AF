@@ -1,32 +1,26 @@
 package Participants;
-
 import ma02_resources.participants.Contact;
-import ma02_resources.participants.Facilitator;
 import ma02_resources.participants.Instituition;
+import ma02_resources.participants.Student;
 
-public class FacilitatorImp extends ParticipantImp implements Facilitator {
+public class StudentImp extends ParticipantImp implements Student{
+    private int number;
 
-    private String areaOfExpertise;
-
-    public FacilitatorImp(String name, String email, ContactImp contactImp, InstitutionImp institutionImp, String areaOfExpertise) {
+    public StudentImp(String name, String email, ContactImp contactImp, InstitutionImp institutionImp, int number) {
         super(name, email, contactImp, institutionImp);
-        this.areaOfExpertise = areaOfExpertise;
+        this.number = number;
+    }
+
+    public StudentImp(String name, String email, ContactImp contactImp, InstitutionImp institutionImp) {
+        super(name, email, contactImp, institutionImp);
     }
 
     /**
-     * @return areaOfExpertise
+     * @return number
      */
     @Override
-    public String getAreaOfExpertise() {
-        return this.areaOfExpertise;
-    }
-
-    /**
-     * @param s
-     */
-    @Override
-    public void setAreaOfExpertise(String s) {
-        this.areaOfExpertise = s;
+    public int getNumber() {
+        return this.number;
     }
 
     /**
@@ -52,6 +46,7 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
     public Contact getContact() {
         return null;
     }
+
     /**
      * @return
      */

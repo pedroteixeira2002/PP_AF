@@ -1,6 +1,6 @@
 package Participants;
 
-public class Contact implements ma02_resources.participants.Contact{
+public class ContactImp implements ma02_resources.participants.Contact{
     private final String street;
     private final String city;
     private final String state;
@@ -8,7 +8,7 @@ public class Contact implements ma02_resources.participants.Contact{
     private final String phone;
     private final String country;
 
-    public Contact(String street, String city, String state, String zipCode, String phone, String country) {
+    public ContactImp(String street, String city, String state, String zipCode, String phone, String country) {
         this.street = street;
         this.city = city;
         this.state = state;
