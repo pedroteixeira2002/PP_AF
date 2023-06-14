@@ -11,7 +11,7 @@ import ma02_resources.project.exceptions.TaskAlreadyInProject;
 public class ProjectImp implements Project {
 
     private static int SIZE = 50;
-    private final int TAGS_FACTOR= 2;
+    private final int FACTOR = 2;
     private String name;
     private String description;
     private int numberOfParticipants;
@@ -47,8 +47,6 @@ public class ProjectImp implements Project {
         this.tasks = tasks;
         this.tags = tags;
     }
-
-
 
 
     @Override
@@ -139,20 +137,48 @@ public class ProjectImp implements Project {
     @Override
     public void addTask(Task task) throws IllegalNumberOfTasks, TaskAlreadyInProject {
 
+        if (numberOfTasks == maximumNumberOfTasks) {
+            throw new IllegalNumberOfTasks("Maximum number of tasks reached");
+        }
+
+        try {
+            hasTask(task);
+        } catch (TaskAlreadyInProject e) {
+            System.out.println(e.getMessage());
+        }
+        this.tasks[this.numberOfTasks++] = task;
+    }
+
+    private void hasTask(Task task) throws TaskAlreadyInProject {
+        for (int i = 0; i < numberOfTasks; i++) {
+            if (this.tasks[i].equals(task)) {
+                throw new TaskAlreadyInProject("Task already in project");
+            }
+        }
     }
 
     @Override
     public Task getTask(String s) {
+        for (int i = 0; i < numberOfTasks; i++) {
+            if (this.tasks[i].getTitle().equals(s)) {
+                return this.tasks[i];
+            }
+        }
         return null;
     }
 
     @Override
     public Task[] getTasks() {
-        return new Task[0];
+        return this.tasks;
     }
 
     @Override
     public boolean isCompleted() {
-        return false;
+        for (int i = 0; i < numberOfTasks; i++) {
+            if (tasks[i].getNumberOfSubmissions() == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -76,7 +76,7 @@ public class TaskImp implements Task {
         try {
             hasSubmission(submission);
         } catch (IllegalArgumentException e) {
-            System.out.println("Submission already exists");
+            System.out.println(e.getMessage());
         }
         if (this.numberOfSubmissions == this.submissions.length) {
             expandSubmissions();
