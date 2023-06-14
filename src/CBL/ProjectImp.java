@@ -2,7 +2,6 @@ package CBL;
 
 import ma02_resources.participants.*;
 import ma02_resources.project.Project;
-import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
 import ma02_resources.project.exceptions.IllegalNumberOfParticipantType;
 import ma02_resources.project.exceptions.IllegalNumberOfTasks;
@@ -11,36 +10,21 @@ import ma02_resources.project.exceptions.TaskAlreadyInProject;
 
 public class ProjectImp implements Project {
     private static int SIZE = 50;
-<<<<<<< Updated upstream
     private final int FACTOR = 2;
-    private String name;
-    private String description;
-=======
-    private static final int FACTOR = 2;
-    private final String name;
+    private final String  name;
     private final String description;
->>>>>>> Stashed changes
     private int numberOfParticipants;
     private int numberOfStudents;
     private int numberOfPartners;
     private int numberOfFacilitators;
     private int numberOfTasks;
-<<<<<<< Updated upstream
     private int numberOfTags;
-    private int maximumNumberOfTags;
-    private int maximumNumberOfTasks;
-    private long maximumNumberOfParticipants;
-    private int maximumNumberOfStudents;
-    private int maximumNumberOfPartners;
-    private int maximumNumberOfFacilitators;
-=======
     private final int maximumNumberOfTags;
     private final int maximumNumberOfTasks;
     private final long maximumNumberOfParticipants;
     private final int maximumNumberOfStudents;
     private final int maximumNumberOfPartners;
     private final int maximumNumberOfFacilitators;
->>>>>>> Stashed changes
     private Participant[] participants;
     private Task[] tasks;
     private String[] tags;
@@ -64,11 +48,6 @@ public class ProjectImp implements Project {
         this.tasks = new Task[SIZE];
         this.tags = new String[FACTOR];
     }
-
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     @Override
     public String getName() {
         return this.name;
