@@ -5,15 +5,11 @@ import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Student;
 
 public class StudentImp extends ParticipantImp implements Student {
-    private int number;
+    private final int number;
 
     public StudentImp(String name, String email, ContactImp contactImp, InstituitionImp instituitionImp, int number) {
         super(name, email, contactImp, instituitionImp);
         this.number = number;
-    }
-
-    public StudentImp(String name, String email, ContactImp contactImp, InstituitionImp instituitionImp) {
-        super(name, email, contactImp, instituitionImp);
     }
 
     /**
@@ -33,7 +29,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return
+     * @return super.getEmail()
      */
     @Override
     public String getEmail() {
@@ -41,7 +37,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return
+     * @return  super.getContact()
      */
     @Override
     public ContactImp getContact() {
@@ -49,7 +45,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return
+     * @return super.getInstituition()
      */
     @Override
     public InstituitionImp getInstituition() {
@@ -61,7 +57,7 @@ public class StudentImp extends ParticipantImp implements Student {
      */
     @Override
     public void setInstituition(Instituition instituition) {
-
+        super.setInstituition(instituition);
     }
 
     /**
@@ -69,7 +65,7 @@ public class StudentImp extends ParticipantImp implements Student {
      */
     @Override
     public void setContact(Contact contact) {
-
+        super.setContact(contact);
     }
 
     @Override

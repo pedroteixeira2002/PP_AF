@@ -15,47 +15,44 @@ public class PartnerImp extends ParticipantImp implements Partner {
     }
 
     /**
-     * @return
+     * @return vat
      */
     @Override
-    public String getVat() {
-        return null;
+    public String getVat() {return this.vat;
     }
 
     /**
-     * @return
+     * @return website
      */
     @Override
     public String getWebsite() {
-        return null;
+        return this.website;
     }
 
     /**
-     * @return
+     * @return super.getName()
      */
     @Override
-    public String getName() {
-        return null;
+    public String getName() {return super.getName();
     }
 
     /**
-     * @return
+     * @return super.getEmail()
      */
     @Override
     public String getEmail() {
-        return null;
+        return super.getEmail();
     }
 
     /**
-     * @return
+     * @return super.getContact()
      */
     @Override
-    public ContactImp getContact() {
-        return null;
+    public ContactImp getContact() {return super.getContact();
     }
 
     /**
-     * @return
+     * @return super.getInstituition()
      */
     @Override
     public InstituitionImp getInstituition() {
@@ -67,6 +64,7 @@ public class PartnerImp extends ParticipantImp implements Partner {
      */
     @Override
     public void setInstituition(Instituition instituition) {
+        super.setInstituition(instituition);
     }
 
     /**
@@ -74,6 +72,7 @@ public class PartnerImp extends ParticipantImp implements Partner {
      */
     @Override
     public void setContact(Contact contact) {
+        super.setContact(contact);
 
     }
 

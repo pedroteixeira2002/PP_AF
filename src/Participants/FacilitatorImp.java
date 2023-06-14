@@ -30,23 +30,23 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
     }
 
     /**
-     * @return
+     * @return  super.getName()
      */
     @Override
     public String getName() {
-        return null;
+        return super.getName();
     }
 
     /**
-     * @return
+     * @return super.getEmail()
      */
     @Override
     public String getEmail() {
-        return null;
+        return super.getEmail() ;
     }
 
     /**
-     * @return
+     * @return super.getContact()
      */
     @Override
     public ContactImp getContact() {
@@ -54,7 +54,7 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
     }
 
     /**
-     * @return
+     * @return super.getInstituition()
      */
     @Override
     public InstituitionImp getInstituition() {
@@ -66,7 +66,7 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
      */
     @Override
     public void setInstituition(Instituition instituition) {
-
+        super.setInstituition(instituition);
     }
 
     /**
@@ -74,7 +74,7 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
      */
     @Override
     public void setContact(Contact contact) {
-
+        super.setContact(contact);
     }
 
     @Override

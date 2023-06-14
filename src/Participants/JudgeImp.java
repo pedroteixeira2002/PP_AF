@@ -41,21 +41,13 @@ public class JudgeImp extends ParticipantImp implements Judge {
         return super.getInstituition();
     }
 
+
     /**
      * @param instituition
      */
     @Override
     public void setInstituition(Instituition instituition) {
-
-    }
-
-    /**
-     * @param instituition
-     */
-    @Override
-    public void setInstituition(InstituitionImp instituition) {
-        InstituitionImp that = (InstituitionImp) instituition;
-        super.setInstituition(that);
+        super.setInstituition(instituition);
     }
 
     /**
@@ -63,7 +55,7 @@ public class JudgeImp extends ParticipantImp implements Judge {
      */
     @Override
     public void setContact(Contact contact) {
-
+        super.setContact(contact);
     }
 
     @Override

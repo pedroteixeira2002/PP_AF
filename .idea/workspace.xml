@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="793feacc-c2dc-40cf-b190-f447c4bd1374" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/Participant.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/Participant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/class-use/Instituition.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/class-use/Instituition.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/InstituitionAlreadyExistException.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/InstituitionAlreadyExistException.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CBL/EditionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/EditionImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CBL/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/EventImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CBL/ProjectImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/ProjectImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Participants/ContactImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/ContactImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Participants/FacilitatorImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/FacilitatorImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Participants/InstitutionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/InstituitionImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Participants/JudgeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/JudgeImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Participants/ParticipantImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/ParticipantImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Participants/PartnerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/PartnerImp.java" afterDir="false" />
@@ -85,7 +73,7 @@
       <workItem from="1686609906984" duration="6227000" />
       <workItem from="1686663518969" duration="20840000" />
       <workItem from="1686692862016" duration="2309000" />
-      <workItem from="1686747877693" duration="3808000" />
+      <workItem from="1686747877693" duration="5448000" />
     </task>
     <servers />
   </component>

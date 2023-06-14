@@ -1,6 +1,8 @@
 package Participants;
 
+import ma02_resources.participants.Contact;
 import ma02_resources.participants.Participant;
+import ma02_resources.participants.Instituition;
 
 abstract class ParticipantImp implements Participant {
     private final String name;
@@ -34,12 +36,14 @@ abstract class ParticipantImp implements Participant {
         return instituition;
     }
 
-    public void setContact(ContactImp contact) {
-        this.contact = contact;
+    public void setContact(Contact contact) {
+        ContactImp that = (ContactImp) contact;
+        this.contact = that;
     }
 
-    public void setInstituition(InstituitionImp instituition) {
-        this.instituition = instituition;
+    public void setInstituition(Instituition instituition) {
+        InstituitionImp that = (InstituitionImp) instituition;
+        this.instituition = that;
     }
 
     @Override
