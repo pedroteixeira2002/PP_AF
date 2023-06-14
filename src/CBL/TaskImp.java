@@ -4,6 +4,8 @@ import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class TaskImp implements Task {
 
@@ -19,7 +21,7 @@ public class TaskImp implements Task {
     private int numberOfSubmissions;
 
 
-    public TaskImp(String title, String description, LocalDate start, LocalDate end, int duration,int extendDeadline, Submission[] submissions, int numberOfSubmissions) {
+    public TaskImp(String title, String description, LocalDate start, LocalDate end, int duration, int extendDeadline, Submission[] submissions, int numberOfSubmissions) {
         this.title = title;
         this.description = description;
         this.start = start;
@@ -29,6 +31,7 @@ public class TaskImp implements Task {
         this.submissions = new Submission[SIZE];
         this.numberOfSubmissions = numberOfSubmissions;
     }
+
     @Override
     public LocalDate getStart() {
         return this.start;
@@ -65,17 +68,80 @@ public class TaskImp implements Task {
     }
 
     @Override
-    public void addSubmission(Submission submission) {
+    public void addSubmission(Submission submission) throws IllegalArgumentException {
+
+        if (submission == null) {
+            throw new IllegalArgumentException("Submission is null");
+        }
+        try {
+            hasSubmission(submission);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Submission already exists");
+        }
+        if (this.numberOfSubmissions == this.submissions.length) {
+            expandSubmissions();
+        }
+
+        this.submissions[numberOfSubmissions] = submission;
+        this.numberOfSubmissions++;
+
+    }
+
+    private void expandSubmissions() {
+
+        Submission[] temp = new Submission[this.submissions.length * FATOR];
+
+        for (int i = 0; i < numberOfSubmissions; i++) {
+            temp[i] = this.submissions[i];
+        }
+
+        this.submissions = temp;
+    }
+
+    public void hasSubmission(Submission submission) throws IllegalArgumentException {
+
+        for (int i = 0; i < numberOfSubmissions; i++) {
+            if (this.submissions[i].equals(submission)) {
+                throw new IllegalArgumentException("Submission already exists");
+            }
+        }
 
     }
 
     @Override
     public void extendDeadline(int i) {
-
+        if (i < 0) {
+            throw new IllegalArgumentException("Invalid number of days");
+        } else {
+            this.end = this.end.plusDays(i);
+        }
     }
 
     @Override
     public int compareTo(Task task) {
         return this.start.compareTo(task.getStart());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Task other = (Task) obj;
+        return Objects.equals(this.title, other.getTitle());
+    }
+
+    @Override
+    public String toString() {
+        return "TaskImp{" + "title=" + title + ", description=" + description + ", start=" + start + ", end=" + end + ", duration=" + duration + ", extendDeadline=" + extendDeadline + ", submissions=" + submissions + ", numberOfSubmissions=" + numberOfSubmissions + '}';
+    }
+
+
 }
+
