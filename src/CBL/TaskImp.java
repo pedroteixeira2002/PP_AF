@@ -99,7 +99,6 @@ public class TaskImp implements Task {
     }
 
     public void hasSubmission(Submission submission) throws IllegalArgumentException {
-
         for (int i = 0; i < numberOfSubmissions; i++) {
             if (this.submissions[i].equals(submission)) {
                 throw new IllegalArgumentException("Submission already exists");

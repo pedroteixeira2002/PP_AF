@@ -1,6 +1,6 @@
 package CBL;
 
-import ma02_resources.participants.Participant;
+import ma02_resources.participants.*;
 import ma02_resources.project.Project;
 import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
@@ -10,16 +10,22 @@ import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
 import ma02_resources.project.exceptions.TaskAlreadyInProject;
 
 public class ProjectImp implements Project {
-
     private static int SIZE = 50;
+<<<<<<< Updated upstream
     private final int FACTOR = 2;
     private String name;
     private String description;
+=======
+    private static final int FACTOR = 2;
+    private final String name;
+    private final String description;
+>>>>>>> Stashed changes
     private int numberOfParticipants;
     private int numberOfStudents;
     private int numberOfPartners;
     private int numberOfFacilitators;
     private int numberOfTasks;
+<<<<<<< Updated upstream
     private int numberOfTags;
     private int maximumNumberOfTags;
     private int maximumNumberOfTasks;
@@ -27,6 +33,14 @@ public class ProjectImp implements Project {
     private int maximumNumberOfStudents;
     private int maximumNumberOfPartners;
     private int maximumNumberOfFacilitators;
+=======
+    private final int maximumNumberOfTags;
+    private final int maximumNumberOfTasks;
+    private final long maximumNumberOfParticipants;
+    private final int maximumNumberOfStudents;
+    private final int maximumNumberOfPartners;
+    private final int maximumNumberOfFacilitators;
+>>>>>>> Stashed changes
     private Participant[] participants;
     private Task[] tasks;
     private String[] tags;
@@ -46,12 +60,15 @@ public class ProjectImp implements Project {
         this.maximumNumberOfStudents = maximumNumberOfStudents;
         this.maximumNumberOfPartners = maximumNumberOfPartners;
         this.maximumNumberOfFacilitators = maximumNumberOfFacilitators;
-        this.participants = participants;
-        this.tasks = tasks;
-        this.tags = tags;
+        this.participants = new Participant[SIZE];
+        this.tasks = new Task[SIZE];
+        this.tags = new String[FACTOR];
     }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     @Override
     public String getName() {
         return this.name;
@@ -112,19 +129,110 @@ public class ProjectImp implements Project {
         return this.maximumNumberOfFacilitators;
     }
 
-    @Override
-    public void addParticipant(Participant participant) throws IllegalNumberOfParticipantType, ParticipantAlreadyInProject {
-
-    }
-
-    @Override
-    public Participant removeParticipant(String s) {
-        return null;
+    public int getIndex(Participant participant) throws IllegalArgumentException {
+        for (int i = 0; i < participants.length; i++) {
+            if (participants[i] == participant) {
+                return i;
+            }
+        }
+        throw new IllegalArgumentException("Participant not found");
     }
 
     @Override
     public Participant getParticipant(String email) {
-        return null;
+        for (int i = 0; i < participants.length; i++) {
+            if (participants[i].getEmail().equals(email)) {
+                return participants[i];
+            }
+        }
+        throw new IllegalArgumentException("Participant not found");
+    }
+
+    public Participant getByEmail(String email) throws IllegalArgumentException {
+        for (int i = 0; i < participants.length; i++) {
+            if (participants[i].getEmail().equals(email)) {
+                return participants[i];
+            }
+        }
+        throw new IllegalArgumentException("Participant not found");
+    }
+
+    private void expandParticipants() {
+
+        Participant[] newParticipants = new Participant[participants.length * FACTOR];
+        for (int i = 0; i < participants.length; i++) {
+            newParticipants[i] = this.participants[i];
+        }
+        participants = newParticipants;
+    }
+
+    private void hasParticipant(Participant participant) throws ParticipantAlreadyInProject {
+        for (int i = 0; i < participants.length; i++) {
+            if (participants[i] == participant) {
+                throw new ParticipantAlreadyInProject("Participant already in project");
+            }
+        }
+    }
+
+    @Override
+    public void addParticipant(Participant participant) throws IllegalNumberOfParticipantType, ParticipantAlreadyInProject {
+
+        if (participant == null) {
+            throw new IllegalArgumentException("Participant Invalid");
+        }
+        try {
+            hasParticipant(participant);
+        } catch (ParticipantAlreadyInProject exception) {
+            System.out.println(exception.getMessage());
+        }
+
+
+        if (numberOfParticipants == maximumNumberOfParticipants) {
+            throw new IllegalNumberOfParticipantType("Maximum number of participants reached");
+        }
+
+        if (numberOfStudents == maximumNumberOfStudents) {
+            throw new IllegalNumberOfParticipantType("Maximum number of students reached");
+        }
+        if (numberOfPartners == maximumNumberOfPartners) {
+            throw new IllegalNumberOfParticipantType("Maximum number of partners reached");
+        }
+        if (numberOfFacilitators == maximumNumberOfFacilitators) {
+            throw new IllegalNumberOfParticipantType("Maximum number of facilitators reached");
+        }
+        if (numberOfParticipants == this.participants.length) {
+            expandParticipants();
+        }
+        this.participants[numberOfParticipants] = participant;
+
+        this.numberOfParticipants++;
+        if (participant instanceof Student) {
+            this.numberOfStudents++;
+        } else if (participant instanceof Partner) {
+            this.numberOfPartners++;
+        } else if (participant instanceof Facilitator) {
+            this.numberOfFacilitators++;
+        }
+        this.numberOfParticipants++;
+    }
+
+    @Override
+    public Participant removeParticipant(String s) {
+        Participant that = getParticipant( s);
+        int index = getIndex(that);
+
+        participants[index] = null;
+
+        if (that instanceof Student) {
+            this.numberOfStudents--;
+        } else if (that instanceof Partner) {
+            this.numberOfPartners--;
+        } else if (that instanceof Facilitator) {
+            this.numberOfFacilitators--;
+        }
+        this.numberOfParticipants--;
+
+        return that;
     }
 
     public void addTag(String newTag) {
