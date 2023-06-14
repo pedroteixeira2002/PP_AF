@@ -4,12 +4,12 @@ import enumerations.EventType;
 
 import java.time.LocalDate;
 
-public class Event {
+public class EventImp   {
     private EventType type;
     private String location;
     private LocalDate startDate, endDate;
 
-    public Event(EventType type, String location, LocalDate startDate, LocalDate endDate) {
+    public EventImp(EventType type, String location, LocalDate startDate, LocalDate endDate) {
         this.type = type;
         this.location = location;
         this.startDate = startDate;

@@ -6,7 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="793feacc-c2dc-40cf-b190-f447c4bd1374" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PP_AF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PP_AF.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/Participant.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/Participant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/class-use/Instituition.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/participants/class-use/Instituition.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/InstituitionAlreadyExistException.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/InstituitionAlreadyExistException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/libs/javadoc/ma02_resources/project/exceptions/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CBL/EditionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/EditionImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CBL/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/EventImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CBL/ProjectImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/ProjectImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/ContactImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/ContactImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/FacilitatorImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/FacilitatorImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/InstitutionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/InstituitionImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/JudgeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/JudgeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/ParticipantImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/ParticipantImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/PartnerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/PartnerImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/StudentImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/StudentImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,12 +32,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/libs/MA02_Resources.jar!/ma02_resources/participants/Facilitator.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/libs/MA02_Resources.jar!/ma02_resources/participants/Participant.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/libs/MA02_Resources.jar!/ma02_resources/participants/Partner.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/libs/MA02_Resources.jar!/ma02_resources/participants/Student.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="2R7nHuy76Cl6LdL0zRAyuXSanA2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -33,10 +57,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pedri/IdeaProjects&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -44,6 +70,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -56,11 +83,24 @@
       <option name="presentableId" value="Default" />
       <updated>1686609905015</updated>
       <workItem from="1686609906984" duration="6227000" />
-      <workItem from="1686663518969" duration="1230000" />
+      <workItem from="1686663518969" duration="20840000" />
+      <workItem from="1686692862016" duration="2309000" />
+      <workItem from="1686747877693" duration="3808000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

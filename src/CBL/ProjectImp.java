@@ -19,7 +19,6 @@ public class ProjectImp implements Project {
     private int numberOfPartners;
     private int numberOfFacilitators;
     private int numberOfTasks;
-
     private int maximumNumberOfTags;
     private int maximumNumberOfTasks;
     private long maximumNumberOfParticipants;

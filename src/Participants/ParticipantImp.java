@@ -2,20 +2,44 @@ package Participants;
 
 import ma02_resources.participants.Participant;
 
-import java.util.Arrays;
-
 abstract class ParticipantImp implements Participant {
-    private final static int MAX_INSTITUTIONS = 10;
     private final String name;
     private final String email;
-    private final ContactImp contact;
-    private final InstitutionImp[] institution;
+    private ContactImp contact;
+    private InstituitionImp instituition;
 
-    public ParticipantImp(String name, String email, ContactImp contact, InstitutionImp institutionImp) {
+    public ParticipantImp(String name, String email, ContactImp contact, InstituitionImp instituition) {
         this.name = name;
         this.email = email;
         this.contact = contact;
-        this.institution = new InstitutionImp[MAX_INSTITUTIONS];
+        this.instituition = instituition;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public ContactImp getContact() {
+        return contact;
+    }
+
+    public InstituitionImp getInstituition() {
+        return instituition;
+    }
+
+    public void setContact(ContactImp contact) {
+        this.contact = contact;
+    }
+
+    public void setInstituition(InstituitionImp instituition) {
+        this.instituition = instituition;
     }
 
     @Override
@@ -24,6 +48,7 @@ abstract class ParticipantImp implements Participant {
                 "\n Name: " + name +
                 "\n Email: " + email +
                 "\n Contact: " + contact.toString() +
-                "\n Institution: " + Arrays.toString(Arrays.stream(institution).toArray()));
+                "\n Institution: " + instituition.toString());
     }
+
 }

@@ -1,23 +1,24 @@
 package Participants;
+
 import Interfaces.Judge;
 import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 
-public class JudgeImp extends ParticipantImp implements Judge{
-    public JudgeImp(String name, String email, ContactImp contact, InstitutionImp institutionImp) {
-        super(name, email, contact, institutionImp);
+public class JudgeImp extends ParticipantImp implements Judge {
+    public JudgeImp(String name, String email, ContactImp contact, InstituitionImp institution) {
+        super(name, email, contact, institution);
     }
 
     /**
-     * @return
+     * @return super.getName()
      */
     @Override
     public String getName() {
-        return null;
+        return super.getName();
     }
 
     /**
-     * @return
+     * @return super.getEmail()
      */
     @Override
     public String getEmail() {
@@ -25,10 +26,10 @@ public class JudgeImp extends ParticipantImp implements Judge{
     }
 
     /**
-     * @return
+     * @return super.getContact()
      */
     @Override
-    public Contact getContact() {
+    public ContactImp getContact() {
         return null;
     }
 
@@ -36,8 +37,8 @@ public class JudgeImp extends ParticipantImp implements Judge{
      * @return
      */
     @Override
-    public Instituition getInstituition() {
-        return null;
+    public InstituitionImp getInstituition() {
+        return super.getInstituition();
     }
 
     /**
@@ -49,10 +50,25 @@ public class JudgeImp extends ParticipantImp implements Judge{
     }
 
     /**
+     * @param instituition
+     */
+    @Override
+    public void setInstituition(InstituitionImp instituition) {
+        InstituitionImp that = (InstituitionImp) instituition;
+        super.setInstituition(that);
+    }
+
+    /**
      * @param contact
      */
     @Override
     public void setContact(Contact contact) {
 
+    }
+
+    @Override
+    public String toString() {
+        return "\n-------Judge------- "
+                + "\n" + super.toString();
     }
 }

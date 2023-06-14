@@ -4,17 +4,15 @@ import ma02_resources.participants.Instituition;
 import ma02_resources.participants.InstituitionType;
 import ma02_resources.participants.Contact;
 
-import java.util.HashMap;
-
-public class InstitutionImp implements Instituition {
+public class InstituitionImp implements Instituition {
     private final String name;
     private ContactImp contact;
     private final String email;
     private InstituitionType type;
-    private final String description;
+    private String description;
     private String website;
 
-    public InstitutionImp(String name, ContactImp contact, String email, InstituitionType type, String description, String website) {
+    public InstituitionImp(String name, ContactImp contact, String email, InstituitionType type, String description, String website) {
         this.name = name;
         this.contact = contact;
         this.email = email;
@@ -30,39 +28,39 @@ public class InstitutionImp implements Instituition {
 
         if (obj == null || getClass() != obj.getClass()) return false;
 
-        InstitutionImp that = (InstitutionImp) obj;
+        InstituitionImp that = (InstituitionImp) obj;
 
         return email.equals(that.email) && name.equals(that.name) && website.equals(that.website);
     }
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public String getEmail() {
-        return null;
+        return this.email;
     }
 
     @Override
     public InstituitionType getType() {
-        return null;
+                return this.type;
     }
 
     @Override
     public Contact getContact() {
-        return null;
+        return this.contact;
     }
 
     @Override
     public String getWebsite() {
-        return null;
+        return this.website;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return this.description;
     }
 
     @Override
@@ -72,13 +70,12 @@ public class InstitutionImp implements Instituition {
 
     @Override
     public void setDescription(String s) {
-
+        this.description = s;
     }
 
     @Override
     public void setContact(Contact contact) {
         this.contact = (ContactImp) contact;
-
     }
 
     @Override

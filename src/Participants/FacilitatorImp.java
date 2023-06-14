@@ -8,7 +8,7 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
 
     private String areaOfExpertise;
 
-    public FacilitatorImp(String name, String email, ContactImp contact, InstitutionImp institution, String areaOfExpertise) {
+    public FacilitatorImp(String name, String email, ContactImp contact, InstituitionImp institution, String areaOfExpertise) {
         super(name, email, contact, institution);
         this.areaOfExpertise = areaOfExpertise;
     }
@@ -49,16 +49,16 @@ public class FacilitatorImp extends ParticipantImp implements Facilitator {
      * @return
      */
     @Override
-    public Contact getContact() {
-        return null;
+    public ContactImp getContact() {
+        return super.getContact();
     }
 
     /**
      * @return
      */
     @Override
-    public Instituition getInstituition() {
-        return null;
+    public InstituitionImp getInstituition() {
+        return super.getInstituition();
     }
 
     /**

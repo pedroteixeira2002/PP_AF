@@ -8,8 +8,8 @@ public class PartnerImp extends ParticipantImp implements Partner {
     private final String website;
     private final String vat;
 
-    public PartnerImp(String name, String email, ContactImp contactImp, InstitutionImp institutionImp, String website, String vat) {
-        super(name, email, contactImp, institutionImp);
+    public PartnerImp(String name, String email, ContactImp contactImp, InstituitionImp instituitionImp, String website, String vat) {
+        super(name, email, contactImp, instituitionImp);
         this.website = website;
         this.vat = vat;
     }
@@ -50,7 +50,7 @@ public class PartnerImp extends ParticipantImp implements Partner {
      * @return
      */
     @Override
-    public Contact getContact() {
+    public ContactImp getContact() {
         return null;
     }
 
@@ -58,8 +58,8 @@ public class PartnerImp extends ParticipantImp implements Partner {
      * @return
      */
     @Override
-    public Instituition getInstituition() {
-        return null;
+    public InstituitionImp getInstituition() {
+        return super.getInstituition();
     }
 
     /**
@@ -67,7 +67,6 @@ public class PartnerImp extends ParticipantImp implements Partner {
      */
     @Override
     public void setInstituition(Instituition instituition) {
-
     }
 
     /**
