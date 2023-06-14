@@ -2,6 +2,7 @@ package CBL;
 
 import ma02_resources.participants.Participant;
 import ma02_resources.project.Project;
+import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
 import ma02_resources.project.exceptions.IllegalNumberOfParticipantType;
 import ma02_resources.project.exceptions.IllegalNumberOfTasks;
@@ -19,6 +20,7 @@ public class ProjectImp implements Project {
     private int numberOfPartners;
     private int numberOfFacilitators;
     private int numberOfTasks;
+    private int numberOfTags;
     private int maximumNumberOfTags;
     private int maximumNumberOfTasks;
     private long maximumNumberOfParticipants;
@@ -29,7 +31,7 @@ public class ProjectImp implements Project {
     private Task[] tasks;
     private String[] tags;
 
-    public ProjectImp(String name, String description, int numberOfParticipants, int numberOfStudents, int numberOfPartners, int numberOfFacilitators, int numberOfTasks, int maximumNumberOfTags, int maximumNumberOfTasks, long maximumNumberOfParticipants, int maximumNumberOfStudents, int maximumNumberOfPartners, int maximumNumberOfFacilitators, Participant[] participants, Task[] tasks, String[] tags) {
+    public ProjectImp(String name, String description, int numberOfParticipants, int numberOfStudents, int numberOfPartners, int numberOfTags, int numberOfFacilitators, int numberOfTasks, int maximumNumberOfTags, int maximumNumberOfTasks, long maximumNumberOfParticipants, int maximumNumberOfStudents, int maximumNumberOfPartners, int maximumNumberOfFacilitators, Participant[] participants, Task[] tasks, String[] tags) {
         this.name = name;
         this.description = description;
         this.numberOfParticipants = numberOfParticipants;
@@ -37,6 +39,7 @@ public class ProjectImp implements Project {
         this.numberOfPartners = numberOfPartners;
         this.numberOfFacilitators = numberOfFacilitators;
         this.numberOfTasks = numberOfTasks;
+        this.numberOfTags = numberOfTags;
         this.maximumNumberOfTags = maximumNumberOfTags;
         this.maximumNumberOfTasks = maximumNumberOfTasks;
         this.maximumNumberOfParticipants = maximumNumberOfParticipants;
@@ -124,13 +127,56 @@ public class ProjectImp implements Project {
         return null;
     }
 
+    public void addTag(String newTag) {
+
+        this.tags[this.numberOfTags] = newTag;
+        this.numberOfTags++;
+
+        if (this.numberOfTags == this.maximumNumberOfTags) {
+            expandTags();
+        }
+    }
+
+    private int findTag(String tag) {
+        for (int i = 0; i < this.numberOfTags; i++) {
+            if (this.tags[i].equals(tag)) {
+                return i;
+            }
+        }
+        throw new NullPointerException("Tag not found");
+    }
+
+    public void removeTag(String tag) {
+        int index = findTag(tag);
+
+        for (int i = index; i < this.numberOfTags - 1; i++) {
+            this.tags[i] = this.tags[i + 1];
+        }
+        this.numberOfTags--;
+    }
+
+    private void expandTags() {
+        String[] temp = new String[this.tags.length * FACTOR];
+
+        for (int i = 0; i < numberOfTags; i++) {
+            temp[i] = this.tags[i];
+        }
+        this.tags = temp;
+    }
+
+
     @Override
     public String[] getTags() {
-        return new String[0];
+        return this.tags;
     }
 
     @Override
     public boolean hasTag(String s) {
+        for (int i = 0; i < this.tags.length; i++) {
+            if (this.tags[i].equals(s)) {
+                return true;
+            }
+        }
         return false;
     }
 
