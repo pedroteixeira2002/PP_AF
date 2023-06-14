@@ -7,36 +7,53 @@ import ma02_resources.project.Status;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Map;
+
 
 public class EditionImp implements Edition {
 
+    private static int SIZE = 10;
+    private final int FATOR = 2;
+    private String name;
+    private LocalDate start;
+    private LocalDate end;
+    private String projectTemplate;
+    private Status status;
+    private Project[] projects;
+    private int numberOfProjects;
 
-
+    public EditionImp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status, Project[] projects, int numberOfProjects) {
+        this.name = name;
+        this.start = start;
+        this.end = end;
+        this.projectTemplate = projectTemplate;
+        this.status = status.INACTIVE;
+        this.projects = new Project[SIZE];
+        this.numberOfProjects = numberOfProjects;
+    }
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public LocalDate getStart() {
-        return null;
+        return this.start;
     }
 
     @Override
     public String getProjectTemplate() {
-        return null;
+        return this.projectTemplate;
     }
 
     @Override
     public Status getStatus() {
-        return null;
+        return this.status;
     }
 
     @Override
     public void setStatus(Status status) {
-
+        this.status = status;
     }
 
     @Override
@@ -51,12 +68,12 @@ public class EditionImp implements Edition {
 
     @Override
     public Project getProject(String s) {
-        return null;
+        return this.projects[0];
     }
 
     @Override
     public Project[] getProjects() {
-        return new Project[0];
+        return this.projects;
     }
 
     @Override

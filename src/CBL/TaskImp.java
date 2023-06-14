@@ -6,39 +6,62 @@ import ma02_resources.project.Task;
 import java.time.LocalDate;
 
 public class TaskImp implements Task {
+
+    private static int SIZE = 10;
+    private final int FATOR = 2;
+    private String title;
+    private String description;
+    private LocalDate start;
+    private LocalDate end;
+    private int duration;
+    private int extendDeadline;
+    private Submission[] submissions;
+    private int numberOfSubmissions;
+
+
+    public TaskImp(String title, String description, LocalDate start, LocalDate end, int duration,int extendDeadline, Submission[] submissions, int numberOfSubmissions) {
+        this.title = title;
+        this.description = description;
+        this.start = start;
+        this.end = end;
+        this.duration = duration;
+        this.extendDeadline = extendDeadline;
+        this.submissions = new Submission[SIZE];
+        this.numberOfSubmissions = numberOfSubmissions;
+    }
     @Override
     public LocalDate getStart() {
-        return null;
+        return this.start;
     }
 
     @Override
     public LocalDate getEnd() {
-        return null;
+        return this.end;
     }
 
     @Override
     public int getDuration() {
-        return 0;
+        return this.duration;
     }
 
     @Override
     public String getTitle() {
-        return null;
+        return this.title;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return this.description;
     }
 
     @Override
     public Submission[] getSubmissions() {
-        return new Submission[0];
+        return this.submissions;
     }
 
     @Override
     public int getNumberOfSubmissions() {
-        return 0;
+        return this.numberOfSubmissions;
     }
 
     @Override
@@ -53,6 +76,6 @@ public class TaskImp implements Task {
 
     @Override
     public int compareTo(Task task) {
-        return 0;
+        return this.start.compareTo(task.getStart());
     }
 }

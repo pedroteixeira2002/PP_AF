@@ -3,26 +3,39 @@ package CBL;
 import ma02_resources.participants.Student;
 import ma02_resources.project.Submission;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SubmissionImp implements Submission {
+
+    private LocalDateTime date;
+    private Student student;
+    private String text;
+
+    public SubmissionImp(LocalDateTime date, Student student, String text) {
+        this.date = date;
+        this.student = student;
+        this.text = text;
+    }
+
+
     @Override
     public LocalDateTime getDate() {
-        return null;
+        return this.date;
     }
 
     @Override
     public Student getStudent() {
-        return null;
+        return this.student;
     }
 
     @Override
     public String getText() {
-        return null;
+        return this.text;
     }
 
     @Override
     public int compareTo(Submission submission) {
-        return 0;
+        return this.date.compareTo(submission.getDate());
     }
 }
