@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="793feacc-c2dc-40cf-b190-f447c4bd1374" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/EventController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/EditionNotActive.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/EventAlreadyInProject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/EventAlreadyStarted.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/IllegalDate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/ParticipantNotAllowed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/StudentNotInProject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/TagAlreadyInProject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CBL/EditionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/EditionImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CBL/EventImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/EventImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CBL/ProjectImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/ProjectImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CBL/TaskImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/TaskImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interfaces/Judge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Participants/JudgeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/JudgeImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +77,7 @@
       <workItem from="1686663518969" duration="20840000" />
       <workItem from="1686692862016" duration="2309000" />
       <workItem from="1686747877693" duration="16864000" />
-      <workItem from="1686770343271" duration="22828000" />
+      <workItem from="1686770343271" duration="25401000" />
     </task>
     <servers />
   </component>

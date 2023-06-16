@@ -1,5 +1,6 @@
 package Participants;
 
+import CBL.PortefolioImp;
 import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Student;
@@ -37,7 +38,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return  super.getContact()
+     * @return super.getContact()
      */
     @Override
     public ContactImp getContact() {

@@ -1,10 +1,11 @@
 package CBL;
 
+import Interfaces.TaskEnhanced;
+import ma02_resources.participants.Student;
 import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class TaskImp implements Task {
@@ -73,6 +74,7 @@ public class TaskImp implements Task {
         if (submission == null) {
             throw new IllegalArgumentException("Submission is null");
         }
+
         try {
             hasSubmission(submission);
         } catch (IllegalArgumentException e) {
@@ -143,7 +145,7 @@ public class TaskImp implements Task {
                 "\n Start: " + start +
                 "\n End: " + end +
                 "\n Duration: " + duration +
-                "\n Extended Deadline by " + extendDeadline + " days" +
+                "\n Deadline extended by " + extendDeadline + " days" +
                 "\n Submissions: " + submissions +
                 "\n Number Of Submissions: " + numberOfSubmissions;
     }

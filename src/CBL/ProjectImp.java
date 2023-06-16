@@ -9,8 +9,6 @@ import ma02_resources.project.exceptions.IllegalNumberOfTasks;
 import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
 import ma02_resources.project.exceptions.TaskAlreadyInProject;
 
-import java.time.LocalDate;
-
 public class ProjectImp implements Project {
     private static int SIZE = 50;
     private final int FACTOR = 2;
@@ -33,9 +31,8 @@ public class ProjectImp implements Project {
     private Task[] tasks;
     private String[] tags;
 
-    public ProjectImp(String name, String description,
-            /* int numberOfParticipants, int numberOfStudents, int numberOfPartners, int numberOfTags, int numberOfFacilitators, int numberOfTasks, Participant[] participants, Task[] tasks, String[] tags,*/
-                      int maximumNumberOfTags, int maximumNumberOfTasks, long maximumNumberOfParticipants, int maximumNumberOfStudents,
+    public ProjectImp(String name, String description, int maximumNumberOfTags, int maximumNumberOfTasks,
+                      long maximumNumberOfParticipants, int maximumNumberOfStudents,
                       int maximumNumberOfPartners, int maximumNumberOfFacilitators, int rank) {
         this.name = name;
         this.description = description;
@@ -51,14 +48,19 @@ public class ProjectImp implements Project {
         this.participants = new Participant[SIZE];
         this.tasks = new Task[SIZE];
         this.tags = new String[FACTOR];
-        /*
-        this.numberOfParticipants = numberOfParticipants;
-        this.numberOfStudents = numberOfStudents;
-        this.numberOfPartners = numberOfPartners;
-        this.numberOfFacilitators = numberOfFacilitators;
-        this.numberOfTasks = numberOfTasks;
-        this.numberOfTags = numberOfTags;
-         */
+    }
+
+    public ProjectImp(String name, String description, String[] tags) {
+        this.name = name;
+        this.description = description;
+        this.tags = tags;
+        rank = 0;
+        maximumNumberOfPartners = 0;
+        maximumNumberOfParticipants = 0;
+        maximumNumberOfTags = 0;
+        maximumNumberOfTasks = 0;
+        maximumNumberOfFacilitators = 0;
+        maximumNumberOfStudents = 0;
     }
 
     @Override
@@ -123,9 +125,8 @@ public class ProjectImp implements Project {
 
     public int getIndex(Participant participant) {
         for (int i = 0; i < participants.length; i++) {
-            if (participants[i] == participant) {
+            if (participants[i] == participant)
                 return i;
-            }
         }
         return -1;
     }
@@ -277,7 +278,6 @@ public class ProjectImp implements Project {
         this.tags = temp;
     }
 
-
     @Override
     public String[] getTags() {
         return this.tags;
@@ -339,5 +339,16 @@ public class ProjectImp implements Project {
             }
         }
         return true;
+    }
+    public String getProgress() {
+        int completedTasks = 0;
+        for (int i = 0; i < numberOfTasks; i++) {
+            if (tasks[i].getNumberOfSubmissions() != 0) {
+                completedTasks++;
+            }
+        }
+        return ("\nCompleted: " + completedTasks +
+                "\nTotal Tasks: " + numberOfTasks+
+                "\nThe project is: " + (completedTasks * 100) / numberOfTasks + "% completed");
     }
 }

@@ -2,10 +2,14 @@ package CBL;
 
 import Interfaces.Event;
 import Interfaces.EventController;
-import enumerations.EventType;
+import exceptions.EditionNotActive;
+import exceptions.EventAlreadyInProject;
+import exceptions.EventAlreadyStarted;
+import exceptions.IllegalDate;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Status;
+import ma02_resources.project.Task;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -20,9 +24,9 @@ public class EditionImp implements Edition, EventController {
     private LocalDate end;
     private String projectTemplate;
     private Status status;
-    private Project[] projects;
     private int numberOfProjects;
     private int numberOfEvents;
+    private Project[] projects;
     private Event[] events;
 
     public EditionImp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status, Project[] projects, int numberOfProjects) {
@@ -59,17 +63,35 @@ public class EditionImp implements Edition, EventController {
         this.status = status;
     }
 
+
     @Override
     public void addProject(String s, String s1, String[] strings) throws IOException, ParseException {
+        Project project = new ProjectImp(s, s1, strings);
+
+
+
     }
 
     @Override
     public void removeProject(String s) {
+        Project that = getProject(s);
+        int index = getIndex(that);
+        if (index == -1) {
+            throw new IllegalArgumentException("Project not found");
+        }
     }
 
     @Override
     public Project getProject(String s) {
         return this.projects[0];
+    }
+
+    public int getIndex(Project project) {
+        for (int i = 0; i < projects.length; i++) {
+            if (projects[i] == project)
+                return i;
+        }
+        return -1;
     }
 
     @Override
@@ -97,26 +119,40 @@ public class EditionImp implements Edition, EventController {
         return null;
     }
 
+    public boolean isActive() throws EditionNotActive {
+        if (this.status == Status.ACTIVE)
+            return true;
+        else
+            throw new EditionNotActive("Edition is not active");
+    }
+
     /**
      * @param event
      */
     @Override
-    public void addEvent(Event event) throws IllegalArgumentException {
-        if (event == null) {
-            throw new IllegalArgumentException("Event is null");
-        }
+    public void addEvent(Event event) throws IllegalArgumentException, IllegalDate, EditionNotActive {
+        if (event == null)
+            throw new IllegalDate("Event is null");
         try {
+            isActive();
             hasEvent(event);
+        } catch (EditionNotActive exception) {
+            System.out.println(exception.getMessage());
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
         }
+
+        if (event.getStartDate().isAfter(this.start) == true &&
+                event.getEndDate().isBefore(this.end) == true &&
+                event.getStartDate().isAfter(LocalDate.now()) == true) {
+            throw new IllegalDate("Event must start after today and between the start and end of the edition");
+        }
+
         if (numberOfEvents == this.events.length)
             expandEvents();
 
-        if (event.getType() == EventType.KICKOFF)
 
-
-            this.events[numberOfEvents] = event;
+        this.events[numberOfEvents] = event;
         this.numberOfEvents++;
     }
 
@@ -124,7 +160,9 @@ public class EditionImp implements Edition, EventController {
      * @return
      */
     @Override
-    public boolean removeEvent(Event event) {
+    public boolean removeEvent(Event event) throws EventAlreadyStarted {
+        if (event.getStartDate().isAfter(LocalDate.now()) == true)
+            throw new EventAlreadyStarted("Event already started");
         int index = findEvent(event);
         if (index == -1)
             return false;
@@ -139,10 +177,13 @@ public class EditionImp implements Edition, EventController {
      * @return the updated event
      */
     @Override
-    public Event updateEvent(Event event, String location, LocalDate startDate, LocalDate endDate) throws IllegalArgumentException {
-        if (event == null) {
+    public Event updateEvent(Event event, String location, LocalDate startDate, LocalDate endDate) throws
+            IllegalArgumentException, EventAlreadyStarted {
+        if (event.getStartDate().isAfter(LocalDate.now()) == true)
+            throw new EventAlreadyStarted("Event already started");
+        if (event == null)
             throw new IllegalArgumentException("Event is null");
-        }
+
         try {
             hasEvent(event);
         } catch (IllegalArgumentException exception) {
@@ -191,6 +232,23 @@ public class EditionImp implements Edition, EventController {
             }
         }
         return -1;
+    }
+
+    public String getProgress() {
+        int completedTasks = 0;
+        int countTasks= 0;
+
+        for (Project project : this.getProjects()) {
+            for (Task task : project.getTasks()) {
+                countTasks++;
+                if (task.getNumberOfSubmissions() != 0) {
+                    completedTasks++;
+                }
+            }
+        }
+        return ("\nCompleted: " + completedTasks +
+                "\nTotal Tasks: " + countTasks +
+                "\nThe Edition is: " + (completedTasks * 100) / countTasks + "% completed");
     }
 }
 
