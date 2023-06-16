@@ -1,10 +1,9 @@
 package Participants;
 
-import Interfaces.Judge;
 import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 
-public class JudgeImp extends ParticipantImp implements Judge {
+public class JudgeImp extends ParticipantImp {
     public JudgeImp(String name, String email, ContactImp contact, InstituitionImp institution) {
         super(name, email, contact, institution);
     }

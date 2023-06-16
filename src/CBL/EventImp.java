@@ -1,11 +1,12 @@
 package CBL;
 
+import Interfaces.Event;
 import enumerations.EventType;
 
 import java.time.LocalDate;
 
-public class EventImp   {
-    private EventType type;
+public class EventImp implements Event {
+    private final EventType type;
     private String location;
     private LocalDate startDate, endDate;
 
@@ -16,35 +17,43 @@ public class EventImp   {
         this.endDate = endDate;
     }
 
+    @Override
     public EventType getType() {
         return type;
     }
-
-    public void setType(EventType type) {
-        this.type = type;
-    }
-
+    @Override
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
+    @Override
     public LocalDate getStartDate() {
         return startDate;
     }
 
+    @Override
+    public LocalDate getEndDate() {return endDate; }
+    @Override
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    @Override
+
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
+    @Override
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "\n -------Event-------" +
+                "\n Type: " + type.toString() +
+                "\n Location: " + location +
+                "\n Start Date: " + startDate +
+                "\n End Date: " + endDate;
     }
 }

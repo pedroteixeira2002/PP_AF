@@ -10,7 +10,7 @@ import java.util.Objects;
 public class TaskImp implements Task {
 
     private static int SIZE = 10;
-    private final int FATOR = 2;
+    private final int FACTOR = 2;
     private String title;
     private String description;
     private LocalDate start;
@@ -89,7 +89,7 @@ public class TaskImp implements Task {
 
     private void expandSubmissions() {
 
-        Submission[] temp = new Submission[this.submissions.length * FATOR];
+        Submission[] temp = new Submission[this.submissions.length * FACTOR];
 
         for (int i = 0; i < numberOfSubmissions; i++) {
             temp[i] = this.submissions[i];
@@ -104,7 +104,6 @@ public class TaskImp implements Task {
                 throw new IllegalArgumentException("Submission already exists");
             }
         }
-
     }
 
     @Override
@@ -138,7 +137,15 @@ public class TaskImp implements Task {
 
     @Override
     public String toString() {
-        return "TaskImp{" + "title=" + title + ", description=" + description + ", start=" + start + ", end=" + end + ", duration=" + duration + ", extendDeadline=" + extendDeadline + ", submissions=" + submissions + ", numberOfSubmissions=" + numberOfSubmissions + '}';
+        return  "\n -------Task-------" +
+                "\n Title: " + title +
+                "\n Description: " + description +
+                "\n Start: " + start +
+                "\n End: " + end +
+                "\n Duration: " + duration +
+                "\n Extended Deadline by " + extendDeadline + " days" +
+                "\n Submissions: " + submissions +
+                "\n Number Of Submissions: " + numberOfSubmissions;
     }
 
 

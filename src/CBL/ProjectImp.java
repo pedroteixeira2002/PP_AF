@@ -1,5 +1,6 @@
 package CBL;
 
+import exceptions.TagAlreadyInProject;
 import ma02_resources.participants.*;
 import ma02_resources.project.Project;
 import ma02_resources.project.Task;
@@ -8,10 +9,12 @@ import ma02_resources.project.exceptions.IllegalNumberOfTasks;
 import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
 import ma02_resources.project.exceptions.TaskAlreadyInProject;
 
+import java.time.LocalDate;
+
 public class ProjectImp implements Project {
     private static int SIZE = 50;
     private final int FACTOR = 2;
-    private final String  name;
+    private final String name;
     private final String description;
     private int numberOfParticipants;
     private int numberOfStudents;
@@ -25,29 +28,39 @@ public class ProjectImp implements Project {
     private final int maximumNumberOfStudents;
     private final int maximumNumberOfPartners;
     private final int maximumNumberOfFacilitators;
+    private final int rank;
     private Participant[] participants;
     private Task[] tasks;
     private String[] tags;
 
-    public ProjectImp(String name, String description, int numberOfParticipants, int numberOfStudents, int numberOfPartners, int numberOfTags, int numberOfFacilitators, int numberOfTasks, int maximumNumberOfTags, int maximumNumberOfTasks, long maximumNumberOfParticipants, int maximumNumberOfStudents, int maximumNumberOfPartners, int maximumNumberOfFacilitators, Participant[] participants, Task[] tasks, String[] tags) {
+    public ProjectImp(String name, String description,
+            /* int numberOfParticipants, int numberOfStudents, int numberOfPartners, int numberOfTags, int numberOfFacilitators, int numberOfTasks, Participant[] participants, Task[] tasks, String[] tags,*/
+                      int maximumNumberOfTags, int maximumNumberOfTasks, long maximumNumberOfParticipants, int maximumNumberOfStudents,
+                      int maximumNumberOfPartners, int maximumNumberOfFacilitators, int rank) {
         this.name = name;
         this.description = description;
-        this.numberOfParticipants = numberOfParticipants;
-        this.numberOfStudents = numberOfStudents;
-        this.numberOfPartners = numberOfPartners;
-        this.numberOfFacilitators = numberOfFacilitators;
-        this.numberOfTasks = numberOfTasks;
-        this.numberOfTags = numberOfTags;
         this.maximumNumberOfTags = maximumNumberOfTags;
         this.maximumNumberOfTasks = maximumNumberOfTasks;
         this.maximumNumberOfParticipants = maximumNumberOfParticipants;
         this.maximumNumberOfStudents = maximumNumberOfStudents;
         this.maximumNumberOfPartners = maximumNumberOfPartners;
         this.maximumNumberOfFacilitators = maximumNumberOfFacilitators;
+        if (rank < 0 || rank > 10) {
+            throw new IllegalArgumentException("Rank must be between 0 and 10");
+        } else this.rank = rank;
         this.participants = new Participant[SIZE];
         this.tasks = new Task[SIZE];
         this.tags = new String[FACTOR];
+        /*
+        this.numberOfParticipants = numberOfParticipants;
+        this.numberOfStudents = numberOfStudents;
+        this.numberOfPartners = numberOfPartners;
+        this.numberOfFacilitators = numberOfFacilitators;
+        this.numberOfTasks = numberOfTasks;
+        this.numberOfTags = numberOfTags;
+         */
     }
+
     @Override
     public String getName() {
         return this.name;
@@ -108,23 +121,23 @@ public class ProjectImp implements Project {
         return this.maximumNumberOfFacilitators;
     }
 
-    public int getIndex(Participant participant) throws IllegalArgumentException {
+    public int getIndex(Participant participant) {
         for (int i = 0; i < participants.length; i++) {
             if (participants[i] == participant) {
                 return i;
             }
         }
-        throw new IllegalArgumentException("Participant not found");
+        return -1;
     }
 
     @Override
-    public Participant getParticipant(String email) {
+    public Participant getParticipant(String email) throws NullPointerException {
         for (int i = 0; i < participants.length; i++) {
             if (participants[i].getEmail().equals(email)) {
                 return participants[i];
             }
         }
-        throw new IllegalArgumentException("Participant not found");
+        throw new NullPointerException("Participant not found");
     }
 
     public Participant getByEmail(String email) throws IllegalArgumentException {
@@ -165,7 +178,6 @@ public class ProjectImp implements Project {
             System.out.println(exception.getMessage());
         }
 
-
         if (numberOfParticipants == maximumNumberOfParticipants) {
             throw new IllegalNumberOfParticipantType("Maximum number of participants reached");
         }
@@ -197,10 +209,16 @@ public class ProjectImp implements Project {
 
     @Override
     public Participant removeParticipant(String s) {
-        Participant that = getParticipant( s);
+        Participant that = getParticipant(s);
         int index = getIndex(that);
+        if (index == -1)
+            throw new IllegalArgumentException("Participant not found");
 
         participants[index] = null;
+        for (int i = index; i < numberOfParticipants - 1; i++) {
+            participants[i] = participants[i + 1];
+        }
+        this.numberOfParticipants--;
 
         if (that instanceof Student) {
             this.numberOfStudents--;
@@ -209,12 +227,20 @@ public class ProjectImp implements Project {
         } else if (that instanceof Facilitator) {
             this.numberOfFacilitators--;
         }
-        this.numberOfParticipants--;
-
         return that;
     }
 
-    public void addTag(String newTag) {
+    public void addTag(String newTag) throws TagAlreadyInProject, IllegalArgumentException {
+        if (findTag(newTag) == -1) {
+            throw new IllegalArgumentException("Tag doesn't exists");
+        }
+        try {
+            if (hasTag(newTag) == true) {
+                throw new TagAlreadyInProject("Tag already in project");
+            }
+        } catch (TagAlreadyInProject e) {
+            System.out.println(e.getMessage());
+        }
 
         this.tags[this.numberOfTags] = newTag;
         this.numberOfTags++;
@@ -230,7 +256,7 @@ public class ProjectImp implements Project {
                 return i;
             }
         }
-        throw new NullPointerException("Tag not found");
+        return -1;
     }
 
     public void removeTag(String tag) {
