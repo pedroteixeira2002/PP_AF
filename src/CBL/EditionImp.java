@@ -3,7 +3,6 @@ package CBL;
 import Interfaces.Event;
 import Interfaces.EventController;
 import exceptions.EditionNotActive;
-import exceptions.EventAlreadyInProject;
 import exceptions.EventAlreadyStarted;
 import exceptions.IllegalDate;
 import ma02_resources.project.Edition;
@@ -14,6 +13,7 @@ import ma02_resources.project.Task;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 
 public class EditionImp implements Edition, EventController {
@@ -67,8 +67,6 @@ public class EditionImp implements Edition, EventController {
     @Override
     public void addProject(String s, String s1, String[] strings) throws IOException, ParseException {
         Project project = new ProjectImp(s, s1, strings);
-
-
 
     }
 
@@ -236,7 +234,7 @@ public class EditionImp implements Edition, EventController {
 
     public String getProgress() {
         int completedTasks = 0;
-        int countTasks= 0;
+        int countTasks = 0;
 
         for (Project project : this.getProjects()) {
             for (Task task : project.getTasks()) {
@@ -249,6 +247,19 @@ public class EditionImp implements Edition, EventController {
         return ("\nCompleted: " + completedTasks +
                 "\nTotal Tasks: " + countTasks +
                 "\nThe Edition is: " + (completedTasks * 100) / countTasks + "% completed");
+    }
+
+    @Override
+    public String toString() {
+        return  "\n Edition{" +
+                "\n Name: " + name +
+                "\n Start Date: " + start +
+                "\n End Date: " + end +
+                "\n Status: " + status +
+                "\n Number Of Projects: " + numberOfProjects +
+                "\n Number Of Events: " + numberOfEvents +
+                "\n Projects: " + Arrays.toString(projects) +
+                "\n Events=" + Arrays.toString(events);
     }
 }
 

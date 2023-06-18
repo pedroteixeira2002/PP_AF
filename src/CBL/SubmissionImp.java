@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SubmissionImp implements Submission {
-
     private LocalDateTime date;
     private Student student;
     private String text;
@@ -17,7 +16,6 @@ public class SubmissionImp implements Submission {
         this.student = student;
         this.text = text;
     }
-
 
     @Override
     public LocalDateTime getDate() {

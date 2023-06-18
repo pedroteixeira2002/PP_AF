@@ -1,13 +1,10 @@
 package CBL;
 
-import exceptions.TagAlreadyInProject;
+import exceptions.*;
 import ma02_resources.participants.*;
 import ma02_resources.project.Project;
 import ma02_resources.project.Task;
-import ma02_resources.project.exceptions.IllegalNumberOfParticipantType;
-import ma02_resources.project.exceptions.IllegalNumberOfTasks;
-import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
-import ma02_resources.project.exceptions.TaskAlreadyInProject;
+import ma02_resources.project.exceptions.*;
 
 public class ProjectImp implements Project {
     private static int SIZE = 50;
@@ -129,6 +126,21 @@ public class ProjectImp implements Project {
                 return i;
         }
         return -1;
+    }
+
+    @Override
+    public Task getTask(String s) {
+        for (Task task : this.tasks) {
+            if (task.getTitle().equals(s)) {
+                return task;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Task[] getTasks() {
+        return this.tasks;
     }
 
     @Override
@@ -317,21 +329,6 @@ public class ProjectImp implements Project {
     }
 
     @Override
-    public Task getTask(String s) {
-        for (int i = 0; i < numberOfTasks; i++) {
-            if (this.tasks[i].getTitle().equals(s)) {
-                return this.tasks[i];
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Task[] getTasks() {
-        return this.tasks;
-    }
-
-    @Override
     public boolean isCompleted() {
         for (int i = 0; i < numberOfTasks; i++) {
             if (tasks[i].getNumberOfSubmissions() == 0) {
@@ -340,6 +337,8 @@ public class ProjectImp implements Project {
         }
         return true;
     }
+
+
     public String getProgress() {
         int completedTasks = 0;
         for (int i = 0; i < numberOfTasks; i++) {
@@ -348,7 +347,8 @@ public class ProjectImp implements Project {
             }
         }
         return ("\nCompleted: " + completedTasks +
-                "\nTotal Tasks: " + numberOfTasks+
+                "\nTotal Tasks: " + numberOfTasks +
                 "\nThe project is: " + (completedTasks * 100) / numberOfTasks + "% completed");
     }
+
 }

@@ -21,7 +21,6 @@ public class TaskImp implements Task {
     private Submission[] submissions;
     private int numberOfSubmissions;
 
-
     public TaskImp(String title, String description, LocalDate start, LocalDate end, int duration, int extendDeadline, Submission[] submissions, int numberOfSubmissions) {
         this.title = title;
         this.description = description;
@@ -139,7 +138,7 @@ public class TaskImp implements Task {
 
     @Override
     public String toString() {
-        return  "\n -------Task-------" +
+        return "\n -------Task-------" +
                 "\n Title: " + title +
                 "\n Description: " + description +
                 "\n Start: " + start +

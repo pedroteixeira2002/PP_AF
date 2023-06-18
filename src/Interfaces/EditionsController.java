@@ -1,6 +1,7 @@
 package Interfaces;
 
 import ma02_resources.project.Edition;
+import ma02_resources.project.Status;
 
 public interface EditionsController {
     void addEdition(Edition edition);
@@ -9,5 +10,4 @@ public interface EditionsController {
 
     Edition getEdition(Edition edition);
 
-    boolean setStatus(Edition edition);
 }
