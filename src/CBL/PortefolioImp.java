@@ -19,7 +19,7 @@ public class PortefolioImp implements Portefolio, EditionsController {
     }
 
     /**
-     * @return the number of editions in the portfolio
+     * @return the number of editions in the portfoliox\
      */
     public int getNumberOfEditions() {
         return numberOfEditions;
