@@ -6,6 +6,8 @@ import ma02_resources.project.Project;
 import ma02_resources.project.Task;
 import ma02_resources.project.exceptions.*;
 
+import java.util.Arrays;
+
 public class ProjectImp implements Project {
     private static int SIZE = 50;
     private final int FACTOR = 2;
@@ -243,7 +245,7 @@ public class ProjectImp implements Project {
         return that;
     }
 
-    public void addTag(String newTag) throws TagAlreadyInProject, IllegalArgumentException {
+    public void addTag(String newTag) throws IllegalArgumentException {
         if (findTag(newTag) == -1) {
             throw new IllegalArgumentException("Tag doesn't exists");
         }
@@ -306,7 +308,7 @@ public class ProjectImp implements Project {
     }
 
     @Override
-    public void addTask(Task task) throws IllegalNumberOfTasks, TaskAlreadyInProject {
+    public void addTask(Task task) throws IllegalNumberOfTasks {
 
         if (numberOfTasks == maximumNumberOfTasks) {
             throw new IllegalNumberOfTasks("Maximum number of tasks reached");
@@ -317,10 +319,17 @@ public class ProjectImp implements Project {
         } catch (TaskAlreadyInProject e) {
             System.out.println(e.getMessage());
         }
+        catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
         this.tasks[this.numberOfTasks++] = task;
     }
 
-    private void hasTask(Task task) throws TaskAlreadyInProject {
+    private void hasTask(Task task) throws TaskAlreadyInProject, IllegalArgumentException {
+        if(task==null){
+            throw new IllegalArgumentException("Task don't exists");
+        }
         for (int i = 0; i < numberOfTasks; i++) {
             if (this.tasks[i].equals(task)) {
                 throw new TaskAlreadyInProject("Task already in project");
@@ -331,7 +340,7 @@ public class ProjectImp implements Project {
     @Override
     public boolean isCompleted() {
         for (int i = 0; i < numberOfTasks; i++) {
-            if (tasks[i].getNumberOfSubmissions() == 0) {
+            if (tasks[i].getNumberOfSubmissions() != numberOfStudents) {
                 return false;
             }
         }
@@ -351,4 +360,20 @@ public class ProjectImp implements Project {
                 "\nThe project is: " + (completedTasks * 100) / numberOfTasks + "% completed");
     }
 
+    @Override
+    public String toString() {
+        return "\n Project:" +
+                "\n Name:" + name +
+                "\n Description=: " + description + '\'' +
+                "\n Participants: " + numberOfParticipants + "\t Max. Participants: " + maximumNumberOfParticipants +
+                "\n Students: " + numberOfStudents + "\t Max. Students: " + maximumNumberOfStudents +
+                "\n Partners: " + numberOfPartners + "\t Max. Partners: " + maximumNumberOfPartners +
+                "\n Facilitators: " + numberOfFacilitators + "\t Max. Facilitators: " + maximumNumberOfFacilitators +
+                "\n Tasks: " + numberOfTasks + "\t Max. Tasks: " + maximumNumberOfTasks +
+                "\n Tags: " + numberOfTags + "\t Max. Tags: " + maximumNumberOfTags +
+                "\n Rank: " + rank +
+                "\n Participants: " + Arrays.toString(participants) +
+                "\n Tasks: " + Arrays.toString(tasks) +
+                "\n Tags: " + Arrays.toString(tags);
+    }
 }

@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="793feacc-c2dc-40cf-b190-f447c4bd1374" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Interfaces/Portefolio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/SubmissionsUpToDate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CBL/EditionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/EditionImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CBL/PortefolioImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/PortefolioImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CBL/PortefolioImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/PortfolioImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CBL/ProjectImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/ProjectImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CBL/SubmissionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/SubmissionImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CBL/TaskImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CBL/TaskImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interfaces/EditionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interfaces/EditionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interfaces/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interfaces/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interfaces/Portefolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interfaces/Portfolio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/StudentImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/StudentImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +87,7 @@
       <workItem from="1686747877693" duration="16864000" />
       <workItem from="1686770343271" duration="42526000" />
       <workItem from="1687001334766" duration="15012000" />
+      <workItem from="1687184001926" duration="9485000" />
     </task>
     <servers />
   </component>

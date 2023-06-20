@@ -1,7 +1,7 @@
 package CBL;
 
 import Interfaces.EditionsController;
-import Interfaces.Portefolio;
+import Interfaces.Portfolio;
 import exceptions.SubmissionsUpToDate;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
@@ -9,17 +9,28 @@ import ma02_resources.project.Status;
 import ma02_resources.project.Task;
 
 
-public class PortefolioImp implements Portefolio, EditionsController {
+public class PortfolioImp implements Portfolio, EditionsController {
     private static int SIZE = 10;
     private Edition[] editions;
     private int numberOfEditions;
 
-    public Edition[] getEditions() {
-        return editions;
+    public PortfolioImp(int numberOfEditions) {
+        this.editions = new Edition[SIZE];
+        this.numberOfEditions = numberOfEditions;
     }
 
     /**
-     * @return the number of editions in the portfoliox\
+     * Prints the editions in the portfolio
+     */
+    public void getEditions() {
+        for (Edition edition : this.editions) {
+            edition.toString();
+        }
+    }
+
+
+    /**
+     * @return the number of editions in the portfolio
      */
     public int getNumberOfEditions() {
         return numberOfEditions;
@@ -28,6 +39,7 @@ public class PortefolioImp implements Portefolio, EditionsController {
 
     /**
      * @param edition
+     * throws IllegalArgumentException
      */
     @Override
     public void addEdition(Edition edition) throws IllegalArgumentException {

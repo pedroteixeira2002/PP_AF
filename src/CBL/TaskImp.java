@@ -85,7 +85,6 @@ public class TaskImp implements Task {
 
         this.submissions[numberOfSubmissions] = submission;
         this.numberOfSubmissions++;
-
     }
 
     private void expandSubmissions() {

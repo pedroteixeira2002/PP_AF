@@ -1,6 +1,5 @@
 package Participants;
 
-import CBL.PortefolioImp;
 import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Student;
