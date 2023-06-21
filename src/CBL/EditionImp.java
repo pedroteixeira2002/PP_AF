@@ -9,8 +9,14 @@ import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Status;
 import ma02_resources.project.Task;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -66,8 +72,35 @@ public class EditionImp implements Edition, EventController {
 
     @Override
     public void addProject(String s, String s1, String[] strings) throws IOException, ParseException {
-        Project project = new ProjectImp(s, s1, strings);
+        try {
+            Reader reader = new FileReader("json_files\\projectTemplate.txt");
 
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(reader);
+
+            String number_of_facilitators = (String) jsonObject.get("number_of_facilitators");
+            String number_of_students = (String) jsonObject.get("number_of_students");
+            String number_of_partners = (String) jsonObject.get("number_of_partners");
+
+            JSONArray tasks= (JSONArray) jsonObject.get("tasks");
+
+            for (int i =0; i<tasks.size(); i++){
+
+                JSONObject task = (JSONObject) tasks.get(i);
+
+                String task_title = (String) task.get("title");
+                String task_description = (String) task.get("description");
+
+                System.out.println(task_title);
+                System.out.println(task_description);
+            }
+        } catch (FileNotFoundException exception) {
+            System.out.println("File not found");
+        }catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch ( org.json.simple.parser.ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -77,6 +110,11 @@ public class EditionImp implements Edition, EventController {
         if (index == -1) {
             throw new IllegalArgumentException("Project not found");
         }
+        projects[index] = null;
+        for (int i = index; i < numberOfProjects - 1; i++) {
+            projects[i] = projects[i + 1];
+        }
+        System.out.println("Project removed with sucess");
     }
 
     @Override
@@ -251,7 +289,7 @@ public class EditionImp implements Edition, EventController {
 
     @Override
     public String toString() {
-        return  "\n Edition{" +
+        return "\n Edition{" +
                 "\n Name: " + name +
                 "\n Start Date: " + start +
                 "\n End Date: " + end +
