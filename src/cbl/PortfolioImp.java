@@ -14,20 +14,18 @@ public class PortfolioImp implements Portfolio, EditionsController {
     private Edition[] editions;
     private int numberOfEditions;
 
-    public PortfolioImp(int numberOfEditions) {
+    public PortfolioImp() {
         this.editions = new Edition[SIZE];
-        this.numberOfEditions = numberOfEditions;
+        this.numberOfEditions = 0;
     }
 
     /**
      * Prints the editions in the portfolio
      */
-    public void getEditions() {
-        for (Edition edition : this.editions) {
-            edition.toString();
-        }
-    }
 
+    public Edition[] getEditions() {
+        return editions;
+    }
 
     /**
      * @return the number of editions in the portfolio

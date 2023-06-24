@@ -23,6 +23,16 @@ public class EventImp implements Event {
         this.location = location;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.participants = new Participant[SIZE];
+    }
+
+    @Override
+    public Participant[] getParticipants() {
+        return participants;
+    }
+@Override
+    public int getNumberOfParticipants() {
+        return numberOfParticipants;
     }
 
     @Override
@@ -44,6 +54,7 @@ public class EventImp implements Event {
     public LocalDate getEndDate() {
         return endDate;
     }
+
     @Override
     public void setLocation(String location) {
         this.location = location;

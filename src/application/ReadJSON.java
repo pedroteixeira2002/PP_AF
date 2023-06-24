@@ -1,5 +1,7 @@
 package application;
 
+import Interfaces.Portfolio;
+import cbl.PortfolioImp;
 import cbl.TaskImp;
 import ma02_resources.project.Task;
 import org.json.simple.JSONArray;
@@ -7,10 +9,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
+
+import java.io.*;
 import java.time.LocalDate;
 
 public class ReadJSON {
@@ -27,15 +30,14 @@ public class ReadJSON {
         return instance;
     }
 
-    public Template readJSON(LocalDate editionStart, String path) throws IOException, java.text.ParseException {
+
+    public Template readTemplate(LocalDate editionStart, String path) throws IOException, java.text.ParseException {
+
+        JSONParser parser = new JSONParser();
 
         try {
             Reader reader = new FileReader(path);
-
-            JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(reader);
-
-            reader.close();
 
             int number_of_facilitators = (int) jsonObject.get("number_of_facilitators");
             int number_of_students = (int) jsonObject.get("number_of_students");
@@ -45,7 +47,6 @@ public class ReadJSON {
             Task[] task = new Task[tasks.size()];
 
             for (int i = 0; i < tasks.size(); i++) {
-
                 JSONObject project = (JSONObject) tasks.get(i);
 
                 String task_title = (String) project.get("title");
@@ -66,5 +67,83 @@ public class ReadJSON {
         }
         return null;
     }
+
+    public PortfolioImp readJson(String path) {
+        JSONParser parser = new JSONParser();
+
+        try {
+            Reader reader = new FileReader(path);
+            JSONObject portfolio = (JSONObject) parser.parse(reader);
+
+
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public Portfolio readJSON() throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        try (FileReader reader = new FileReader("\\json_files\\export.json")) {
+            Object obj = parser.parse(reader);
+            JSONArray editionsArray = (JSONArray) obj;
+
+            for (Object editionObj : editionsArray) {
+                JSONObject editionJSON = (JSONObject) editionObj;
+                String name = (String) editionJSON.get("name");
+                // Read other properties of the edition as needed
+
+                JSONArray eventsArray = (JSONArray) editionJSON.get("events");
+                for (Object eventObj : eventsArray) {
+                    JSONObject eventJSON = (JSONObject) eventObj;
+                    String location = (String) eventJSON.get("location");
+                    // Read other properties of the event as needed
+
+                    JSONArray participantsArray = (JSONArray) eventJSON.get("participants");
+                    for (Object participantObj : participantsArray) {
+                        JSONObject participantJSON = (JSONObject) participantObj;
+                        String participantName = (String) participantJSON.get("name");
+                        // Read other properties of the participant as needed
+                    }
+                }
+
+                JSONArray projectsArray = (JSONArray) editionJSON.get("projectsDetails");
+                for (Object projectObj : projectsArray) {
+                    JSONObject projectJSON = (JSONObject) projectObj;
+                    String projectName = (String) projectJSON.get("name");
+                    // Read other properties of the project as needed
+
+                    JSONArray projectParticipantsArray = (JSONArray) projectJSON.get("participants");
+                    for (Object participantObj : projectParticipantsArray) {
+                        JSONObject participantJSON = (JSONObject) participantObj;
+                        String participantName = (String) participantJSON.get("name");
+                        // Read other properties of the participant as needed
+                    }
+
+                    JSONArray tasksArray = (JSONArray) projectJSON.get("tasksDetails");
+                    for (Object taskObj : tasksArray) {
+                        JSONObject taskJSON = (JSONObject) taskObj;
+                        String taskTitle = (String) taskJSON.get("title");
+                        // Read other properties of the task as needed
+
+                        JSONArray submissionsArray = (JSONArray) taskJSON.get("submissionsDetails");
+                        for (Object submissionObj : submissionsArray) {
+                            JSONObject submissionJSON = (JSONObject) submissionObj;
+                            String submissionDate = (String) submissionJSON.get("date");
+                            // Read other properties of the submission as needed
+                        }
+                    }
+                }
+            }
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

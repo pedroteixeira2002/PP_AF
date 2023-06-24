@@ -7,10 +7,19 @@ import ma02_resources.participants.Participant;
 import java.time.LocalDate;
 
 public interface Event {
-    public EventType getType();
-    public String getLocation();
-    public LocalDate getStartDate();
-    public LocalDate getEndDate();
+    int getNumberOfParticipants();
+
+    EventType getType();
+
+    String getLocation();
+
+    Participant[] getParticipants();
+
+    LocalDate getStartDate();
+
+    LocalDate getEndDate();
+
+
     void setLocation(String location);
 
     void setStartDate(LocalDate startDate);

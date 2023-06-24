@@ -34,14 +34,17 @@ public class EditionImp implements Edition, EventController {
     private Project[] projects;
     private Event[] events;
 
-    public EditionImp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status, Project[] projects, int numberOfProjects) {
+    public EditionImp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status) {
         this.name = name;
         this.start = start;
         this.end = end;
         this.projectTemplate = projectTemplate;
         this.status = status.INACTIVE;
         this.projects = new Project[SIZE];
+        this.events = new Event[SIZE];
     }
+
+
 
     @Override
     public String getName() {
@@ -68,6 +71,14 @@ public class EditionImp implements Edition, EventController {
         this.status = status;
     }
 
+    @Override
+    public int getNumberOfEvents() {
+        return numberOfEvents;
+    }
+    @Override
+    public Event[] getEvents() {
+        return events;
+    }
 
     @Override
     public void addProject(String name, String description, String[] tags) throws IOException, ParseException {
@@ -76,7 +87,7 @@ public class EditionImp implements Edition, EventController {
 
         ReadJSON read = ReadJSON.getInstance();
 
-        Template template = read.readJSON(this.start, this.projectTemplate);
+        Template template = read.readTemplate(this.start, this.projectTemplate);
         Task[] tasks = template.getTasks();
         Project project = new ProjectImp(name, description, tags, template.getNumber_of_students(), template.getNumber_of_partners(), template.getNumber_of_facilitators());
         for (Task task : tasks) {
@@ -90,7 +101,6 @@ public class EditionImp implements Edition, EventController {
             expandProjects();
         this.projects[numberOfProjects] = project;
         this.numberOfProjects++;
-
     }
 
     @Override
