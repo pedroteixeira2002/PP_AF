@@ -93,7 +93,7 @@ public class ProjectManagerMenu implements MenuDisplay {
 
     }
 
-}
+
 
     private void removeParticipant(Manager manager, Edition edition) {
 
