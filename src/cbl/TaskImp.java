@@ -1,7 +1,5 @@
-package CBL;
+package cbl;
 
-import Interfaces.TaskEnhanced;
-import ma02_resources.participants.Student;
 import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
 
@@ -21,15 +19,15 @@ public class TaskImp implements Task {
     private Submission[] submissions;
     private int numberOfSubmissions;
 
-    public TaskImp(String title, String description, LocalDate start, LocalDate end, int duration, int extendDeadline, Submission[] submissions, int numberOfSubmissions) {
+    public TaskImp(LocalDate EditionStart, String title, String description, int start,  int duration) {
         this.title = title;
         this.description = description;
-        this.start = start;
-        this.end = end;
+        this.start = EditionStart.plusDays(start);
+        this.end = EditionStart.plusDays(duration);
         this.duration = duration;
-        this.extendDeadline = extendDeadline;
+        this.extendDeadline = 0;
         this.submissions = new Submission[SIZE];
-        this.numberOfSubmissions = numberOfSubmissions;
+        this.numberOfSubmissions = 0;
     }
 
     @Override

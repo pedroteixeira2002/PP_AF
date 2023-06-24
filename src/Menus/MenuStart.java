@@ -1,13 +1,13 @@
 package Menus;
 
 import Interfaces.MenuDisplay;
-import CBL.Manager;
+import cbl.Manager;
 
 public class MenuStart implements MenuDisplay {
 
     @Override
     public void display() {
-        System.out.println("Welcome to the Main Menu");
+        System.out.println("Welcome to the application.Main Menu");
         System.out.println("1 - Edition Manager");
         System.out.println("2 - Project Manager");
         System.out.println("3 - Event Manager");

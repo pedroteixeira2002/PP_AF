@@ -1,4 +1,4 @@
-package CBL;
+package cbl;
 
 import exceptions.*;
 import ma02_resources.participants.*;
@@ -25,41 +25,28 @@ public class ProjectImp implements Project {
     private final int maximumNumberOfStudents;
     private final int maximumNumberOfPartners;
     private final int maximumNumberOfFacilitators;
-    private final int rank;
+    private int rank = 0;
     private Participant[] participants;
     private Task[] tasks;
     private String[] tags;
 
-    public ProjectImp(String name, String description, int maximumNumberOfTags, int maximumNumberOfTasks,
-                      long maximumNumberOfParticipants, int maximumNumberOfStudents,
-                      int maximumNumberOfPartners, int maximumNumberOfFacilitators, int rank, String[] tags) {
+    public ProjectImp(String name, String description, String[] tags, int maximumNumberOfStudents,
+                      int maximumNumberOfPartners, int maximumNumberOfFacilitators) {
         this.name = name;
         this.description = description;
-        this.maximumNumberOfTags = maximumNumberOfTags;
-        this.maximumNumberOfTasks = maximumNumberOfTasks;
-        this.maximumNumberOfParticipants = maximumNumberOfParticipants;
+        this.maximumNumberOfTasks = 0;
+        this.maximumNumberOfTags = 0;
+        this.maximumNumberOfParticipants = maximumNumberOfStudents + maximumNumberOfPartners + maximumNumberOfFacilitators;
         this.maximumNumberOfStudents = maximumNumberOfStudents;
         this.maximumNumberOfPartners = maximumNumberOfPartners;
         this.maximumNumberOfFacilitators = maximumNumberOfFacilitators;
-        if (rank < 0 || rank > 10) {
+        if (this.rank < 0 || this.rank > 10) {
             throw new IllegalArgumentException("Rank must be between 0 and 10");
         } else this.rank = rank;
         this.participants = new Participant[SIZE];
         this.tasks = new Task[SIZE];
         this.tags = new String[FACTOR];
-    }
 
-    public ProjectImp(String name, String description, String[] tags) {
-        this.name = name;
-        this.description = description;
-        this.tags = tags;
-        rank = 0;
-        maximumNumberOfPartners = 0;
-        maximumNumberOfParticipants = 0;
-        maximumNumberOfTags = 0;
-        maximumNumberOfTasks = 0;
-        maximumNumberOfFacilitators = 0;
-        maximumNumberOfStudents = 0;
     }
 
     @Override

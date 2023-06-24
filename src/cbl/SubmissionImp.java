@@ -1,9 +1,8 @@
-package CBL;
+package cbl;
 
 import ma02_resources.participants.Student;
 import ma02_resources.project.Submission;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SubmissionImp implements Submission {

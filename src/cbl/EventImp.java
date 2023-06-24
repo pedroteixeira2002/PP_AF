@@ -1,4 +1,4 @@
-package CBL;
+package cbl;
 
 import Interfaces.Event;
 import enumerations.EventType;

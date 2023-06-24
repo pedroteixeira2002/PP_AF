@@ -1,24 +1,21 @@
-package CBL;
+package cbl;
 
 import Interfaces.Event;
 import Interfaces.EventController;
+import application.ReadJSON;
+import application.Template;
 import exceptions.EditionNotActive;
 import exceptions.EventAlreadyStarted;
 import exceptions.IllegalDate;
-import ma02_resources.participants.Participant;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Status;
 import ma02_resources.project.Task;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import ma02_resources.project.exceptions.IllegalNumberOfTasks;
+import ma02_resources.project.exceptions.TaskAlreadyInProject;
 
-import javax.swing.text.html.HTML;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
+
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -73,38 +70,27 @@ public class EditionImp implements Edition, EventController {
 
 
     @Override
-    public void addProject(String s, String s1, String[] strings) throws IOException, ParseException {
-        try {
-            Reader reader = new FileReader("json_files\\projectTemplate.txt");
+    public void addProject(String name, String description, String[] tags) throws IOException, ParseException {
+        if (name == null || description == null || tags == null || tags.length == 0)
+            throw new IllegalArgumentException("Arguments illegible");
 
-            JSONParser parser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) parser.parse(reader);
+        ReadJSON read = ReadJSON.getInstance();
 
-            String number_of_facilitators = (String) jsonObject.get("number_of_facilitators");
-            String number_of_students = (String) jsonObject.get("number_of_students");
-            String number_of_partners = (String) jsonObject.get("number_of_partners");
-
-            JSONArray tasks = (JSONArray) jsonObject.get("tasks");
-
-            for (int i = 0; i < tasks.size(); i++) {
-
-                JSONObject task = (JSONObject) tasks.get(i);
-
-                String task_title = (String) task.get("title");
-                String task_description = (String) task.get("description");
-
-                System.out.println(task_title);
-                System.out.println(task_description);
-
+        Template template = read.readJSON(this.start, this.projectTemplate);
+        Task[] tasks = template.getTasks();
+        Project project = new ProjectImp(name, description, tags, template.getNumber_of_students(), template.getNumber_of_partners(), template.getNumber_of_facilitators());
+        for (Task task : tasks) {
+            try {
+                project.addTask(task);
+            } catch (IllegalNumberOfTasks | TaskAlreadyInProject exception) {
+                System.out.println(exception.getMessage());
             }
-        } catch (FileNotFoundException exception) {
-            System.out.println("File not found");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (org.json.simple.parser.ParseException e) {
-            throw new RuntimeException(e);
         }
-        Project project = new ProjectImp(s, s1, strings);
+        if (numberOfProjects == this.projects.length)
+            expandProjects();
+        this.projects[numberOfProjects] = project;
+        this.numberOfProjects++;
+
     }
 
     @Override
@@ -119,6 +105,15 @@ public class EditionImp implements Edition, EventController {
             projects[i] = projects[i + 1];
         }
         System.out.println("Project removed with sucess");
+    }
+
+    public void expandProjects() {
+        Project[] temp = new Project[this.projects.length * FACTOR];
+
+        for (int i = 0; i < numberOfProjects; i++) {
+            temp[i] = this.projects[i];
+        }
+        this.projects = temp;
     }
 
     @Override

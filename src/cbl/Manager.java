@@ -1,4 +1,4 @@
-package CBL;
+package cbl;
 
 public class Manager {
 }

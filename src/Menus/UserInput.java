@@ -1,9 +1,5 @@
 package Menus;
 
-import CBL.*;
-import Participants.ContactImp;
-import ma02_resources.participants.Contact;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
