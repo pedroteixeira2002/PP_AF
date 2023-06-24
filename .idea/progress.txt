@@ -1,0 +1,32 @@
+
+--------CBL----------
+SubmissionImp: DONE
+TaskImp:
+ProjectImp:
+EventImp:
+EditionImp:
+PortfolioImp:
+Manager:
+-----------------------
+
+-----PARTICIPANTS------
+ParticipantImp: DONE
+StudentImp: DONE
+ContactImp:
+FacilitatorImp:
+InstitutionImp:
+PartnerImp:
+JudgeImp:
+-----------------------
+
+-------INTERFACES------
+TaskEnhanced:
+Event:
+EventController:
+EditionsController:
+Portfolio:
+MenuDisplay:
+-----------------------
+
+
+

@@ -32,7 +32,7 @@ public class ProjectImp implements Project {
 
     public ProjectImp(String name, String description, int maximumNumberOfTags, int maximumNumberOfTasks,
                       long maximumNumberOfParticipants, int maximumNumberOfStudents,
-                      int maximumNumberOfPartners, int maximumNumberOfFacilitators, int rank) {
+                      int maximumNumberOfPartners, int maximumNumberOfFacilitators, int rank, String[] tags) {
         this.name = name;
         this.description = description;
         this.maximumNumberOfTags = maximumNumberOfTags;
@@ -144,6 +144,7 @@ public class ProjectImp implements Project {
     public Task[] getTasks() {
         return this.tasks;
     }
+
 
     @Override
     public Participant getParticipant(String email) throws NullPointerException {
@@ -318,8 +319,7 @@ public class ProjectImp implements Project {
             hasTask(task);
         } catch (TaskAlreadyInProject e) {
             System.out.println(e.getMessage());
-        }
-        catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
@@ -327,7 +327,7 @@ public class ProjectImp implements Project {
     }
 
     private void hasTask(Task task) throws TaskAlreadyInProject, IllegalArgumentException {
-        if(task==null){
+        if (task == null) {
             throw new IllegalArgumentException("Task don't exists");
         }
         for (int i = 0; i < numberOfTasks; i++) {
@@ -339,8 +339,8 @@ public class ProjectImp implements Project {
 
     @Override
     public boolean isCompleted() {
-        for (int i = 0; i < numberOfTasks; i++) {
-            if (tasks[i].getNumberOfSubmissions() != numberOfStudents) {
+        for (Task task : this.tasks) {
+            if (task.getNumberOfSubmissions() == 0) {
                 return false;
             }
         }

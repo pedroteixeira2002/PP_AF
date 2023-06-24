@@ -14,5 +14,5 @@ public interface EventController {
      void addEvent(Event event) throws IllegalDate, EditionNotActive;
      boolean removeEvent(Event event) throws EventAlreadyStarted;
      Event updateEvent(Event event, String location, LocalDate startDate, LocalDate endDate) throws EventAlreadyStarted;
-     Edition listEvent();
+     void listEvent();
 }

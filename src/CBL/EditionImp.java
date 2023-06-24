@@ -5,6 +5,7 @@ import Interfaces.EventController;
 import exceptions.EditionNotActive;
 import exceptions.EventAlreadyStarted;
 import exceptions.IllegalDate;
+import ma02_resources.participants.Participant;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 import ma02_resources.project.Status;
@@ -13,6 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import javax.swing.text.html.HTML;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -82,9 +84,9 @@ public class EditionImp implements Edition, EventController {
             String number_of_students = (String) jsonObject.get("number_of_students");
             String number_of_partners = (String) jsonObject.get("number_of_partners");
 
-            JSONArray tasks= (JSONArray) jsonObject.get("tasks");
+            JSONArray tasks = (JSONArray) jsonObject.get("tasks");
 
-            for (int i =0; i<tasks.size(); i++){
+            for (int i = 0; i < tasks.size(); i++) {
 
                 JSONObject task = (JSONObject) tasks.get(i);
 
@@ -93,14 +95,16 @@ public class EditionImp implements Edition, EventController {
 
                 System.out.println(task_title);
                 System.out.println(task_description);
+
             }
         } catch (FileNotFoundException exception) {
             System.out.println("File not found");
-        }catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
-        } catch ( org.json.simple.parser.ParseException e) {
+        } catch (org.json.simple.parser.ParseException e) {
             throw new RuntimeException(e);
         }
+        Project project = new ProjectImp(s, s1, strings);
     }
 
     @Override
@@ -137,22 +141,40 @@ public class EditionImp implements Edition, EventController {
 
     @Override
     public Project[] getProjectsByTag(String s) {
-        return new Project[0];
+        int index = 0;
+        Project[] array = new Project[20];
+        for (Project project : projects) {
+            if (project.getTags().equals(s)) ;
+            array[index] = project;
+            index++;
+        }
+        return array;
     }
 
     @Override
     public Project[] getProjectsOf(String s) {
-        return new Project[0];
+        int index = 0;
+        Project[] array = new Project[20];
+        for (Project project : projects) {
+            try {
+                project.getParticipant(s);
+            } catch (NullPointerException exception) {
+                System.out.println("Participant not found");
+            }
+            array[index] = project;
+            index++;
+        }
+        return array;
     }
 
     @Override
     public int getNumberOfProjects() {
-        return 0;
+        return this.numberOfProjects;
     }
 
     @Override
     public LocalDate getEnd() {
-        return null;
+        return this.end;
     }
 
     public boolean isActive() throws EditionNotActive {
@@ -237,11 +259,10 @@ public class EditionImp implements Edition, EventController {
      * @return the events of the project
      */
     @Override
-    public Edition listEvent() {
+    public void listEvent() {
         for (Event event : events) {
             event.toString();
         }
-        return this;
     }
 
     public void hasEvent(Event event) throws IllegalArgumentException {
