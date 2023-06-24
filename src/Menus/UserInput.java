@@ -1,5 +1,13 @@
 package Menus;
 
+<<<<<<< Updated upstream
+=======
+import CBL.*;
+import Participants.ContactImp;
+import ma02_resources.participants.Contact;
+import ma02_resources.project.Task;
+
+>>>>>>> Stashed changes
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -39,7 +47,70 @@ public class UserInput {
         return localDate;
     }
 
-    @Override
+    public static Task getTask() {
+
+        String title, description;
+        LocalDate start, end;
+        int duration, extendDeadline;
+
+        do {
+            try {
+                System.out.println("Enter the task's title:\n");
+                title = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                title = null;
+            }
+        } while (title == null);
+
+        do {
+            try {
+                System.out.println("Enter the task's description:\n");
+                description = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                description = null;
+            }
+        } while (description == null);
+
+        do {
+            try {
+                System.out.println("Enter the task's start date:\n");
+                start = getLocalDate();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                start = null;
+            }
+        } while (start == null);
+
+        do {
+            try {
+                System.out.println("Enter the task's end date:\n");
+                end = getLocalDate();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                end = null;
+            }
+        } while (end == null);
+
+
+        do{
+            try {
+                System.out.println("Enter the task's extend deadline:\n");
+                extendDeadline = getInt();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                extendDeadline = -1;
+            }
+        } while (extendDeadline == -1);
+
+        Task task = new TaskImp(title, description, start, end, extendDeadline);
+        return task;
+        }
+
+    }
+
+
     public String getStreet() {
         do {
             try {
