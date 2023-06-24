@@ -1,7 +1,7 @@
 package Menus;
 
-import CBL.EditionImp;
-import CBL.Manager;
+import cbl.EditionImp;
+import cbl.Manager;
 import Interfaces.MenuDisplay;
 import Participants.StudentImp;
 import ma02_resources.participants.Student;
