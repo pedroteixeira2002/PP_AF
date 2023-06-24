@@ -91,107 +91,91 @@ public class ProjectManagerMenu implements MenuDisplay {
             }
 
         }
+    }
 
-        public void getParticipantsByInstitution (ProjectImp project){
+    private void removeParticipant(Manager manager, Edition edition) {
 
-            String email;
+        String participantEmail, projectName;
 
-            try {
-                System.out.println("Enter the email of the institution you want to list participants by");
-                email = UserInput.getString();
+        try {
+            System.out.println("Enter the name of the project you want to remove a participant from");
+            projectName = UserInput.getString();
 
-                project.listParticipantByInstituion(email);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            System.out.println("Enter the email of the participant you want to remove from the project");
+            participantEmail = UserInput.getString();
+            
+            edition.getProject(projectName).removeParticipant(participantEmail);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-
-        private void addTask (Edition edition){
-
-            String projectName;
-
-            try {
-                System.out.println("Enter the name of the project you want to add a task to");
-                projectName = UserInput.getString();
-
-                edition.getProject(projectName).addTask(UserInput.getTask());
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-
-        }
-
-        private void removeTag (Edition edition){
-
-            String tag, projectName;
-
-            try {
-                System.out.println("Enter the name of the project you want to remove a tag from");
-                projectName = UserInput.getString();
-
-                System.out.println("Enter the tag you want to remove from the project");
-                tag = UserInput.getString();
-
-                ((ProjectImp) edition.getProject(projectName)).removeTag(tag);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        private void addTag (Edition edition){
-
-            String tag, projectName;
-
-            try {
-                System.out.println("Enter the name of the project you want to add a tag to");
-                projectName = UserInput.getString();
-
-                System.out.println("Enter the tag you want to add to the project");
-                tag = UserInput.getString();
-
-                ((ProjectImp) edition.getProject(projectName)).addTag(tag);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-
-        }
-
-
-        private void addParticipant (Manager manager, Edition edition){
-
-            String participantEmail, projectName;
-
-            try {
-                System.out.println("Enter the name of the project you want to add a participant to");
-                projectName = UserInput.getString();
-
-                System.out.println("Enter the email of the participant you want to add to the project");
-                participantEmail = UserInput.getString();
-
-                edition.getProject(projectName).addParticipant(manager.getParticipant(participantEmail));
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
-        private void removeParticipant (Manager manager, Edition edition){
-
-            String participantEmail, projectName;
-
-            try {
-                System.out.println("Enter the name of the project you want to remove a participant from");
-                projectName = UserInput.getString();
-
-                System.out.println("Enter the email of the participant you want to remove from the project");
-                participantEmail = UserInput.getString();
-
-                edition.getProject(projectName).removeParticipant(participantEmail);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-
 
     }
+
+    private void addParticipant(Manager manager, Edition edition) {
+        String participantEmail, projectName;
+
+        try {
+            System.out.println("Enter the name of the project you want to add a participant to");
+            projectName = UserInput.getString();
+
+            System.out.println("Enter the email of the participant you want to add to the project");
+            participantEmail = UserInput.getString();
+
+            edition.getProject(projectName).addParticipant(manager.getParticipant(participantEmail));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void addTag (Edition edition){
+
+        String tag, projectName;
+
+        try {
+            System.out.println("Enter the name of the project you want to add a tag to");
+            projectName = UserInput.getString();
+
+            System.out.println("Enter the tag you want to add to the project");
+            tag = UserInput.getString();
+
+            ((ProjectImp) edition.getProject(projectName)).addTag(tag);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void removeTag (Edition edition){
+
+        String tag, projectName;
+
+        try {
+            System.out.println("Enter the name of the project you want to remove a tag from");
+            projectName = UserInput.getString();
+
+            System.out.println("Enter the tag you want to remove from the project");
+            tag = UserInput.getString();
+
+            ((ProjectImp) edition.getProject(projectName)).removeTag(tag);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void addTask (Edition edition){
+
+        String projectName;
+
+        try {
+            System.out.println("Enter the name of the project you want to add a task to");
+            projectName = UserInput.getString();
+
+            edition.getProject(projectName).addTask(UserInput.getTask());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+
 
 }
