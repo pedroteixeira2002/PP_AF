@@ -79,19 +79,21 @@ public class ProjectManagerMenu implements MenuDisplay {
                         edition.getProjectsOf(UserInput.getString());
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
-                        break;
-                        case 0:
-                            isProjectRunning = false;
-                            return;
-                        default:
-                            System.out.println("Invalid option");
-                            break;
                     }
-
+                    break;
+                case 0:
+                    isProjectRunning = false;
+                    return;
+                default:
+                    System.out.println("Invalid option");
+                    break;
             }
 
         }
+
     }
+
+}
 
     private void removeParticipant(Manager manager, Edition edition) {
 
@@ -103,7 +105,7 @@ public class ProjectManagerMenu implements MenuDisplay {
 
             System.out.println("Enter the email of the participant you want to remove from the project");
             participantEmail = UserInput.getString();
-            
+
             edition.getProject(projectName).removeParticipant(participantEmail);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -127,7 +129,7 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
     }
 
-    private void addTag (Edition edition){
+    private void addTag(Edition edition) {
 
         String tag, projectName;
 
@@ -144,7 +146,7 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
     }
 
-    private void removeTag (Edition edition){
+    private void removeTag(Edition edition) {
 
         String tag, projectName;
 
@@ -161,7 +163,7 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
     }
 
-    private void addTask (Edition edition){
+    private void addTask(Edition edition) {
 
         String projectName;
 
@@ -175,7 +177,6 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
 
     }
-
 
 
 }
