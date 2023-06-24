@@ -260,6 +260,13 @@ public class EditionImp implements Edition, EventController {
         }
     }
 
+    public void listProjects() {
+        for (int i = 0; i < numberOfProjects; i++) {
+            System.out.println(projects[i].toString());
+        }
+        System.out.println(numberOfProjects + "/" + projects.length);
+    }
+
     public void hasEvent(Event event) throws IllegalArgumentException {
         for (int i = 0; i < numberOfEvents; i++) {
             if (this.events[i].equals(event)) {

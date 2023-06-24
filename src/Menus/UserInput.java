@@ -1,13 +1,11 @@
 package Menus;
 
-<<<<<<< Updated upstream
-=======
-import CBL.*;
+import cbl.*;
 import Participants.ContactImp;
 import ma02_resources.participants.Contact;
 import ma02_resources.project.Task;
 
->>>>>>> Stashed changes
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -94,7 +92,7 @@ public class UserInput {
         } while (end == null);
 
 
-        do{
+        do {
             try {
                 System.out.println("Enter the task's extend deadline:\n");
                 extendDeadline = getInt();
@@ -106,8 +104,6 @@ public class UserInput {
 
         Task task = new TaskImp(title, description, start, end, extendDeadline);
         return task;
-        }
-
     }
 
 
@@ -124,7 +120,6 @@ public class UserInput {
         return street;
     }
 
-    @Override
     public String getCity() {
         do {
             try {
@@ -138,7 +133,6 @@ public class UserInput {
         return city;
     }
 
-    @Override
     public String getState() {
         do {
             try {
@@ -152,7 +146,7 @@ public class UserInput {
         return state;
     }
 
-    @Override
+
     public String getZipCode() {
         do {
             try {
@@ -166,7 +160,7 @@ public class UserInput {
         return zipCode;
     }
 
-    @Override
+
     public String getCountry() {
         do {
             try {
@@ -180,7 +174,7 @@ public class UserInput {
         return country;
     }
 
-    @Override
+
     public String getPhone() {
         do {
             try {
@@ -198,10 +192,9 @@ public class UserInput {
         return phone;
     }
 
-    @Override
+
     public boolean equals(Object o) {
         return false;
     }
-
 
 }
