@@ -1,3 +1,13 @@
+/*
+ * Nome: João Pedro Ferreira Teixeira
+ * Número: 8200489
+ * Turma: LEI12T3
+ *
+ * Nome: Rómulo César Marinho Leite
+ * Número: 8200593
+ * Turma: LEI12T2
+ */
+
 package Menus;
 
 import Participants.InstituitionImp;
@@ -14,7 +24,9 @@ import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
-
+/*+
+    This class implements the UserInput interface and defines the methods
+ */
 public class UserInput {
     String city, state, country, street, zipCode, phone;
     LocalDate startDate, endDate;

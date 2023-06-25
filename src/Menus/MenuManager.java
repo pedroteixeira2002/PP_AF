@@ -1,3 +1,13 @@
+/*
+ * Nome: João Pedro Ferreira Teixeira
+ * Número: 8200489
+ * Turma: LEI12T3
+ *
+ * Nome: Rómulo César Marinho Leite
+ * Número: 8200593
+ * Turma: LEI12T2
+ */
+
 package Menus;
 
 import Interfaces.MenuDisplay;
@@ -9,7 +19,7 @@ public class MenuManager {
     private static final int MAX_SIZE = 100;
     private int currentOption = 0;
     private MenuDisplay[] menuList;
-    private int lastOption = currentOption--;
+    private int lastOption = currentOption -1;
 
     public int getOption() {
         int option = 0;

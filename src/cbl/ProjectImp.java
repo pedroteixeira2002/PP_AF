@@ -1,3 +1,13 @@
+/*
+ * Nome: João Pedro Ferreira Teixeira
+ * Número: 8200489
+ * Turma: LEI12T3
+ *
+ * Nome: Rómulo César Marinho Leite
+ * Número: 8200593
+ * Turma: LEI12T2
+ */
+
 package cbl;
 
 import Interfaces.ProjectEnhanced;
@@ -61,6 +71,21 @@ public class ProjectImp implements ProjectEnhanced {
         this.participants = participants;
         this.tasks = tasks;
         this.tags = tags;
+    }
+
+public ProjectImp() {
+        this.name = null;
+        this.description = null;
+        this.maximumNumberOfParticipants= 0;
+        this.maximumNumberOfStudents = 0;
+        this.maximumNumberOfPartners = 0;
+        this.maximumNumberOfFacilitators = 0;
+        this.maximumNumberOfTags= 0;
+        this.maximumNumberOfTasks = 0;
+        this.rank = 0;
+        this.participants = null;
+        this.tasks = null;
+        this.tags = null;
     }
 
     @Override
@@ -167,12 +192,17 @@ public class ProjectImp implements ProjectEnhanced {
     }
 
     private void hasParticipant(Participant participant) throws ParticipantAlreadyInProject {
+        if (participant == null) {
+            throw new IllegalArgumentException("Participant cannot be null");
+        }
+
         for (int i = 0; i < participants.length; i++) {
             if (participants[i] == participant) {
                 throw new ParticipantAlreadyInProject("Participant already in project");
             }
         }
     }
+
 
     @Override
     public void addParticipant(Participant participant) throws IllegalNumberOfParticipantType, ParticipantAlreadyInProject {

@@ -1,8 +1,21 @@
+/*
+ * Nome: João Pedro Ferreira Teixeira
+ * Número: 8200489
+ * Turma: LEI12T3
+ *
+ * Nome: Rómulo César Marinho Leite
+ * Número: 8200593
+ * Turma: LEI12T2
+ */
 package Participants;
 
 import ma02_resources.participants.Contact;
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Student;
+
+/**
+ * This class represents a Student
+ */
 
 public class StudentImp extends ParticipantImp implements Student {
     private final int number;
@@ -13,7 +26,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return number
+     * @return the number of the student
      */
     @Override
     public int getNumber() {
@@ -21,7 +34,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return super.getName()
+     * @return the name of the student
      */
     @Override
     public String getName() {
@@ -29,7 +42,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return super.getEmail()
+     * @return the email of the student
      */
     @Override
     public String getEmail() {
@@ -37,7 +50,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return super.getContact()
+     * @return the contact of the student
      */
     @Override
     public ContactImp getContact() {
@@ -45,7 +58,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @return super.getInstituition()
+     * @return the instituition of the student
      */
     @Override
     public InstituitionImp getInstituition() {
@@ -53,7 +66,7 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @param instituition
+     * @param instituition the instituition to set
      */
     @Override
     public void setInstituition(Instituition instituition) {
@@ -61,13 +74,17 @@ public class StudentImp extends ParticipantImp implements Student {
     }
 
     /**
-     * @param contact
+     * @param contact the contact to set
      */
     @Override
     public void setContact(Contact contact) {
         super.setContact(contact);
     }
 
+    /**
+     * toString method
+     * @param
+     */
     @Override
     public String toString() {
         return ("\n" + super.toString() +
