@@ -22,7 +22,7 @@ public class PortfolioImp implements Portfolio, EditionsController {
     /**
      * Prints the editions in the portfolio
      */
-@Override
+    @Override
     public EditionImp[] getEditions() {
         return (EditionImp[]) editions;
     }
@@ -34,10 +34,8 @@ public class PortfolioImp implements Portfolio, EditionsController {
         return numberOfEditions;
     }
 
-
     /**
-     * @param edition
-     * throws IllegalArgumentException
+     * @param edition throws IllegalArgumentException
      */
     @Override
     public void addEdition(Edition edition) throws IllegalArgumentException {
@@ -83,12 +81,13 @@ public class PortfolioImp implements Portfolio, EditionsController {
     }
 
     /**
-     * @param edition
+     * @param name
      * @return
      */
     @Override
-    public boolean removeEdition(Edition edition) {
-        int index = getIndex(edition);
+    public boolean removeEdition(String name) {
+        Edition that = getEdition(name);
+        int index = getIndex(that);
         if (index != -1) {
             throw new IllegalArgumentException("Edition does not exist");
         }
@@ -102,13 +101,40 @@ public class PortfolioImp implements Portfolio, EditionsController {
         return true;
     }
 
+    public void setStatusActive(String name) {
+        Edition that = getEdition(name);
+
+        for (Edition edition : editions) {
+            if (edition.equals(that)) {
+                edition.setStatus(Status.ACTIVE);
+            } else {
+                edition.setStatus(Status.INACTIVE);
+            }
+        }
+    }
+
     /**
      * @param edition
      * @return
      */
     @Override
     public Edition getEdition(Edition edition) {
-        return  editions[getIndex(edition)];
+        return editions[getIndex(edition)];
+    }
+
+    public Edition getEdition(String name) {
+        for (Edition edition : editions) {
+            if (edition.getName().equals(name)) {
+                return edition;
+            }
+        }
+        return null;
+    }
+
+    public void listEditions() {
+        for (Edition edition : editions) {
+            System.out.println(edition.toString());
+        }
     }
 
     @Override

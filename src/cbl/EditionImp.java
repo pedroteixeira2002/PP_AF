@@ -1,6 +1,5 @@
 package cbl;
 
-import Interfaces.EditionEnhanced;
 import Interfaces.Event;
 import Interfaces.EventController;
 import application.ReadJSON;
@@ -22,7 +21,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 
-public class EditionImp implements EditionEnhanced, EventController {
+public class EditionImp implements EventController, Edition {
     private static int SIZE = 10;
     private final int FACTOR = 2;
     private String name;
@@ -40,6 +39,15 @@ public class EditionImp implements EditionEnhanced, EventController {
         this.start = start;
         this.end = end;
         this.status = status.INACTIVE;
+        this.projects =projects;
+        this.events = events;
+    }
+
+    public EditionImp(String name, LocalDate start, LocalDate end, Status status) {
+        this.name = name;
+        this.start = start;
+        this.end = end;
+        this.status = status;
         this.projects = new Project[SIZE];
         this.events = new Event[SIZE];
     }
@@ -58,6 +66,14 @@ public class EditionImp implements EditionEnhanced, EventController {
     public String getProjectTemplate() {
         return this.projectTemplate;
     }
+    @Override
+    public int getNumberOfEvents() {
+        return numberOfEvents;
+    }
+    @Override
+    public EventImp[] getEvents() {
+        return (EventImp[]) events;
+    }
 
     @Override
     public Status getStatus() {
@@ -67,15 +83,6 @@ public class EditionImp implements EditionEnhanced, EventController {
     @Override
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    @Override
-    public int getNumberOfEvents() {
-        return numberOfEvents;
-    }
-    @Override
-    public EventImp[] getEvents() {
-        return (EventImp[]) events;
     }
 
     @Override
@@ -115,7 +122,7 @@ public class EditionImp implements EditionEnhanced, EventController {
         System.out.println("Project removed with sucess");
     }
 
-    public void expandProjects() {
+    private void expandProjects() {
         Project[] temp = new Project[this.projects.length * FACTOR];
 
         for (int i = 0; i < numberOfProjects; i++) {
@@ -300,7 +307,6 @@ public class EditionImp implements EditionEnhanced, EventController {
         }
         return -1;
     }
-
     public String getProgress() {
         int completedTasks = 0;
         int countTasks = 0;

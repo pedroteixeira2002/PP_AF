@@ -13,5 +13,6 @@ public interface Portfolio {
     Project missingSubmissions(Edition edition) throws SubmissionsUpToDate;
 
     void hasEdition(Edition edition) throws IllegalArgumentException;
+    public Edition getEdition(String name);
 
 }

@@ -3,6 +3,7 @@ package Menus;
 import cbl.*;
 import Participants.ContactImp;
 import ma02_resources.participants.Contact;
+import ma02_resources.project.Status;
 import ma02_resources.project.Task;
 
 
@@ -106,7 +107,23 @@ public class UserInput {
         return task;
     }
 
+    public static Status getStatus(){
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
 
+        switch (input) {
+            case 1:
+                return Status.ACTIVE;
+            case 2:
+                return Status.INACTIVE;
+            case 3:
+                return Status.CLOSED;
+            case 4:
+                return Status.CANCELED;
+            default:
+                return null;
+        }
+    }
     public String getStreet() {
         do {
             try {

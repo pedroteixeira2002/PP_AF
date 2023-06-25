@@ -1,7 +1,6 @@
 package Menus;
 
 import Interfaces.MenuDisplay;
-import cbl.Manager;
 
 public class MenuStart implements MenuDisplay {
 
@@ -15,7 +14,7 @@ public class MenuStart implements MenuDisplay {
         System.out.println("5 - Exit");
     }
 
-    public void navigateStartMenu(MenuManager menuManager, Manager manager) {
+    public void navigateStartMenu(MenuManager menuManager) {
         MenuStart menuStart = new MenuStart();
         boolean isRunning = true;
 

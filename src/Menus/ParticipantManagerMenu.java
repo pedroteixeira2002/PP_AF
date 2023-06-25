@@ -2,7 +2,6 @@ package Menus;
 
 import Interfaces.MenuDisplay;
 import Participants.*;
-import cbl.Manager;
 
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ public class ParticipantManagerMenu implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
-    public static void handleParticipantManagerMenu(MenuManager menuManager, Manager manager) {
+    public static void handleParticipantManagerMenu(MenuManager menuManager) {
 
         ParticipantManagerMenu participantManager = new ParticipantManagerMenu();
         boolean isParticipantRunning = true;

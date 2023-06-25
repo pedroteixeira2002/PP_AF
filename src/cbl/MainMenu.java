@@ -7,10 +7,10 @@ import Menus.MenuStartManagement;
 public class MainMenu {
     public static void main(String[] args) {
 
-        Manager fullManager = new Manager();
+        //Manager fullManager = new Manager();
 
         MenuManager menuManager = new MenuManager();
 
-        MenuStartManagement.handleStartMenu(menuManager, fullManager);
+        //MenuStartManagement.handleStartMenu(menuManager, fullManager);
     }
 }

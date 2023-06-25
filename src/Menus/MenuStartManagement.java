@@ -1,7 +1,6 @@
 package Menus;
 
 import Interfaces.MenuDisplay;
-import cbl.Manager;
 
 public class MenuStartManagement implements MenuDisplay {
     @Override
@@ -13,7 +12,7 @@ public class MenuStartManagement implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
-    public static void handleStartMenu(MenuManager menuManager, Manager manager) {
+    public static void handleStartMenu(MenuManager menuManager) {
 
         MenuStartManagement menuStart = new MenuStartManagement();
         boolean isStartManagementRunning = true;
@@ -32,18 +31,18 @@ public class MenuStartManagement implements MenuDisplay {
 
             switch (option) {
                 case 1:
-                    EditionManagerMenu.handleEditionManagerMenu(menuManager, manager);
+                    EditionManagerMenu.handleEditionManagerMenu(menuManager);
                     break;
                 case 2:
                     try {
                         System.out.println("Enter the name of the edition you want to manage the projects");
-                        ProjectManagerMenu.handleProjectManagerMenu(menuManager, manager.getEdition(UserInput.getString()));
+                        ProjectManagerMenu.handleProjectManagerMenu(menuManager,.getEdition(UserInput.getString()));
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                     break;
                 case 3:
-                    ParticipantManagerMenu.handleParticipantManagerMenu(menuManager, manager);
+                    ParticipantManagerMenu.handleParticipantManagerMenu(menuManager);
                     break;
                 case 0:
                     isStartManagementRunning = false;

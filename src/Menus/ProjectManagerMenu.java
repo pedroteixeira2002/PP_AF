@@ -1,17 +1,9 @@
 package Menus;
 
 
-import cbl.EditionImp;
-import cbl.EventImp;
-import cbl.Manager;
 import Interfaces.MenuDisplay;
-import Participants.StudentImp;
 import cbl.ProjectImp;
-import ma02_resources.participants.Student;
 import ma02_resources.project.Edition;
-import ma02_resources.project.Project;
-import ma02_resources.project.Submission;
-import ma02_resources.project.Task;
 
 
 public class ProjectManagerMenu implements MenuDisplay {
@@ -29,7 +21,7 @@ public class ProjectManagerMenu implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
-    public static void handleProjectManagerMenu(MenuManager menuManager, Manager manager, Edition edition, Task task, Submission submission) {
+    public static void handleProjectManagerMenu(MenuManager menuManager, Edition edition) {
 
         ProjectManagerMenu projectManager = new ProjectManagerMenu();
         boolean isProjectRunning = true;
@@ -93,9 +85,7 @@ public class ProjectManagerMenu implements MenuDisplay {
 
     }
 
-
-
-    private void removeParticipant(Manager manager, Edition edition) {
+    private void removeParticipant(Edition edition) {
 
         String participantEmail, projectName;
 

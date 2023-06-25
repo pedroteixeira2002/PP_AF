@@ -157,15 +157,6 @@ public class ProjectImp implements ProjectEnhanced {
         throw new NullPointerException("Participant not found");
     }
 
-    public Participant getByEmail(String email) throws IllegalArgumentException {
-        for (int i = 0; i < participants.length; i++) {
-            if (participants[i].getEmail().equals(email)) {
-                return participants[i];
-            }
-        }
-        throw new IllegalArgumentException("Participant not found");
-    }
-
     private void expandParticipants() {
 
         Participant[] newParticipants = new Participant[participants.length * FACTOR];

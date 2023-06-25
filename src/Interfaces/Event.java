@@ -28,5 +28,4 @@ public interface Event {
     void setEndDate(LocalDate endDate);
 
     void addParticipantsToEvent(Participant participant) throws ParticipantNotAllowed;
-
 }
