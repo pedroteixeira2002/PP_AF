@@ -20,8 +20,8 @@ import ma02_resources.participants.Student;
 public class StudentImp extends ParticipantImp implements Student {
     private final int number;
 
-    public StudentImp(String name, String email, ContactImp contactImp, InstituitionImp instituitionImp, int number) {
-        super(name, email, contactImp, instituitionImp);
+    public StudentImp(String name, String email, Contact contactImp, Instituition instituitionImp, int number) {
+        super(name, email, contact, instituition);
         this.number = number;
     }
 

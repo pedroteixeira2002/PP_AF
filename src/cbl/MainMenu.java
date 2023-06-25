@@ -14,6 +14,7 @@ package cbl;
 import Interfaces.Portfolio;
 import Menus.MenuManager;
 import Menus.MenuStartManagement;
+import application.ReadJSON;
 import ma02_resources.project.Project;
 import ma02_resources.project.exceptions.IllegalNumberOfParticipantType;
 import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
@@ -24,11 +25,13 @@ public class MainMenu {
     public static void main(String[] args) throws ParticipantAlreadyInProject, IllegalNumberOfParticipantType, IOException {
 
         MenuManager menuManager = new MenuManager();
-        PortfolioImp portfolio = new PortfolioImp();
+        Portfolio portfolio = new PortfolioImp();
         ProjectImp project = new ProjectImp();
 
+        ReadJSON.getInstance().readJSON("json_files//test.json");
+
         try {
-            MenuStartManagement.handleStartMenu(menuManager, portfolio, project);
+            MenuStartManagement.handleStartMenu(menuManager, (PortfolioImp) portfolio, project);
         } catch (Exception e) {
             e.printStackTrace();
         }

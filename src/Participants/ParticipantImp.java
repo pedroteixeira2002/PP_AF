@@ -22,8 +22,8 @@ import ma02_resources.participants.Instituition;
 public abstract class ParticipantImp implements Participant {
     private final String name;
     private final String email;
-    private ContactImp contact;
-    private InstituitionImp instituition;
+    private Contact contact;
+    private Instituition instituition;
 
     /**
      * This constructor creates a ParticipantImp object with the following parameters.

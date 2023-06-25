@@ -5,8 +5,7 @@ import Interfaces.Portfolio;
 import Participants.*;
 import cbl.*;
 import enumerations.EventType;
-import ma02_resources.participants.Contact;
-import ma02_resources.participants.Instituition;
+
 import ma02_resources.participants.Participant;
 import ma02_resources.participants.Student;
 import ma02_resources.project.*;
@@ -26,7 +25,7 @@ import java.time.LocalDateTime;
 public class ReadJSON {
     private static ReadJSON instance;
 
-    private ReadJSON() {
+    public ReadJSON() {
 
     }
 
@@ -81,9 +80,10 @@ public class ReadJSON {
         Portfolio portfolio = new PortfolioImp();
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader(path)) {
-            Object obj = parser.parse(reader);
 
-            JSONArray editions = (JSONArray) obj;
+            JSONObject obj = (JSONObject) parser.parse(reader);
+
+            JSONArray editions = (JSONArray) obj.get("editions");
             Edition[] edition = new Edition[editions.size()];
 
             // Loop through editions
@@ -92,8 +92,8 @@ public class ReadJSON {
 
                 // Read edition details
                 String name = (String) editionTmp.get("name");
-                LocalDate start = (LocalDate) editionTmp.get("start");
-                LocalDate end = (LocalDate) editionTmp.get("end");
+                String start = (String) editionTmp.get("start");
+                String end = (String) editionTmp.get("end");
                 Status status = (Status) editionTmp.get("status");
                 long numOfProjects = (long) editionTmp.get("number_of_projects");
                 long numOfEvents = (long) editionTmp.get("number_of_events");
@@ -109,8 +109,8 @@ public class ReadJSON {
                     // Read event details
                     EventType type = (EventType) eventTmp.get("type");
                     String location = (String) eventTmp.get("location");
-                    LocalDate eventStart = (LocalDate) eventTmp.get("start");
-                    LocalDate eventEnd = (LocalDate) eventTmp.get("end");
+                    String eventStart = (String) eventTmp.get("start");
+                    String eventEnd = (String) eventTmp.get("end");
 
 
                     JSONArray participants = (JSONArray) eventTmp.get("participants");

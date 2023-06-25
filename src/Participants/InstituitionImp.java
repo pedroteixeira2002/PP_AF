@@ -19,7 +19,7 @@ import ma02_resources.participants.Contact;
  */
 public class InstituitionImp implements Instituition {
     private final String name;
-    private ContactImp contact;
+    private Contact contact;
     private final String email;
     private InstituitionType type;
     private String description;
@@ -35,7 +35,7 @@ public class InstituitionImp implements Instituition {
      * @param description The description of the instituition.
      * @param website     The website of the instituition.
      */
-    public InstituitionImp(String name, ContactImp contact, String email, InstituitionType type, String description, String website) {
+    public InstituitionImp(String name, Contact contact, String email, InstituitionType type, String description, String website) {
         this.name = name;
         this.contact = contact;
         this.email = email;

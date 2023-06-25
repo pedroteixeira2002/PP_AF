@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="793feacc-c2dc-40cf-b190-f447c4bd1374" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menus/EditionManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus/EditionManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menus/MenuStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus/MenuStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menus/MenuStartManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus/MenuStartManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menus/ParticipantManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus/ParticipantManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menus/ProjectManagerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus/ProjectManagerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menus/UserInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menus/UserInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/InstituitionImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/InstituitionImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/ParticipantImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/ParticipantImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Participants/StudentImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Participants/StudentImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/ReadJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ReadJSON.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cbl/DEMO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cbl/DEMO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cbl/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cbl/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +76,26 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="CBL" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cbl.MainMenu" />
+      <module name="PP_AF" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cbl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainMenu" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
