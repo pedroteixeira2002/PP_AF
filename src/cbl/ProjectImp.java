@@ -37,18 +37,30 @@ public class ProjectImp implements ProjectEnhanced {
         this.name = name;
         this.description = description;
         this.maximumNumberOfTasks = 0;
-        this.maximumNumberOfTags = 0;
+        this.maximumNumberOfTags = tags.length+1;
         this.maximumNumberOfParticipants = maximumNumberOfStudents + maximumNumberOfPartners + maximumNumberOfFacilitators;
         this.maximumNumberOfStudents = maximumNumberOfStudents;
         this.maximumNumberOfPartners = maximumNumberOfPartners;
         this.maximumNumberOfFacilitators = maximumNumberOfFacilitators;
-        if (this.rank < 0 || this.rank > 10) {
-            throw new IllegalArgumentException("Rank must be between 0 and 10");
-        } else this.rank = rank;
+        this.rank = 0;
         this.participants = new Participant[SIZE];
         this.tasks = new Task[SIZE];
-        this.tags = new String[FACTOR];
+        this.tags = tags;
+    }
 
+    public ProjectImp(String name, String description, int maximumNumberOfStudents, int maximumNumberOfPartners, int maximumNumberOfFacilitators, int rank, Participant[] participants, Task[] tasks, String[] tags) {
+        this.name = name;
+        this.description = description;
+        this.maximumNumberOfParticipants= maximumNumberOfStudents + maximumNumberOfPartners + maximumNumberOfFacilitators;
+        this.maximumNumberOfStudents = maximumNumberOfStudents;
+        this.maximumNumberOfPartners = maximumNumberOfPartners;
+        this.maximumNumberOfFacilitators = maximumNumberOfFacilitators;
+        this.maximumNumberOfTags= tags.length+1;
+        this.maximumNumberOfTasks = tasks.length+1;
+        this.rank = rank;
+        this.participants = participants;
+        this.tasks = tasks;
+        this.tags = tags;
     }
 
     @Override

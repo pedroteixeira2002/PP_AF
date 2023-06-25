@@ -37,6 +37,7 @@
           "number_of_students": 8,
           "number_of_facilitators": 2,
           "number_of_partners": 1,
+          "rank": 1,
           "participants": [
             {
               "name": "Participant 1",
@@ -72,6 +73,11 @@
                 }
               ]
             }
+          ],
+          "tags": [
+            "tag1",
+            "tag2",
+            "tag3"
           ]
         }
       ]

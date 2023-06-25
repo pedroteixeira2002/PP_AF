@@ -28,18 +28,17 @@ public class EditionImp implements EditionEnhanced, EventController {
     private String name;
     private LocalDate start;
     private LocalDate end;
-    private String projectTemplate;
+    private final String projectTemplate = "project_template.json";
     private Status status;
     private int numberOfProjects;
     private int numberOfEvents;
     private Project[] projects;
     private Event[] events;
 
-    public EditionImp(String name, LocalDate start, LocalDate end, String projectTemplate, Status status) {
+    public EditionImp(String name, LocalDate start, LocalDate end, Status status, Project[] projects, Event[] events) {
         this.name = name;
         this.start = start;
         this.end = end;
-        this.projectTemplate = projectTemplate;
         this.status = status.INACTIVE;
         this.projects = new Project[SIZE];
         this.events = new Event[SIZE];

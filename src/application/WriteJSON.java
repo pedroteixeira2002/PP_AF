@@ -1,12 +1,16 @@
 package application;
 
 import Interfaces.Event;
+import Participants.JudgeImp;
 import Participants.ParticipantImp;
 import cbl.PortfolioImp;
 import cbl.ProjectImp;
 
+import ma02_resources.participants.Facilitator;
 import ma02_resources.participants.Participant;
 
+import ma02_resources.participants.Partner;
+import ma02_resources.participants.Student;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
@@ -44,15 +48,28 @@ public class WriteJSON {
 
                 for (Event eventTmp : editionTmp.getEvents()) {
                     JSONObject event = new JSONObject();
+                    event.put("type", eventTmp.getType().toString());
                     event.put("location", eventTmp.getLocation());
                     event.put("start", eventTmp.getStartDate().toString());
                     event.put("end", eventTmp.getEndDate().toString());
-                    event.put("number_of_participants", eventTmp.getNumberOfParticipants());
 
                     JSONArray participantsArray = new JSONArray();
 
                     for (Participant participantTmp : eventTmp.getParticipants()) {
                         JSONObject participant = new JSONObject();
+                        if (participantTmp instanceof Student) {
+                            participant.put("number", ((Student) participantTmp).getNumber());
+                            event.put("type", "student");
+                        } else if (participantTmp instanceof Facilitator) {
+                            participant.put("area_of_expertise", ((Facilitator) participantTmp).getAreaOfExpertise());
+                            event.put("type", "facilitator");
+                        } else if (participantTmp instanceof Partner) {
+                            event.put("type", "partner");
+                            participant.put("website", ((Partner) participantTmp).getWebsite());
+                            participant.put("vat", ((Partner) participantTmp).getVat());
+                        }else if (participantTmp instanceof JudgeImp){
+                            event.put("type", "judge");
+                        }
                         participant.put("name", participantTmp.getName());
                         participant.put("email", participantTmp.getEmail());
                         participant.put("contact", participantTmp.getContact());
@@ -80,15 +97,36 @@ public class WriteJSON {
 
                     for (ParticipantImp participantTmp : projectTmp.getParticipants()) {
                         JSONObject participant = new JSONObject();
+                        if (participantTmp instanceof Student) {
+                            participant.put("number", ((Student) participantTmp).getNumber());
+                            project.put("type", "student");
+                        } else if (participantTmp instanceof Facilitator) {
+                            participant.put("area_of_expertise", ((Facilitator) participantTmp).getAreaOfExpertise());
+                            project.put("type", "facilitator");
+                        } else if (participantTmp instanceof Partner) {
+                            project.put("type", "partner");
+                            participant.put("website", ((Partner) participantTmp).getWebsite());
+                            participant.put("vat", ((Partner) participantTmp).getVat());
+                        }
+
                         participant.put("name", participantTmp.getName());
                         participant.put("email", participantTmp.getEmail());
-                        participant.put("contact", participantTmp.getContact());
+                        participant.put("contact", participantTmp.getContact().toString());
                         participant.put("institution", participantTmp.getInstituition().toString());
 
                         projectParticipantsArray.add(participant);
                     }
 
                     project.put("participants", projectParticipantsArray);
+
+                    JSONArray tagsArray = new JSONArray();
+
+                    for (String tagTmp : projectTmp.getTags()) {
+
+                        tagsArray.add(tagTmp);
+                    }
+
+
 
                     JSONArray tasksArray = new JSONArray();
 

@@ -19,7 +19,7 @@ public class EventImp implements Event {
     private Participant[] participants;
     private int numberOfParticipants;
 
-    public EventImp(EventType type, String location, LocalDate startDate, LocalDate endDate) {
+    public EventImp(EventType type, String location, LocalDate startDate, LocalDate endDate, Participant[] participants) {
         this.type = type;
         this.location = location;
         this.startDate = startDate;
