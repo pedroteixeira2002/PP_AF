@@ -40,10 +40,10 @@ public class ProjectManagerMenu implements MenuDisplay {
 
             switch (option) {
                 case 1:
-                    projectManager.addParticipant(manager, edition);
+                    projectManager.addParticipant( edition);
                     break;
                 case 2:
-                    projectManager.removeParticipant(manager, edition);
+                    projectManager.removeParticipant( edition);
                     break;
                 case 3:
                     projectManager.addTag(edition);

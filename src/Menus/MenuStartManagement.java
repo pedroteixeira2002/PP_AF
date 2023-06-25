@@ -1,6 +1,9 @@
 package Menus;
 
 import Interfaces.MenuDisplay;
+import cbl.PortfolioImp;
+
+import java.io.IOException;
 
 public class MenuStartManagement implements MenuDisplay {
     @Override
@@ -12,7 +15,7 @@ public class MenuStartManagement implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
-    public static void handleStartMenu(MenuManager menuManager) {
+    public static void handleStartMenu(MenuManager menuManager, PortfolioImp portfolio) throws IOException {
 
         MenuStartManagement menuStart = new MenuStartManagement();
         boolean isStartManagementRunning = true;
@@ -31,12 +34,12 @@ public class MenuStartManagement implements MenuDisplay {
 
             switch (option) {
                 case 1:
-                    EditionManagerMenu.handleEditionManagerMenu(menuManager);
+                    EditionManagerMenu.handleEditionManagerMenu(menuManager, portfolio);
                     break;
                 case 2:
                     try {
                         System.out.println("Enter the name of the edition you want to manage the projects");
-                        ProjectManagerMenu.handleProjectManagerMenu(menuManager,.getEdition(UserInput.getString()));
+                        ProjectManagerMenu.handleProjectManagerMenu(menuManager,.getEdition(UserInput.getString());
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
