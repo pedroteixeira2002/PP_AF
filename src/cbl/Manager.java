@@ -5,6 +5,7 @@ import Participants.StudentImp;
 import ma02_resources.participants.Instituition;
 import ma02_resources.participants.Participant;
 import ma02_resources.project.Edition;
+import ma02_resources.project.Status;
 
 public class Manager {
 
@@ -92,6 +93,48 @@ public class Manager {
             editions[i] = editions[i + 1];
         }
         editions[numberOfEditions] = null;
+    }
+
+    public void listEditions(){
+        for (int i = 0; i < numberOfEditions; i++) {
+            System.out.println(editions[i].toString());
+        }
+        System.out.println(this.numberOfEditions + "/" + this.editions.length);
+    }
+
+    public void setStatusActive (Edition ed){
+
+        try {
+            int index = findEdition(ed.getName());
+
+        } catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+        for (int i=0;i<numberOfEditions;i++){
+            if (editions[i].equals(ed)){
+                editions[i].setStatus(Status.ACTIVE);
+            } else {
+                editions[i].setStatus(Status.INACTIVE);
+            }
+        }
+    }
+
+    public String checkEditionProgress (Edition edition){
+        int count = 0;
+        String temp = "";
+        String progress = "";
+        for (int i=0;i<edition.getNumberOfProjects();i++){
+            if (edition.getProjects()[i].isCompleted()){
+                temp += edition.getProjects()[i].toString() + "\n";
+                count++;
+            }
+        }
+        progress = "Progres= " + count + "/" + edition.getNumberOfProjects() + "Projects completed: \n" + temp;
+        return progress;
+    }
+
+    public Edition getEdition(String edName){
+        return this.editions[findEdition(edName)];
     }
 
     private void expandEditions(){

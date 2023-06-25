@@ -1,8 +1,16 @@
 package cbl;
 
 
+import Menus.MenuManager;
+import Menus.MenuStartManagement;
+
 public class MainMenu {
-     public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args) {
+
+        Manager fullManager = new Manager();
+
+        MenuManager menuManager = new MenuManager();
+
+        MenuStartManagement.handleStartMenu(menuManager, fullManager);
     }
 }
