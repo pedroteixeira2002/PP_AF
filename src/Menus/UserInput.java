@@ -103,8 +103,8 @@ public class UserInput {
             }
         } while (extendDeadline == -1);
 
-        Task task = new TaskImp(title, description, start, end, extendDeadline);
-        return task;
+        //Task task = new TaskImp(title, description, start, end, extendDeadline);
+        return null;
     }
 
     public static Status getStatus(){

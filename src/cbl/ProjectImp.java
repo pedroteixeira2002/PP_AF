@@ -241,6 +241,13 @@ public class ProjectImp implements ProjectEnhanced {
         return that;
     }
 
+    public void listParticipants() {
+        for (int i = 0; i < numberOfParticipants; i++) {
+            System.out.println(participants[i].toString());
+        }
+        System.out.println(numberOfParticipants + "/" + participants.length);
+    }
+
     public void addTag(String newTag) throws IllegalArgumentException {
         if (findTag(newTag) == -1) {
             throw new IllegalArgumentException("Tag doesn't exists");

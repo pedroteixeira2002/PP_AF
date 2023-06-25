@@ -2,6 +2,10 @@ package Menus;
 
 import Interfaces.MenuDisplay;
 import Participants.*;
+import cbl.ProjectImp;
+import ma02_resources.participants.Participant;
+import ma02_resources.project.exceptions.IllegalNumberOfParticipantType;
+import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
 
 import java.io.IOException;
 
@@ -14,7 +18,7 @@ public class ParticipantManagerMenu implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
-    public static void handleParticipantManagerMenu(MenuManager menuManager) {
+    public static void handleParticipantManagerMenu(MenuManager menuManager, ProjectImp project) throws ParticipantAlreadyInProject, IllegalNumberOfParticipantType {
 
         ParticipantManagerMenu participantManager = new ParticipantManagerMenu();
         boolean isParticipantRunning = true;
@@ -33,10 +37,10 @@ public class ParticipantManagerMenu implements MenuDisplay {
 
             switch (option) {
                 case 1:
-                    participantManager.createParticipant(manager);
+                    project.addParticipant(readParticipant());
                     break;
                 case 2:
-                    participantManager.listParticipants();
+                    project.listParticipants();
                     break;
                 case 0:
                     isParticipantRunning = false;
@@ -50,12 +54,10 @@ public class ParticipantManagerMenu implements MenuDisplay {
 
 
 
-    public void createParticipant(Manager manager) {
+    public static Participant readParticipant() {
 
         boolean isSubMenuRunning = true;
 
-        ContactImp contact = new ContactImp();
-        InstituitionImp instituition = new Participants.InstituitionImp();
         String name, email, instituition, contact;
 
         while (isSubMenuRunning) {
@@ -225,7 +227,7 @@ public class ParticipantManagerMenu implements MenuDisplay {
                     } while (instituition == null);
 
                     FacilitatorImp facilitator = new FacilitatorImp(name, areaOfExpertise, email, instituition, contact);
-                    manager.addParticipant(facilitator);
+                    portefolio.addParticipant(facilitator);
                     break;
                 case 4: //Judge
                     do {
@@ -273,7 +275,7 @@ public class ParticipantManagerMenu implements MenuDisplay {
     }
 
 
-    public void subMenuParticipantType() {
+    public static void subMenuParticipantType() {
         System.out.println("Choose Participant Type:");
         System.out.println("1 - Student");
         System.out.println("2 - Partner");

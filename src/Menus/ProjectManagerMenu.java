@@ -2,8 +2,12 @@ package Menus;
 
 
 import Interfaces.MenuDisplay;
+import Interfaces.Portfolio;
 import cbl.ProjectImp;
 import ma02_resources.project.Edition;
+import ma02_resources.project.Project;
+
+import java.io.IOException;
 
 
 public class ProjectManagerMenu implements MenuDisplay {
@@ -21,7 +25,7 @@ public class ProjectManagerMenu implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
-    public static void handleProjectManagerMenu(MenuManager menuManager, Edition edition) {
+    public static void handleProjectManagerMenu(MenuManager menuManager, Edition edition) throws IOException {
 
         ProjectManagerMenu projectManager = new ProjectManagerMenu();
         boolean isProjectRunning = true;
@@ -40,10 +44,13 @@ public class ProjectManagerMenu implements MenuDisplay {
 
             switch (option) {
                 case 1:
-                    projectManager.addParticipant( edition);
+                    System.out.println("Enter the name of the project you want to add a participant to");
+                    String name = UserInput.getString();
+                    ProjectImp project = (ProjectImp) edition.getProject(name);
+                    projectManager.addParticipant(project);
                     break;
                 case 2:
-                    projectManager.removeParticipant( edition);
+                    projectManager.removeParticipant(edition);
                     break;
                 case 3:
                     projectManager.addTag(edition);
@@ -103,7 +110,7 @@ public class ProjectManagerMenu implements MenuDisplay {
 
     }
 
-    private void addParticipant(Manager manager, Edition edition) {
+    private void addParticipant(Project project){
         String participantEmail, projectName;
 
         try {
@@ -113,7 +120,7 @@ public class ProjectManagerMenu implements MenuDisplay {
             System.out.println("Enter the email of the participant you want to add to the project");
             participantEmail = UserInput.getString();
 
-            edition.getProject(projectName).addParticipant(manager.getParticipant(participantEmail));
+            edition.getProject(projectName).addParticipant(portefolio.getParticipant(participantEmail));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
