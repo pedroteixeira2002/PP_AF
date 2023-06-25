@@ -111,13 +111,6 @@ public class UserInput {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
-<<<<<<< Updated upstream
-=======
-    public Status getStatus(){
-        Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
-
->>>>>>> Stashed changes
         switch (input) {
             case 1:
                 return Status.ACTIVE;
@@ -128,17 +121,9 @@ public class UserInput {
             case 4:
                 return Status.CANCELED;
             default:
-<<<<<<< Updated upstream
                 return null;
         }
     }
-=======
-                return Status.UNKNOWN;
-        }
-    }
-
-
->>>>>>> Stashed changes
     public String getStreet() {
         do {
             try {

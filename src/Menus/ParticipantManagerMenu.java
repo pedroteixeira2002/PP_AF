@@ -53,7 +53,6 @@ public class ParticipantManagerMenu implements MenuDisplay {
     }
 
 
-
     public static Participant readParticipant() {
 
         boolean isSubMenuRunning = true;
@@ -111,8 +110,8 @@ public class ParticipantManagerMenu implements MenuDisplay {
                             contact = null;
                         }
                     } while (contact == null);
-                    StudentImp student = new StudentImp(name, instituition, email, number, contact);
-                    manager.addParticipant(student);
+                    StudentImp student = new StudentImp(name, email, instituition, contact, number);
+
                     break;
                 case 2: //Partner
                     String vat, website;

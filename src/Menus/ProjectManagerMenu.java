@@ -9,6 +9,8 @@ import ma02_resources.project.Project;
 
 import java.io.IOException;
 
+import static Menus.ParticipantManagerMenu.readParticipant;
+
 
 public class ProjectManagerMenu implements MenuDisplay {
     @Override
@@ -110,7 +112,7 @@ public class ProjectManagerMenu implements MenuDisplay {
 
     }
 
-    private void addParticipant(Project project){
+    private void addParticipant(Edition edition){
         String participantEmail, projectName;
 
         try {
@@ -120,7 +122,7 @@ public class ProjectManagerMenu implements MenuDisplay {
             System.out.println("Enter the email of the participant you want to add to the project");
             participantEmail = UserInput.getString();
 
-            edition.getProject(projectName).addParticipant(portefolio.getParticipant(participantEmail));
+            edition.getProject(projectName).addParticipant(readParticipant());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
