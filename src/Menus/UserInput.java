@@ -107,38 +107,27 @@ public class UserInput {
         return null;
     }
 
-    public static Status getStatus(){
+    public static Status getStatus() {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
-<<<<<<< Updated upstream
-=======
-    public Status getStatus(){
-        Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
+            switch (input) {
+                case 1:
+                    return Status.ACTIVE;
+                case 2:
+                    return Status.INACTIVE;
+                case 3:
+                    return Status.CLOSED;
+                case 4:
+                    return Status.CANCELED;
+                default:
 
->>>>>>> Stashed changes
-        switch (input) {
-            case 1:
-                return Status.ACTIVE;
-            case 2:
-                return Status.INACTIVE;
-            case 3:
-                return Status.CLOSED;
-            case 4:
-                return Status.CANCELED;
-            default:
-<<<<<<< Updated upstream
-                return null;
+                    return null;
+            }
         }
-    }
-=======
-                return Status.UNKNOWN;
-        }
-    }
+        
 
 
->>>>>>> Stashed changes
     public String getStreet() {
         do {
             try {
