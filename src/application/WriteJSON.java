@@ -1,10 +1,13 @@
 package application;
 
 import Interfaces.Event;
+import Participants.ParticipantImp;
 import cbl.PortfolioImp;
+import cbl.ProjectImp;
+
 import ma02_resources.participants.Participant;
+
 import ma02_resources.project.Edition;
-import ma02_resources.project.Project;
 import ma02_resources.project.Submission;
 import ma02_resources.project.Task;
 import org.json.simple.JSONArray;
@@ -20,7 +23,7 @@ public class WriteJSON {
 
     public void writeJSON() throws IOException {
 
-        PortfolioImp portfolio = new PortfolioImp();
+        PortfolioImp portfolioTmp = new PortfolioImp();
         JSONObject jsonObject = new JSONObject();
 
         try {
@@ -28,7 +31,7 @@ public class WriteJSON {
 
             JSONArray editionsArray = new JSONArray();
 
-            for (Edition editionTmp : portfolio.getEditions()) {
+            for (EditionImp editionTmp : portfolioTmp.getEditions()) {
                 JSONObject edition = new JSONObject();
                 edition.put("name", editionTmp.getName());
                 edition.put("start", editionTmp.getStart().toString());
@@ -64,7 +67,7 @@ public class WriteJSON {
                 edition.put("events", eventsArray);
                 JSONArray projectsArray = new JSONArray();
 
-                for (Project projectTmp : editionTmp.getProjects()) {
+                for (ProjectImp projectTmp : editionTmp.getProjects()) {
                     JSONObject project = new JSONObject();
                     project.put("name", projectTmp.getName());
                     project.put("description", projectTmp.getDescription());
@@ -75,7 +78,7 @@ public class WriteJSON {
 
                     JSONArray projectParticipantsArray = new JSONArray();
 
-                    for (Participant participantTmp : project.getParticipants()) {
+                    for (ParticipantImp participantTmp : projectTmp.getParticipants()) {
                         JSONObject participant = new JSONObject();
                         participant.put("name", participantTmp.getName());
                         participant.put("email", participantTmp.getEmail());
@@ -89,7 +92,7 @@ public class WriteJSON {
 
                     JSONArray tasksArray = new JSONArray();
 
-                    for (Task taskTmp : project.getTasks()) {
+                    for (Task taskTmp : projectTmp.getTasks()) {
                         JSONObject task = new JSONObject();
                         task.put("title", taskTmp.getTitle());
                         task.put("description", taskTmp.getDescription());

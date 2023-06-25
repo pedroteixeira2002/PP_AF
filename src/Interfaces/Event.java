@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Participants.ParticipantImp;
 import enumerations.EventType;
 import exceptions.ParticipantNotAllowed;
 import ma02_resources.participants.Participant;
@@ -13,7 +14,7 @@ public interface Event {
 
     String getLocation();
 
-    Participant[] getParticipants();
+    ParticipantImp[] getParticipants();
 
     LocalDate getStartDate();
 

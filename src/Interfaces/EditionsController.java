@@ -1,12 +1,14 @@
 package Interfaces;
 
+import cbl.EditionImp;
 import ma02_resources.project.Edition;
 
 public interface EditionsController {
-    void addEdition(Edition edition);
+    Edition[] getEditions();
 
     boolean removeEdition(Edition edition);
 
     Edition getEdition(Edition edition);
 
+    void addEdition(Edition edition) throws IllegalArgumentException;
 }

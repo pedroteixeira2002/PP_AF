@@ -1,5 +1,6 @@
 package Interfaces;
 
+import cbl.EditionImp;
 import exceptions.SubmissionsUpToDate;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;

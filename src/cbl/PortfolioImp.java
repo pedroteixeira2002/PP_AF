@@ -15,16 +15,16 @@ public class PortfolioImp implements Portfolio, EditionsController {
     private int numberOfEditions;
 
     public PortfolioImp() {
-        this.editions = new Edition[SIZE];
+        this.editions = new EditionImp[SIZE];
         this.numberOfEditions = 0;
     }
 
     /**
      * Prints the editions in the portfolio
      */
-
-    public Edition[] getEditions() {
-        return editions;
+@Override
+    public EditionImp[] getEditions() {
+        return (EditionImp[]) editions;
     }
 
     /**
@@ -108,7 +108,7 @@ public class PortfolioImp implements Portfolio, EditionsController {
      */
     @Override
     public Edition getEdition(Edition edition) {
-        return editions[getIndex(edition)];
+        return  editions[getIndex(edition)];
     }
 
     @Override

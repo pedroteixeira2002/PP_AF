@@ -1,6 +1,7 @@
 package cbl;
 
 import Interfaces.Event;
+import Participants.ParticipantImp;
 import enumerations.EventType;
 import exceptions.ParticipantNotAllowed;
 import ma02_resources.participants.Facilitator;
@@ -27,8 +28,8 @@ public class EventImp implements Event {
     }
 
     @Override
-    public Participant[] getParticipants() {
-        return participants;
+    public ParticipantImp[] getParticipants() {
+        return (ParticipantImp[]) participants;
     }
 @Override
     public int getNumberOfParticipants() {

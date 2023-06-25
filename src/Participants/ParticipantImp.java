@@ -4,7 +4,7 @@ import ma02_resources.participants.Contact;
 import ma02_resources.participants.Participant;
 import ma02_resources.participants.Instituition;
 
-abstract class ParticipantImp implements Participant {
+public abstract class ParticipantImp implements Participant {
     private final String name;
     private final String email;
     private ContactImp contact;

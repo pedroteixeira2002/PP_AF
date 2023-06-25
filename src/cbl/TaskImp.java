@@ -31,13 +31,14 @@ public class TaskImp implements Task {
     }
 
 
-    public TaskImp(String title, String description, LocalDate start, LocalDate end, int extendDeadline) {
+    public TaskImp(String title, String description, int duration,LocalDate start, LocalDate end, int numberOfSubmissions, Submission[] submissions) {
         this.title = title;
         this.description = description;
         this.start = start;
         this.end = end;
-        this.duration = 0;
-        this.extendDeadline = extendDeadline;
+        this.duration = duration;
+        this.numberOfSubmissions = numberOfSubmissions;
+        this.submissions = submissions;
     }
 
     @Override

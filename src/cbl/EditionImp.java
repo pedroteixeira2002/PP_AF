@@ -1,5 +1,6 @@
 package cbl;
 
+import Interfaces.EditionEnhanced;
 import Interfaces.Event;
 import Interfaces.EventController;
 import application.ReadJSON;
@@ -21,7 +22,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 
-public class EditionImp implements Edition, EventController {
+public class EditionImp implements EditionEnhanced, EventController {
     private static int SIZE = 10;
     private final int FACTOR = 2;
     private String name;
@@ -43,8 +44,6 @@ public class EditionImp implements Edition, EventController {
         this.projects = new Project[SIZE];
         this.events = new Event[SIZE];
     }
-
-
 
     @Override
     public String getName() {
@@ -76,8 +75,8 @@ public class EditionImp implements Edition, EventController {
         return numberOfEvents;
     }
     @Override
-    public Event[] getEvents() {
-        return events;
+    public EventImp[] getEvents() {
+        return (EventImp[]) events;
     }
 
     @Override
@@ -140,8 +139,8 @@ public class EditionImp implements Edition, EventController {
     }
 
     @Override
-    public Project[] getProjects() {
-        return this.projects;
+    public ProjectImp[] getProjects() {
+        return (ProjectImp[]) this.projects;
     }
 
     @Override

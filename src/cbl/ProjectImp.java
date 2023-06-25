@@ -1,5 +1,7 @@
 package cbl;
 
+import Interfaces.ProjectEnhanced;
+import Participants.ParticipantImp;
 import exceptions.*;
 import ma02_resources.participants.*;
 import ma02_resources.project.Project;
@@ -8,7 +10,7 @@ import ma02_resources.project.exceptions.*;
 
 import java.util.Arrays;
 
-public class ProjectImp implements Project {
+public class ProjectImp implements ProjectEnhanced {
     private static int SIZE = 50;
     private final int FACTOR = 2;
     private final String name;
@@ -210,7 +212,10 @@ public class ProjectImp implements Project {
         this.numberOfParticipants++;
     }
 
-    @Override
+    public ParticipantImp[] getParticipants() {
+        return (ParticipantImp[]) participants;
+    }
+
     public Participant removeParticipant(String s) {
         Participant that = getParticipant(s);
         int index = getIndex(that);
