@@ -19,97 +19,109 @@ public class WriteJSON {
     }
 
     public void writeJSON() throws IOException {
+
         PortfolioImp portfolio = new PortfolioImp();
         JSONObject jsonObject = new JSONObject();
 
         try {
             FileWriter fileWriter = new FileWriter("\\json_files\\export.json");
 
-            for (Edition edition : portfolio.getEditions()) {
-                JSONObject editionDetails = new JSONObject();
-                editionDetails.put("name", edition.getName());
-                editionDetails.put("start", edition.getStart().toString());
-                editionDetails.put("end", edition.getEnd().toString());
-                editionDetails.put("status", edition.getStatus().toString());
-                editionDetails.put("projects", edition.getNumberOfProjects());
-                editionDetails.put("events", edition.getNumberOfEvents());
+            JSONArray editionsArray = new JSONArray();
+
+            for (Edition editionTmp : portfolio.getEditions()) {
+                JSONObject edition = new JSONObject();
+                edition.put("name", editionTmp.getName());
+                edition.put("start", editionTmp.getStart().toString());
+                edition.put("end", editionTmp.getEnd().toString());
+                edition.put("status", editionTmp.getStatus().toString());
+                edition.put("number_of_projects", editionTmp.getNumberOfProjects());
+                edition.put("number_of_events", editionTmp.getNumberOfEvents());
 
                 JSONArray eventsArray = new JSONArray();
 
-                for (Event event : edition.getEvents()) {
-                    JSONObject eventDetails = new JSONObject();
-                    eventDetails.put("location", event.getLocation());
-                    eventDetails.put("start", event.getStartDate().toString());
-                    eventDetails.put("end", event.getEndDate().toString());
-                    eventDetails.put("participants", event.getNumberOfParticipants());
+                for (Event eventTmp : editionTmp.getEvents()) {
+                    JSONObject event = new JSONObject();
+                    event.put("location", eventTmp.getLocation());
+                    event.put("start", eventTmp.getStartDate().toString());
+                    event.put("end", eventTmp.getEndDate().toString());
+                    event.put("number_of_participants", eventTmp.getNumberOfParticipants());
 
                     JSONArray participantsArray = new JSONArray();
-                    for (Participant participant : event.getParticipants()) {
-                        JSONObject participantDetails = new JSONObject();
-                        participantDetails.put("name", participant.getName());
-                        participantDetails.put("email", participant.getEmail());
-                        participantDetails.put("type", participant.getContact());
-                        participantDetails.put("status", participant.getInstituition().toString());
-                        participantsArray.add(participantDetails);
+
+                    for (Participant participantTmp : eventTmp.getParticipants()) {
+                        JSONObject participant = new JSONObject();
+                        participant.put("name", participantTmp.getName());
+                        participant.put("email", participantTmp.getEmail());
+                        participant.put("contact", participantTmp.getContact());
+                        participant.put("institution", participantTmp.getInstituition().toString());
+                        participantsArray.add(participant);
                     }
-                    eventDetails.put("participants", participantsArray);
+                    event.put("participants", participantsArray);
 
-                    eventsArray.add(eventDetails);
+                    eventsArray.add(event);
                 }
-                editionDetails.put("events", eventsArray);
 
+                edition.put("events", eventsArray);
                 JSONArray projectsArray = new JSONArray();
-                for (Project project : edition.getProjects()) {
-                    JSONObject projectDetails = new JSONObject();
-                    projectDetails.put("name", project.getName());
-                    projectDetails.put("description", project.getDescription());
-                    projectDetails.put("participants", project.getNumberOfParticipants());
-                    projectDetails.put("students", project.getNumberOfStudents());
-                    projectDetails.put("facilitators", project.getNumberOfFacilitators());
-                    projectDetails.put("partners", project.getNumberOfPartners());
+
+                for (Project projectTmp : editionTmp.getProjects()) {
+                    JSONObject project = new JSONObject();
+                    project.put("name", projectTmp.getName());
+                    project.put("description", projectTmp.getDescription());
+                    project.put("number_of_participants", projectTmp.getNumberOfParticipants());
+                    project.put("number_of_students", projectTmp.getNumberOfStudents());
+                    project.put("number_of_facilitators", projectTmp.getNumberOfFacilitators());
+                    project.put("number_of_partners", projectTmp.getNumberOfPartners());
 
                     JSONArray projectParticipantsArray = new JSONArray();
-                    for (Participant participant : project.getParticipants()) {
-                        JSONObject participantDetails = new JSONObject();
-                        participantDetails.put("name", participant.getName());
-                        participantDetails.put("email", participant.getEmail());
-                        participantDetails.put("type", participant.getContact());
-                        participantDetails.put("status", participant.getInstituition().toString());
-                        projectParticipantsArray.add(participantDetails);
+
+                    for (Participant participantTmp : project.getParticipants()) {
+                        JSONObject participant = new JSONObject();
+                        participant.put("name", participantTmp.getName());
+                        participant.put("email", participantTmp.getEmail());
+                        participant.put("contact", participantTmp.getContact());
+                        participant.put("institution", participantTmp.getInstituition().toString());
+
+                        projectParticipantsArray.add(participant);
                     }
-                    projectDetails.put("participants", projectParticipantsArray);
+
+                    project.put("participants", projectParticipantsArray);
 
                     JSONArray tasksArray = new JSONArray();
-                    for (Task task : project.getTasks()) {
-                        JSONObject taskDetails = new JSONObject();
-                        taskDetails.put("title", task.getTitle());
-                        taskDetails.put("description", task.getDescription());
-                        taskDetails.put("duration", task.getDuration());
-                        taskDetails.put("start", task.getStart().toString());
-                        taskDetails.put("end", task.getEnd().toString());
-                        taskDetails.put("number of submissions", task.getNumberOfSubmissions());
+
+                    for (Task taskTmp : project.getTasks()) {
+                        JSONObject task = new JSONObject();
+                        task.put("title", taskTmp.getTitle());
+                        task.put("description", taskTmp.getDescription());
+                        task.put("duration", taskTmp.getDuration());
+                        task.put("start", taskTmp.getStart().toString());
+                        task.put("end", taskTmp.getEnd().toString());
+                        task.put("number of submissions", taskTmp.getNumberOfSubmissions());
 
                         JSONArray submissionsArray = new JSONArray();
-                        for (Submission submission : task.getSubmissions()) {
-                            JSONObject submissionDetails = new JSONObject();
-                            submissionDetails.put("date", submission.getDate().toString());
-                            submissionDetails.put("student", submission.getStudent());
-                            submissionDetails.put("text", submission.getText());
-                            submissionsArray.add(submissionDetails);
+
+                        for (Submission submissionTmp : taskTmp.getSubmissions()) {
+                            JSONObject submission = new JSONObject();
+                            submission.put("date", submissionTmp.getDate().toString());
+                            submission.put("student", submissionTmp.getStudent());
+                            submission.put("text", submissionTmp.getText());
+
+                            submissionsArray.add(submission);
                         }
-                        taskDetails.put("submissionsDetails", submissionsArray);
 
-                        tasksArray.add(taskDetails);
+                        task.put("submissions", submissionsArray);
+                        tasksArray.add(task);
                     }
-                    projectDetails.put("tasksDetails", tasksArray);
 
-                    projectsArray.add(projectDetails);
+                    project.put("tasks", tasksArray);
+                    projectsArray.add(project);
                 }
-                editionDetails.put("projectsDetails", projectsArray);
 
-                fileWriter.write(editionDetails.toJSONString());
+                edition.put("project", projectsArray);
+                editionsArray.add(edition);
             }
-
+            jsonObject.put("editions", editionsArray);
+            fileWriter.write(jsonObject.toJSONString());
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -99,6 +99,7 @@ public class ReadJSON {
                 // Read other properties of the edition as needed
 
                 JSONArray eventsArray = (JSONArray) editionJSON.get("events");
+
                 for (Object eventObj : eventsArray) {
                     JSONObject eventJSON = (JSONObject) eventObj;
                     String location = (String) eventJSON.get("location");
@@ -143,6 +144,8 @@ public class ReadJSON {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+
+        return portfolio;
     }
 
 

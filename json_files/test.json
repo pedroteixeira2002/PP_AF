@@ -1,0 +1,80 @@
+{
+  "editions": [
+    {
+      "name": "Edition 1",
+      "start": "2023-01-01",
+      "end": "2023-02-01",
+      "status": "Active",
+      "number_of_projects": 2,
+      "number_of_events": 1,
+      "events": [
+        {
+          "location": "Event 1 Location",
+          "start": "2023-01-15",
+          "end": "2023-01-16",
+          "number_of_participants": 50,
+          "participants": [
+            {
+              "name": "Participant 1",
+              "email": "participant1@example.com",
+              "contact": "Phone",
+              "institution": "Institution 1"
+            },
+            {
+              "name": "Participant 2",
+              "email": "participant2@example.com",
+              "contact": "Email",
+              "institution": "Institution 2"
+            }
+          ]
+        }
+      ],
+      "project": [
+        {
+          "name": "Project 1",
+          "description": "Project 1 description",
+          "number_of_participants": 10,
+          "number_of_students": 8,
+          "number_of_facilitators": 2,
+          "number_of_partners": 1,
+          "participants": [
+            {
+              "name": "Participant 1",
+              "email": "participant1@example.com",
+              "contact": "Phone",
+              "institution": "Institution 1"
+            },
+            {
+              "name": "Participant 2",
+              "email": "participant2@example.com",
+              "contact": "Email",
+              "institution": "Institution 2"
+            }
+          ],
+          "tasks": [
+            {
+              "title": "Task 1",
+              "description": "Task 1 description",
+              "duration": "2 days",
+              "start": "2023-01-02",
+              "end": "2023-01-04",
+              "number_of_submissions": 5,
+              "submissions": [
+                {
+                  "date": "2023-01-03",
+                  "student": "Student 1",
+                  "text": "Submission text 1"
+                },
+                {
+                  "date": "2023-01-03",
+                  "student": "Student 2",
+                  "text": "Submission text 2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
