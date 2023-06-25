@@ -10,6 +10,9 @@
 
 package exceptions;
 
+/**
+ * this exception is thrown when a event is already in the project
+ */
 public class EventAlreadyInProject extends Exception{
     public EventAlreadyInProject(String message) {
         super(message);

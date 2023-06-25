@@ -21,6 +21,9 @@ import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
 
 import java.io.IOException;
 
+/**
+ * This class represents the main menu
+ */
 public class MainMenu {
     public static void main(String[] args) throws ParticipantAlreadyInProject, IllegalNumberOfParticipantType, IOException {
 

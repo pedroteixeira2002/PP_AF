@@ -10,6 +10,9 @@
 
 package enumerations;
 
+/**
+ * this enumeration represents the type of event
+ */
 public enum EventType {
     KICKOFF,
     PITCH,
@@ -17,8 +20,13 @@ public enum EventType {
 
     private EventType() {
     }
-public String toString() {
-        switch(this) {
+
+    /**
+     * this method returns the event type in a string format
+     * @return the event type in a string format
+     */
+    public String toString() {
+        switch (this) {
             case KICKOFF:
                 return "Kickoff Meeting";
             case PITCH:

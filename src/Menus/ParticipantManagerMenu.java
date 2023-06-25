@@ -22,6 +22,9 @@ import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
 
 import java.io.IOException;
 
+/**
+ * This class represents the Participant Manager Menu
+ */
 public class ParticipantManagerMenu implements MenuDisplay {
     @Override
     public void display() {
@@ -31,6 +34,13 @@ public class ParticipantManagerMenu implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
+    /**
+     * This method handles the Participant Manager Menu
+     * @param menuManager the menu manager
+     * @param project the project to add the participant to
+     * @throws ParticipantAlreadyInProject if the participant is already in the project
+     * @throws IllegalNumberOfParticipantType if the number of participants is illegal
+     */
     public static void handleParticipantManagerMenu(MenuManager menuManager, ProjectImp project) throws ParticipantAlreadyInProject, IllegalNumberOfParticipantType {
 
         ParticipantManagerMenu participantManager = new ParticipantManagerMenu();
@@ -66,6 +76,9 @@ public class ParticipantManagerMenu implements MenuDisplay {
     }
 
 
+    /**
+     * This method displays the sub menu for the participant type
+     */
     public static Participant readParticipant() {
 
         boolean isSubMenuRunning = true;
@@ -236,7 +249,9 @@ public class ParticipantManagerMenu implements MenuDisplay {
         return null;
     }
 
-
+    /**
+     * This method displays the sub menu for the participant type
+     */
     public static void subMenuParticipantType() {
         System.out.println("Choose Participant Type:");
         System.out.println("1 - Student");

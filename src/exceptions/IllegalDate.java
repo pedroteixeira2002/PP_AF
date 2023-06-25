@@ -10,6 +10,9 @@
 
 package exceptions;
 
+/**
+ * this exception is thrown when the date is not valid
+ */
 public class IllegalDate extends Exception{
     public IllegalDate(String message) {
         super(message);

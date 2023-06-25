@@ -10,6 +10,9 @@
 
 package exceptions;
 
+/**
+ * this exception is thrown when a tag is already in the project
+ */
 public class TagAlreadyInProject extends Exception {
     public TagAlreadyInProject(String message) {
         super(message);

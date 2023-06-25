@@ -10,6 +10,9 @@
 
 package exceptions;
 
+/**
+ * this exception is thrown when an edition is not active
+ */
 public class EditionNotActive extends Exception{
     public EditionNotActive(String message) {
         super(message);

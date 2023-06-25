@@ -15,7 +15,9 @@ import exceptions.EventAlreadyStarted;
 import exceptions.IllegalDate;
 
 import java.time.LocalDate;
-
+/**
+ * this interface is responsible for enhancing the event controller
+ */
 public interface EventController {
      int getNumberOfEvents();
      Event[] getEvents();

@@ -19,6 +19,9 @@ import ma02_resources.project.Status;
 import java.io.IOException;
 import java.time.LocalDate;
 
+/**
+ * Class that represents the Edition Manager Menu
+ */
 public class EditionManagerMenu implements MenuDisplay {
     @Override
     public void display() {
@@ -33,6 +36,12 @@ public class EditionManagerMenu implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
+    /**
+     * This method handles the Edition Manager Menu
+     * @param menuManager the menu manager
+     * @param portfolio the portfolio
+     * @throws IOException if an error occurs while reading the edition
+     */
     public static void handleEditionManagerMenu(MenuManager menuManager, PortfolioImp portfolio) throws IOException {
 
         EditionManagerMenu editionManager = new EditionManagerMenu();
@@ -168,6 +177,11 @@ public class EditionManagerMenu implements MenuDisplay {
         }
 
     }
+
+    /**
+     * This method reads an edition from the user
+     * @return the edition
+     */
     public static Edition readEdition() {
 
         String editionName;

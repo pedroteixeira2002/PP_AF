@@ -24,14 +24,18 @@ import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
-/*+
-    This class implements the UserInput interface and defines the methods
+/**
+ This class implements the UserInput interface and defines the methods
  */
 public class UserInput {
     String city, state, country, street, zipCode, phone;
     LocalDate startDate, endDate;
     String name, description, location;
 
+    /**
+     * This method returns a string that is read from the keyboard.
+     * @return The string that was read from the keyboard.
+     */
     public static Contact getContact() {
         Scanner scanner = new Scanner(System.in);
         String city, state, country, street, zipCode, phone;
@@ -105,6 +109,10 @@ public class UserInput {
 
     }
 
+    /**
+     * This method returns a string that is read from the keyboard.
+     * @return The string that was read from the keyboard.
+     */
     public static Instituition getInstituition() {
         Scanner scanner = new Scanner(System.in);
         String name, description, location, website, email;
@@ -163,6 +171,10 @@ public class UserInput {
         return new InstituitionImp(name, contact, email, type, description, website);
     }
 
+    /**
+     * This method returns a string that is read from the keyboard.
+     * @return The string that was read from the keyboard.
+     */
     public static InstituitionType getInstitution() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the institution type:\n" +
@@ -185,6 +197,12 @@ public class UserInput {
         }
     }
 
+    /**
+     * This method returns a string that is read from the keyboard.
+     * @return The string that was read from the keyboard.
+     *
+     * @throws IOException If the string is null, empty or blank.
+     */
     public static String getString() throws IOException {
         String string;
         Scanner scanner = new Scanner(System.in);
@@ -195,6 +213,10 @@ public class UserInput {
         return string;
     }
 
+    /**
+     * This method returns an integer that is read from the keyboard.
+     * @return The integer that was read from the keyboard.
+     */
     public static int getInt() {
         int num;
         Scanner scanner = new Scanner(System.in);
@@ -202,6 +224,10 @@ public class UserInput {
         return num;
     }
 
+    /**
+     * This method returns a LocalDate that is read from the keyboard.
+     * @return The LocalDate that was read from the keyboard.
+     */
     public static LocalDate getLocalDate() {
         LocalDate localDate = null;
         Scanner scanner = new Scanner(System.in);
@@ -214,6 +240,11 @@ public class UserInput {
         return localDate;
     }
 
+    /**
+     * This method returns a Task that is read from the keyboard.
+     * @return The Task that was read from the keyboard.
+     *
+     */
     public static Task getTask() {
 
         String title, description;
@@ -275,6 +306,10 @@ public class UserInput {
         return null;
     }
 
+    /**
+     * This method returns a Contact that is read from the keyboard.
+     * @return The Contact that was read from the keyboard.
+     */
     public static Status getStatus() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the status:\n" +
@@ -298,6 +333,10 @@ public class UserInput {
         }
     }
 
+    /**
+     * This method returns the contact's stree.
+     * @return The Contact that was read from the keyboard.
+     */
     public String getStreet() {
         do {
             try {
@@ -311,6 +350,10 @@ public class UserInput {
         return street;
     }
 
+    /**
+     * This method returns the contact's city.
+     * @return The Contact that was read from the keyboard.
+     */
     public String getCity() {
         do {
             try {
@@ -324,6 +367,10 @@ public class UserInput {
         return city;
     }
 
+    /**
+     * This method returns the contact's state.
+     * @return The Contact that was read from the keyboard.
+     */
     public String getState() {
         do {
             try {
@@ -338,6 +385,11 @@ public class UserInput {
     }
 
 
+    /**
+     * This method returns a Contact that is read from the keyboard.
+     * @return The Contact that was read from the keyboard.
+     *
+     */
     public String getZipCode() {
         do {
             try {
@@ -351,7 +403,10 @@ public class UserInput {
         return zipCode;
     }
 
-
+    /**
+     * This method returns the contact's country.
+     * @return The Contact that was read from the keyboard.
+     */
     public String getCountry() {
         do {
             try {
@@ -365,7 +420,10 @@ public class UserInput {
         return country;
     }
 
-
+    /**
+     * This method returns the contact's phone number.
+     * @return The Contact that was read from the keyboard.
+     */
     public String getPhone() {
         do {
             try {
@@ -383,7 +441,11 @@ public class UserInput {
         return phone;
     }
 
-
+    /**
+     * This method returns equal if the objects are equal, false otherwise.
+     * @param o The object to compare to.
+     * @return True if the objects are equal, false otherwise.
+     */
     public boolean equals(Object o) {
         return false;
     }

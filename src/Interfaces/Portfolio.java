@@ -15,6 +15,9 @@ import exceptions.SubmissionsUpToDate;
 import ma02_resources.project.Edition;
 import ma02_resources.project.Project;
 
+/**
+ * this interface is responsible for enhancing the portfolio
+ */
 public interface Portfolio {
     int getNumberOfEditions();
 

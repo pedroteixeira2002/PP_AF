@@ -13,6 +13,9 @@ package Interfaces;
 import cbl.EditionImp;
 import ma02_resources.project.Edition;
 
+/**
+ * this interface is responsible for enhancing the editions controller
+ */
 public interface EditionsController {
     Edition[] getEditions();
 

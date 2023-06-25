@@ -20,6 +20,9 @@ import ma02_resources.participants.Partner;
 
 import java.time.LocalDate;
 
+/**
+ * This class represents an event
+ */
 public class EventImp implements Event {
     private int SIZE = 20;
     private static final int FACTOR = 2;
@@ -29,6 +32,14 @@ public class EventImp implements Event {
     private Participant[] participants;
     private int numberOfParticipants;
 
+    /**
+     * constructor of the class
+     * @param type the type of the event
+     * @param location the location of the event
+     * @param startDate the start date of the event
+     * @param endDate the end date of the event
+     * @param participants the participants of the event
+     */
     public EventImp(EventType type, String location, LocalDate startDate, LocalDate endDate, Participant[] participants) {
         this.type = type;
         this.location = location;
@@ -37,53 +48,91 @@ public class EventImp implements Event {
         this.participants = new Participant[SIZE];
     }
 
+    /**
+     * this method returns the participants of the event
+     * @return the participants of the event
+     */
     @Override
     public ParticipantImp[] getParticipants() {
         return (ParticipantImp[]) participants;
     }
-@Override
+
+    /**
+     * this method returns the number of participants of the event
+     * @return the number of participants of the event
+     */
+    @Override
     public int getNumberOfParticipants() {
         return numberOfParticipants;
     }
 
+    /**
+     * this method returns the type of the event
+     * @return the type of the event
+     */
     @Override
     public EventType getType() {
         return type;
     }
 
+    /**
+     * this method returns the location of the event
+     * @return the location of the event
+     */
     @Override
     public String getLocation() {
         return location;
     }
 
+    /**
+     * this method returns the start date of the event
+     * @return the start date of the event
+     */
     @Override
     public LocalDate getStartDate() {
         return startDate;
     }
 
+    /**
+     * this method returns the end date of the event
+     * @return the end date of the event
+     */
     @Override
     public LocalDate getEndDate() {
         return endDate;
     }
 
+    /**
+     * this method sets the location of the event
+     * @param location the location of the event
+     */
     @Override
     public void setLocation(String location) {
         this.location = location;
     }
 
+    /**
+     * this method sets the start date of the event
+     * @param startDate the start date of the event
+     */
     @Override
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * this method sets the end date of the event
+     * @param endDate the end date of the event
+     */
     @Override
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
     /**
-     * @param participant
-     * @throws ParticipantNotAllowed
+     * this method adds a participant to the event
+     * @param participant the participant to be added
+     * @throws ParticipantNotAllowed if the participant is not allowed in the event
      */
     @Override
     public void addParticipantsToEvent(Participant participant) throws ParticipantNotAllowed {
@@ -106,6 +155,9 @@ public class EventImp implements Event {
         numberOfParticipants++;
     }
 
+    /**
+     * this method removes a participant from the event
+     */
     private void expandParticipants() {
 
         Participant[] newParticipants = new Participant[participants.length * FACTOR];
@@ -115,6 +167,10 @@ public class EventImp implements Event {
         participants = newParticipants;
     }
 
+    /**
+     * this method returns the information of the event
+     * @return the information of the event
+     */
     @Override
     public String toString() {
         return "\n -------Event-------" +

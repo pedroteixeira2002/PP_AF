@@ -10,6 +10,9 @@
 
 package exceptions;
 
+/**
+ * this exception is thrown when a participant is not allowed
+ */
 public class ParticipantNotAllowed extends Exception{
     public ParticipantNotAllowed(String message) {
         super(message);

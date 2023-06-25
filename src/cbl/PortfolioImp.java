@@ -18,7 +18,9 @@ import ma02_resources.project.Project;
 import ma02_resources.project.Status;
 import ma02_resources.project.Task;
 
-
+/**
+ * This class represents a portfolio
+ */
 public class PortfolioImp implements Portfolio, EditionsController {
     private static int SIZE = 10;
     private Edition[] editions;
@@ -66,8 +68,9 @@ public class PortfolioImp implements Portfolio, EditionsController {
     }
 
     /**
-     * @param edition
-     * @throws IllegalArgumentException
+     * this method checks if the edition already exists
+     * @param edition the edition to be checked
+     * @throws IllegalArgumentException if the edition already exists
      */
     @Override
     public void hasEdition(Edition edition) throws IllegalArgumentException {
@@ -82,6 +85,11 @@ public class PortfolioImp implements Portfolio, EditionsController {
 
     }
 
+    /**
+     * this method gets the index of the edition
+     * @param edition the edition to be checked
+     * @return the index of the edition
+     */
     public int getIndex(Edition edition) {
         for (int i = 0; i < editions.length; i++) {
             if (editions[i] == edition)
@@ -91,8 +99,9 @@ public class PortfolioImp implements Portfolio, EditionsController {
     }
 
     /**
-     * @param name
-     * @return
+     * this method removes the edition
+     * @param name the name of the edition to be removed
+     * @return true if the edition was removed
      */
     @Override
     public boolean removeEdition(String name) {
@@ -111,6 +120,10 @@ public class PortfolioImp implements Portfolio, EditionsController {
         return true;
     }
 
+    /**
+     * this method set the status of the edition to active or inactive
+     * @param name the name of the edition
+     */
     public void setStatusActive(String name) {
         Edition that = getEdition(name);
 
@@ -124,14 +137,20 @@ public class PortfolioImp implements Portfolio, EditionsController {
     }
 
     /**
-     * @param edition
-     * @return
+     * this method gets the edition
+     * @param edition the edition to be checked
+     * @return the edition
      */
     @Override
     public Edition getEdition(Edition edition) {
         return editions[getIndex(edition)];
     }
 
+    /**
+     * this method gets the edition
+     * @param name the name of the edition
+     * @return the edition
+     */
     public Edition getEdition(String name) {
         for (Edition edition : editions) {
             if (edition.getName().equals(name)) {
@@ -141,12 +160,20 @@ public class PortfolioImp implements Portfolio, EditionsController {
         return null;
     }
 
+    /**
+     * this methhod lists the editions
+     */
     public void listEditions() {
         for (Edition edition : editions) {
             System.out.println(edition.toString());
         }
     }
 
+    /**
+     * this method checks the all missing submissions
+     * @return the edition
+     * @throws SubmissionsUpToDate if all submissions are up-to-date
+     */
     @Override
     public Edition allMissingSubmissions() throws SubmissionsUpToDate {
         for (Edition edition : this.editions) {
@@ -161,6 +188,12 @@ public class PortfolioImp implements Portfolio, EditionsController {
         throw new SubmissionsUpToDate("All submissions are up to date");
     }
 
+    /**
+     * this method checks the missing submissions
+     * @param edition the edition to be checked
+     * @return the project
+     * @throws SubmissionsUpToDate if all submissions are up-to-date
+     */
     @Override
     public Project missingSubmissions(Edition edition) throws SubmissionsUpToDate {
         if (edition == null) {

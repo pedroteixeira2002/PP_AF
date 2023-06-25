@@ -13,6 +13,9 @@ package Interfaces;
 import ma02_resources.participants.Student;
 import ma02_resources.project.Submission;
 
+/**
+ * this interface is responsible for enhancing the task
+ */
 public interface TaskEnhanced {
 
     void addSubmission(Submission submission, Student student) throws IllegalArgumentException;

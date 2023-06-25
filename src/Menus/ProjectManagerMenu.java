@@ -21,7 +21,9 @@ import java.io.IOException;
 
 import static Menus.ParticipantManagerMenu.readParticipant;
 
-
+/**
+ * This class represents the Project Manager Menu
+ */
 public class ProjectManagerMenu implements MenuDisplay {
     @Override
     public void display() {
@@ -37,6 +39,12 @@ public class ProjectManagerMenu implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
+    /**
+     * This method adds a participant to a project
+     *
+     * @param edition the edition to add the participant to
+     * @throws IOException if an error occurs while reading the participant
+     */
     public static void handleProjectManagerMenu(MenuManager menuManager, Edition edition) throws IOException {
 
         ProjectManagerMenu projectManager = new ProjectManagerMenu();
@@ -104,6 +112,10 @@ public class ProjectManagerMenu implements MenuDisplay {
 
     }
 
+    /**
+     * This method adds a task to a project
+     * @param edition the edition to add the task to
+     */
     private void removeParticipant(Edition edition) {
 
         String participantEmail, projectName;
@@ -122,6 +134,10 @@ public class ProjectManagerMenu implements MenuDisplay {
 
     }
 
+    /**
+     * This method adds a participant to a project
+     * @param edition the edition to add the participant to
+     */
     private void addParticipant(Edition edition){
         String participantEmail, projectName;
 
@@ -138,6 +154,10 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
     }
 
+    /**
+     * This method adds a tag to a project
+     * @param edition the edition to add the tag to
+     */
     private void addTag(Edition edition) {
 
         String tag, projectName;
@@ -155,6 +175,10 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
     }
 
+    /**
+     * This method removes a tag from a project
+     * @param edition the edition to remove the tag from
+     */
     private void removeTag(Edition edition) {
 
         String tag, projectName;
@@ -172,6 +196,10 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
     }
 
+    /**
+     * This method adds a task to a project
+     * @param edition the edition to add the task to
+     */
     private void addTask(Edition edition) {
 
         String projectName;
@@ -186,6 +214,5 @@ public class ProjectManagerMenu implements MenuDisplay {
         }
 
     }
-
 
 }
