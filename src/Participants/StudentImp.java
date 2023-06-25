@@ -20,7 +20,7 @@ import ma02_resources.participants.Student;
 public class StudentImp extends ParticipantImp implements Student {
     private final int number;
 
-    public StudentImp(String name, String email, Contact contactImp, Instituition instituitionImp, int number) {
+    public StudentImp(String name, String email, ContactImp contactImp, InstituitionImp instituitionImp, int number) {
         super(name, email, contact, instituition);
         this.number = number;
     }
@@ -53,7 +53,7 @@ public class StudentImp extends ParticipantImp implements Student {
      * @return the contact of the student
      */
     @Override
-    public ContactImp getContact() {
+    public Contact getContact() {
         return super.getContact();
     }
 
@@ -61,7 +61,7 @@ public class StudentImp extends ParticipantImp implements Student {
      * @return the instituition of the student
      */
     @Override
-    public InstituitionImp getInstituition() {
+    public Instituition getInstituition() {
         return super.getInstituition();
     }
 

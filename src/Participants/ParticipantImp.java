@@ -22,8 +22,8 @@ import ma02_resources.participants.Instituition;
 public abstract class ParticipantImp implements Participant {
     private final String name;
     private final String email;
-    private Contact contact;
-    private Instituition instituition;
+    private ContactImp contact;
+    private InstituitionImp instituition;
 
     /**
      * This constructor creates a ParticipantImp object with the following parameters.
@@ -62,7 +62,7 @@ public abstract class ParticipantImp implements Participant {
      * @return The contact of the participant.
      */
     @Override
-    public ContactImp getContact() {
+    public Contact getContact() {
         return contact;
     }
 
@@ -70,7 +70,7 @@ public abstract class ParticipantImp implements Participant {
      * this method returns the instituition of the participant.
      * @return The instituition of the participant.
      */
-    public InstituitionImp getInstituition() {
+    public Instituition getInstituition() {
         return instituition;
     }
 
