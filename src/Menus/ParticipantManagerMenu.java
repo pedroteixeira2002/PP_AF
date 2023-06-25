@@ -3,6 +3,9 @@ package Menus;
 import Interfaces.MenuDisplay;
 import Participants.*;
 import cbl.ProjectImp;
+import ma02_resources.participants.Contact;
+import ma02_resources.participants.Instituition;
+import ma02_resources.participants.InstituitionType;
 import ma02_resources.participants.Participant;
 import ma02_resources.project.exceptions.IllegalNumberOfParticipantType;
 import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
@@ -57,7 +60,7 @@ public class ParticipantManagerMenu implements MenuDisplay {
 
         boolean isSubMenuRunning = true;
 
-        String name, email, instituition, contact;
+        String name, email;
 
         while (isSubMenuRunning) {
 
@@ -94,25 +97,13 @@ public class ParticipantManagerMenu implements MenuDisplay {
                             email = null;
                         }
                     } while (email == null);
-                    do {
-                        System.out.println("Enter the student's instituition:\n");
-                        try {
-                            instituition = UserInput.getString();
-                        } catch (Exception e) {
-                            instituition = null;
-                        }
-                    } while (instituition == null);
-                    do {
-                        System.out.println("Enter the student's contact:\n");
-                        try {
-                            contact = UserInput.getString();
-                        } catch (Exception e) {
-                            contact = null;
-                        }
-                    } while (contact == null);
-                    StudentImp student = new StudentImp(name, email, instituition, contact, number);
 
-                    break;
+                    ContactImp contact = (ContactImp) UserInput.getContact();
+                    InstituitionImp instituition = (InstituitionImp) UserInput.getInstituition();
+
+                    StudentImp student = new StudentImp(name, email, contact, instituition, number);
+                    return student;
+
                 case 2: //Partner
                     String vat, website;
 
@@ -159,19 +150,12 @@ public class ParticipantManagerMenu implements MenuDisplay {
                         }
                     } while (website == null);
 
-                    do {
-                        System.out.println("Enter the partner's contact:\n");
-                        try {
-                            contact = UserInput.getString();
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                            contact = null;
-                        }
-                    } while (contact == null);
+                    ContactImp contact1 = (ContactImp) UserInput.getContact();
+                    InstituitionImp instituition1 = (InstituitionImp) UserInput.getInstituition();
 
-                    PartnerImp partner = new PartnerImp(name, vat, email, website, contact);
-                    manager.addParticipant(partner);
-                    break;
+
+                    PartnerImp partner = new PartnerImp(name, email, contact1, instituition1, vat, website);
+                    return partner;
                 case 3: //Facilitator
                     String areaOfExpertise;
 
@@ -205,29 +189,12 @@ public class ParticipantManagerMenu implements MenuDisplay {
                         }
                     } while (email == null);
 
-                    do {
-                        System.out.println("Enter the facilitator's contact:\n");
-                        try {
-                            contact = UserInput.getString();
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                            contact = null;
-                        }
-                    } while (contact == null);
+                    ContactImp contact2 = (ContactImp) UserInput.getContact();
+                    InstituitionImp instituition2 = (InstituitionImp) UserInput.getInstituition();
 
-                    do {
-                        System.out.println("Enter the facilitator's instituition:\n");
-                        try {
-                            instituition = UserInput.getString();
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                            instituition = null;
-                        }
-                    } while (instituition == null);
+                    FacilitatorImp facilitator = new FacilitatorImp(name, email, contact2, instituition2, areaOfExpertise);
+                    return facilitator;
 
-                    FacilitatorImp facilitator = new FacilitatorImp(name, areaOfExpertise, email, instituition, contact);
-                    portefolio.addParticipant(facilitator);
-                    break;
                 case 4: //Judge
                     do {
                         System.out.println("Enter the judge's name:\n");
@@ -246,31 +213,17 @@ public class ParticipantManagerMenu implements MenuDisplay {
                         }
                     } while (email == null);
 
-                    do {
-                        System.out.println("Enter the judge's instituition:\n");
-                        try {
-                            instituition = UserInput.getString();
-                        } catch (Exception e) {
-                            instituition = null;
-                        }
-                    } while (instituition == null);
-                    do {
-                        System.out.println("Enter the judge's contact:\n");
-                        try {
-                            contact = UserInput.getString();
-                        } catch (Exception e) {
-                            contact = null;
-                        }
-                    } while (contact == null);
-                    break;
+                    ContactImp contact3 = (ContactImp) UserInput.getContact();
+                    InstituitionImp instituition3 = (InstituitionImp) UserInput.getInstituition();
+                    JudgeImp judge = new JudgeImp(name, email, contact3, instituition3);
+
+                    return judge;
                 default:
                     System.out.println("Invalid option");
                     break;
             }
-
         }
-
-
+        return null;
     }
 
 

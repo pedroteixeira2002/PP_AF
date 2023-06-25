@@ -19,7 +19,7 @@ public class MenuStartManagement implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
-    public static void handleStartMenu(MenuManager menuManager, PortfolioImp portfolio, ProjectImp project, EditionImp edition) throws IOException, ParticipantAlreadyInProject, IllegalNumberOfParticipantType {
+    public static void handleStartMenu(MenuManager menuManager, PortfolioImp portfolio, ProjectImp project) throws IOException, ParticipantAlreadyInProject, IllegalNumberOfParticipantType {
 
         MenuStartManagement menuStart = new MenuStartManagement();
         boolean isStartManagementRunning = true;

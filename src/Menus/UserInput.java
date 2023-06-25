@@ -1,12 +1,16 @@
 package Menus;
 
+import Participants.InstituitionImp;
 import cbl.*;
 import Participants.ContactImp;
 import ma02_resources.participants.Contact;
+import ma02_resources.participants.Instituition;
+import ma02_resources.participants.InstituitionType;
 import ma02_resources.project.Status;
 import ma02_resources.project.Task;
 
 
+import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -16,6 +20,158 @@ public class UserInput {
     LocalDate startDate, endDate;
     String name, description, location;
 
+    public static Contact getContact() {
+        Scanner scanner = new Scanner(System.in);
+        String city, state, country, street, zipCode, phone;
+        int nDoor;
+
+        do {
+            try {
+                System.out.println("Enter the city's name:\n");
+                city = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                city = null;
+            }
+        } while (city == null);
+
+        do {
+            try {
+                System.out.println("Enter the state's name:\n");
+                state = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                state = null;
+            }
+        } while (state == null);
+
+        do {
+            try {
+                System.out.println("Enter the country's name:\n");
+                country = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                country = null;
+            }
+        } while (country == null);
+
+        do {
+            try {
+                System.out.println("Enter the street's name:\n");
+                street = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                street = null;
+            }
+        } while (street == null);
+
+        do {
+            try {
+                System.out.println("Enter the Zip Code:\n");
+                zipCode = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                zipCode = null;
+            }
+        } while (zipCode == null);
+
+        do {
+            try {
+                System.out.println("Enter the Phone number:\n");
+                phone = getString();
+                if (!phone.matches("[0-9]+")) {
+                    System.err.println("Phone number cannot contain letters.");
+                    throw new IOException();
+                }
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                phone = null;
+            }
+        } while (phone == null);
+
+        return new ContactImp(city, state, country, street, zipCode, phone);
+
+    }
+
+    public static Instituition getInstituition() {
+        Scanner scanner = new Scanner(System.in);
+        String name, description, location, website, email;
+
+        do {
+            try {
+                System.out.println("Enter the institution's name:\n");
+                name = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                name = null;
+            }
+        } while (name == null);
+
+        do {
+            try {
+                System.out.println("Enter the institution's email:\n");
+                email = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                email = null;
+            }
+        } while (email == null);
+        do {
+            try {
+                System.out.println("Enter the institution's description:\n");
+                description = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                description = null;
+            }
+        } while (description == null);
+
+        do {
+            try {
+                System.out.println("Enter the institution's website:\n");
+                website = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                website = null;
+            }
+        } while (website == null);
+
+        do {
+            try {
+                System.out.println("Enter the institution's location:\n");
+                location = getString();
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                location = null;
+            }
+        } while (location == null);
+        ContactImp contact = (ContactImp) getContact();
+        InstituitionType type = getInstitution();
+
+        return new InstituitionImp(name, contact, email, type, description, website);
+    }
+
+    public static InstituitionType getInstitution() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the institution type:\n" +
+                "1 - NGO\n" +
+                "2 - Company\n" +
+                "3 - University\n" +
+                "4 - Other\n");
+        int input = scanner.nextInt();
+        switch (input) {
+            case 1:
+                return InstituitionType.NGO;
+            case 2:
+                return InstituitionType.COMPANY;
+            case 3:
+                return InstituitionType.UNIVERSITY;
+            case 4:
+                return InstituitionType.OTHER;
+            default:
+                return null;
+        }
+    }
 
     public static String getString() throws IOException {
         String string;
@@ -107,8 +263,13 @@ public class UserInput {
         return null;
     }
 
-    public static Status getStatus(){
+    public static Status getStatus() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the status:\n" +
+                "1 - Active\n" +
+                "2 - Inactive\n" +
+                "3 - Closed\n" +
+                "4 - Canceled\n");
         int input = scanner.nextInt();
 
         switch (input) {
@@ -124,6 +285,7 @@ public class UserInput {
                 return null;
         }
     }
+
     public String getStreet() {
         do {
             try {

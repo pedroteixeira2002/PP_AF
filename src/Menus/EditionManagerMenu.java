@@ -53,6 +53,7 @@ public class EditionManagerMenu implements MenuDisplay {
                     }
                     break;
                 case 2:
+                    System.out.println("Enter the name of the edition you want to remove");
                     portfolio.removeEdition(UserInput.getString());
                     break;
                 case 3:
@@ -79,7 +80,6 @@ public class EditionManagerMenu implements MenuDisplay {
                         System.out.println("Enter the name of the edition you want to add a project to");
                         editionName = UserInput.getString();
                         Edition that = portfolio.getEdition(editionName);
-
 
                         do {
                             System.out.println("Enter the name of the project");
@@ -158,7 +158,6 @@ public class EditionManagerMenu implements MenuDisplay {
         }
 
     }
-
     public static Edition readEdition() {
 
         String editionName;
@@ -185,23 +184,6 @@ public class EditionManagerMenu implements MenuDisplay {
         } while (start == null);
 
         do {
-<<<<<<< Updated upstream
-            System.out.println("Enter the status of the edition: Active, Inactive, Closed, Unknown, Canceled");
-=======
-            System.out.println("Enter the status of the edition");
->>>>>>> Stashed changes
-            try {
-                status = UserInput.getStatus();
-            } catch (Exception e) {
-                status = null;
-            }
-        } while (status == null);
-
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-        do {
             System.out.println("Enter the end date of the edition");
             try {
                 end = UserInput.getLocalDate();
@@ -212,111 +194,4 @@ public class EditionManagerMenu implements MenuDisplay {
 
         return new EditionImp(editionName, start, end, Status.INACTIVE);
     }
-<<<<<<< Updated upstream
-=======
-
-    public void removeEdition(Manager manager) {
-        UserInput input = new UserInput();
-
-        try {
-            System.out.println("Enter the name of the edition you want to remove");
-            manager.removeEdition(input.getString());
-        } catch (Exception e) {
-            System.out.println("Edition removal failed");
-        }
-    }
-
-    public void createProject(Manager manager) {
-
-        String projectName;
-        String projectDescription;
-        String editionName;
-        String[] tags = new String[10];
-
-        do {
-            System.out.println("Enter the name of the project");
-            try {
-                projectName = UserInput.getString();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                projectName = null;
-            }
-        } while (projectName == null);
-
-        do {
-            System.out.println("Enter the tags of the project");
-            try {
-                tags = UserInput.getTags();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                tags = null;
-            }
-        } while (tags == null);
-
-
-        do {
-            System.out.println("Enter the description of the project");
-            try {
-                projectDescription = UserInput.getString();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                projectDescription = null;
-            }
-        } while (projectDescription == null);
-
-        do {
-            System.out.println("Enter the name of the edition that the project belongs to");
-            try {
-                editionName = UserInput.getString();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                editionName = null;
-            }
-        } while (editionName == null);
-
-        try {
-            manager.getEdition(editionName).addProject(projectName, projectDescription, tags);
-            System.out.println("Project created successfully");
-        } catch (Exception e) {
-            System.out.println("Project creation failed");
-
-        }
-
-    }
-
-    public void removeProject(Manager manager) {
-
-        String editionName;
-        String projectName;
-
-        do {
-            System.out.println("Enter the name of the edition you wish to remove the project from");
-            try {
-                editionName = UserInput.getString();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                editionName = null;
-            }
-        } while (editionName == null);
-
-        do {
-            System.out.println("Enter the name of the project you wish to remove");
-            try {
-                projectName = UserInput.getString();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                projectName = null;
-            }
-        } while (projectName == null);
-
-        try {
-            manager.getEdition(editionName).removeProject(projectName);
-            System.out.println("Project removed successfully");
-        } catch (Exception e) {
-            System.out.println("Project removal failed");
-        }
-
-    }
-
->>>>>>> Stashed changes
 }

@@ -31,7 +31,7 @@ public class MenuStart implements MenuDisplay {
 
             switch (option) {
                 case 1: // Edition Manager
-                    //EditionManagerMenu.navigateEditionManagerMenu(menuManager, manager);
+                    EditionManagerMenu.navigateEditionManagerMenu(menuManager);
                     break;
                 case 2:
                     try {
@@ -42,10 +42,10 @@ public class MenuStart implements MenuDisplay {
                     }
                     break;
                 case 3:
-                    //EventManagerMenu.navigateEventManagerMenu(menuManager, manager);
+                    EventManagerMenu.navigateEventManagerMenu(menuManager);
                     break;
                 case 4:
-                    //ParticipantManagerMenu.navigateParticipantManagerMenu(menuManager, manager);
+                    ParticipantManagerMenu.navigateParticipantManagerMenu(menuManager);
                     break;
                 case 0:
                     isRunning = false;

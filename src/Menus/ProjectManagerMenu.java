@@ -49,7 +49,7 @@ public class ProjectManagerMenu implements MenuDisplay {
                     System.out.println("Enter the name of the project you want to add a participant to");
                     String name = UserInput.getString();
                     ProjectImp project = (ProjectImp) edition.getProject(name);
-                    projectManager.addParticipant(project);
+                    projectManager.addParticipant(edition);
                     break;
                 case 2:
                     projectManager.removeParticipant(edition);
