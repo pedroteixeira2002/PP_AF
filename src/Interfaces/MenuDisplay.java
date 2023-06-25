@@ -10,6 +10,9 @@
 
 package Interfaces;
 
+/**
+ * this interface is responsible for enhancing the menu
+ */
 public interface MenuDisplay {
 
     void display();

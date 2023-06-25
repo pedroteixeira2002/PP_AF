@@ -10,6 +10,9 @@
 
 package exceptions;
 
+/**
+ * this exception is thrown when a event is already started
+ */
 public class EventAlreadyStarted extends Exception{
     public EventAlreadyStarted(String message) {
         super(message);

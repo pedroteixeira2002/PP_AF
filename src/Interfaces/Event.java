@@ -17,6 +17,9 @@ import ma02_resources.participants.Participant;
 
 import java.time.LocalDate;
 
+/**
+ * this interface is responsible for enhancing the event
+ */
 public interface Event {
     int getNumberOfParticipants();
 

@@ -19,6 +19,9 @@ import ma02_resources.project.exceptions.ParticipantAlreadyInProject;
 
 import java.io.IOException;
 
+/**
+ * Class responsible for displaying the Start Management Menu
+ */
 public class MenuStartManagement implements MenuDisplay {
     @Override
     public void display() {
@@ -29,6 +32,15 @@ public class MenuStartManagement implements MenuDisplay {
         System.out.println("0 - Exit");
     }
 
+    /**
+     * Method responsible for handling the Start Management Menu
+     * @param menuManager the menu manager
+     * @param portfolio the portfolio
+     * @param project the project
+     * @throws IOException if an error occurs while reading the input
+     * @throws ParticipantAlreadyInProject if the participant is already in the project
+     * @throws IllegalNumberOfParticipantType if the number of participants is illegal
+     */
     public static void handleStartMenu(MenuManager menuManager, PortfolioImp portfolio, ProjectImp project) throws IOException, ParticipantAlreadyInProject, IllegalNumberOfParticipantType {
 
         MenuStartManagement menuStart = new MenuStartManagement();

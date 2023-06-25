@@ -30,7 +30,9 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-
+/**
+ * this class represents an edition
+ */
 public class EditionImp implements EventController, Edition {
     private static int SIZE = 10;
     private final int FACTOR = 2;
@@ -44,6 +46,15 @@ public class EditionImp implements EventController, Edition {
     private Project[] projects;
     private Event[] events;
 
+    /**
+     * constructor of the class
+     * @param name the name of the edition
+     * @param start the start date of the edition
+     * @param end the end date of the edition
+     * @param status the status of the edition
+     * @param projects the projects of the edition
+     * @param events the events of the edition
+     */
     public EditionImp(String name, LocalDate start, LocalDate end, Status status, Project[] projects, Event[] events) {
         this.name = name;
         this.start = start;
@@ -53,6 +64,13 @@ public class EditionImp implements EventController, Edition {
         this.events = events;
     }
 
+    /**
+     * constructor of the class
+     * @param name the name of the edition
+     * @param start the start date of the edition
+     * @param end the end date of the edition
+     * @param status the status of the edition
+     */
     public EditionImp(String name, LocalDate start, LocalDate end, Status status) {
         this.name = name;
         this.start = start;
@@ -62,39 +80,77 @@ public class EditionImp implements EventController, Edition {
         this.events = new Event[SIZE];
     }
 
+    /**
+     * this method gets the name of the edition
+     * @return the name of the edition
+     */
     @Override
     public String getName() {
         return this.name;
     }
 
+    /**
+     * this name gets the start date of the edition
+     * @return the start date of the edition
+     */
     @Override
     public LocalDate getStart() {
         return this.start;
     }
 
+    /**
+     * this method gets the project template
+     * @return the project template
+     */
     @Override
     public String getProjectTemplate() {
         return this.projectTemplate;
     }
+
+    /**
+     * this method gets the number of  events
+     * @return the number of events
+     */
     @Override
     public int getNumberOfEvents() {
         return numberOfEvents;
     }
+
+    /**
+     * this method gets the events
+     * @return the events
+     */
     @Override
     public EventImp[] getEvents() {
         return (EventImp[]) events;
     }
 
+    /**
+     * this method gets the status of the edition
+     * @return the status of the edition
+     */
     @Override
     public Status getStatus() {
         return this.status;
     }
 
+    /**
+     * this method sets the status of the edition
+     * @param status the status of the edition
+     */
     @Override
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    /**
+     * this method add a project to the edition
+     * @param name the name of the project
+     * @param description the description of the project
+     * @param tags the tags of the project
+     * @throws IOException if the file is not found
+     * @throws ParseException if the date is not in the correct format
+     */
     @Override
     public void addProject(String name, String description, String[] tags) throws IOException, ParseException {
         if (name == null || description == null || tags == null || tags.length == 0)
@@ -118,6 +174,10 @@ public class EditionImp implements EventController, Edition {
         this.numberOfProjects++;
     }
 
+    /**
+     * this method remove a project from the edition
+     * @param s the name of the project
+     */
     @Override
     public void removeProject(String s) {
         Project that = getProject(s);
@@ -132,6 +192,9 @@ public class EditionImp implements EventController, Edition {
         System.out.println("Project removed with sucess");
     }
 
+    /**
+     * this method expand the projects array
+     */
     private void expandProjects() {
         Project[] temp = new Project[this.projects.length * FACTOR];
 
@@ -141,11 +204,19 @@ public class EditionImp implements EventController, Edition {
         this.projects = temp;
     }
 
+    /**
+     * this method gets the project
+     */
     @Override
     public Project getProject(String s) {
         return this.projects[0];
     }
 
+    /**
+     * this method gets the index of the project
+     * @param project the project
+     * @return the index of the project
+     */
     public int getIndex(Project project) {
         for (int i = 0; i < projects.length; i++) {
             if (projects[i] == project)
@@ -154,11 +225,20 @@ public class EditionImp implements EventController, Edition {
         return -1;
     }
 
+    /**
+     * this method gets the number of projects
+     * @return
+     */
     @Override
     public ProjectImp[] getProjects() {
         return (ProjectImp[]) this.projects;
     }
 
+    /**
+     * this method gets the projects by tag
+     * @param s the tag
+     * @return the projects by tag
+     */
     @Override
     public Project[] getProjectsByTag(String s) {
         int index = 0;
@@ -171,6 +251,11 @@ public class EditionImp implements EventController, Edition {
         return array;
     }
 
+    /**
+     * this method gets the projects of a participant
+     * @param s the participant
+     * @return the projects of a participant
+     */
     @Override
     public Project[] getProjectsOf(String s) {
         int index = 0;
@@ -187,16 +272,29 @@ public class EditionImp implements EventController, Edition {
         return array;
     }
 
+    /**
+     * this method gets the number of projects
+     * @return the number of projects
+     */
     @Override
     public int getNumberOfProjects() {
         return this.numberOfProjects;
     }
 
+    /**
+     * this method gets the end date
+     * @return the end date
+     */
     @Override
     public LocalDate getEnd() {
         return this.end;
     }
 
+    /**
+     * this method checks if the edition is active
+     * @return true if the edition is active
+     * @throws EditionNotActive if the edition is not active
+     */
     public boolean isActive() throws EditionNotActive {
         if (this.status == Status.ACTIVE)
             return true;
@@ -205,7 +303,8 @@ public class EditionImp implements EventController, Edition {
     }
 
     /**
-     * @param event
+     * this method adds a event to the edition
+     * @param event the event
      */
     @Override
     public void addEvent(Event event) throws IllegalArgumentException, IllegalDate, EditionNotActive {
@@ -235,7 +334,8 @@ public class EditionImp implements EventController, Edition {
     }
 
     /**
-     * @return
+     * this method remove a event from the edition
+     * @return true if the event was removed
      */
     @Override
     public boolean removeEvent(Event event) throws EventAlreadyStarted {
@@ -252,6 +352,7 @@ public class EditionImp implements EventController, Edition {
     }
 
     /**
+     * this method update event
      * @return the updated event
      */
     @Override
@@ -276,6 +377,7 @@ public class EditionImp implements EventController, Edition {
     }
 
     /**
+     * this method list an event
      * @return the events of the project
      */
     @Override
@@ -285,6 +387,10 @@ public class EditionImp implements EventController, Edition {
         }
     }
 
+    /**
+     * this method list the projects
+     * @return the projects
+     */
     public void listProjects() {
         for (int i = 0; i < numberOfProjects; i++) {
             System.out.println(projects[i].toString());
@@ -292,6 +398,10 @@ public class EditionImp implements EventController, Edition {
         System.out.println(numberOfProjects + "/" + projects.length);
     }
 
+    /**
+     * this method checks if the edition has a event
+     * @return the event
+     */
     public void hasEvent(Event event) throws IllegalArgumentException {
         for (int i = 0; i < numberOfEvents; i++) {
             if (this.events[i].equals(event)) {
@@ -300,6 +410,9 @@ public class EditionImp implements EventController, Edition {
         }
     }
 
+    /**
+     * this method expands the events
+     */
     public void expandEvents() {
         Event[] temp = new Event[this.events.length * FACTOR];
 
@@ -309,6 +422,11 @@ public class EditionImp implements EventController, Edition {
         this.events = temp;
     }
 
+    /**
+     * this method finds a event
+     * @param event the event
+     * @return the event
+     */
     public int findEvent(Event event) {
         for (int i = 0; i < numberOfEvents; i++) {
             if (this.events[i].equals(event)) {
@@ -317,6 +435,11 @@ public class EditionImp implements EventController, Edition {
         }
         return -1;
     }
+
+    /**
+     * this method gets the progress of the edition
+     * @return the progress
+     */
     public String getProgress() {
         int completedTasks = 0;
         int countTasks = 0;
@@ -334,6 +457,10 @@ public class EditionImp implements EventController, Edition {
                 "\nThe Edition is: " + (completedTasks * 100) / countTasks + "% completed");
     }
 
+    /**
+     * this method gives the information of the edition
+     * @return the information
+     */
     @Override
     public String toString() {
         return "\n Edition{" +

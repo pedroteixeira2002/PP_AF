@@ -10,6 +10,9 @@
 
 package exceptions;
 
+/**
+ * this exception is thrown when a student is not in the project
+ */
 public class StudentNotInProject extends Exception{
     public StudentNotInProject(String message) {
         super(message);
