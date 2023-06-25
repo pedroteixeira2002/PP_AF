@@ -228,8 +228,40 @@ public class ParticipantManagerMenu implements MenuDisplay {
                     FacilitatorImp facilitator = new FacilitatorImp(name, areaOfExpertise, email, instituition, contact);
                     manager.addParticipant(facilitator);
                     break;
-                case 0:
-                    isSubMenuRunning = false;
+                case 4: //Judge
+                    do {
+                        System.out.println("Enter the judge's name:\n");
+                        try {
+                            name = UserInput.getString();
+                        } catch (Exception e) {
+                            name = null;
+                        }
+                    } while (name == null);
+                    do {
+                        System.out.println("Enter the judge's email:\n");
+                        try {
+                            email = UserInput.getString();
+                        } catch (Exception e) {
+                            email = null;
+                        }
+                    } while (email == null);
+
+                    do {
+                        System.out.println("Enter the judge's instituition:\n");
+                        try {
+                            instituition = UserInput.getString();
+                        } catch (Exception e) {
+                            instituition = null;
+                        }
+                    } while (instituition == null);
+                    do {
+                        System.out.println("Enter the judge's contact:\n");
+                        try {
+                            contact = UserInput.getString();
+                        } catch (Exception e) {
+                            contact = null;
+                        }
+                    } while (contact == null);
                     break;
                 default:
                     System.out.println("Invalid option");
@@ -247,6 +279,7 @@ public class ParticipantManagerMenu implements MenuDisplay {
         System.out.println("1 - Student");
         System.out.println("2 - Partner");
         System.out.println("3 - Facilitator");
+        System.out.println("4 - Judge");
         System.out.println("0 - Exit");
     }
 
